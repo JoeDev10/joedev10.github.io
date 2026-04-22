@@ -158,55 +158,71 @@ nav a:hover { color: #6c47ff; }
 .portfolio {
   max-width: 1100px; margin: auto;
   padding: 80px 24px;
+  text-align: center;
 }
-.portfolio h2 { font-size: 36px; font-weight: 800; margin-bottom: 40px; }
-.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 28px; }
-.port-card {
-  border: 1px solid #eee; border-radius: 24px;
+.portfolio h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.portfolio-sub { font-size: 17px; color: #666; margin-bottom: 48px; }
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+.port-item {
+  position: relative;
+  border-radius: 16px;
   overflow: hidden;
-  transition: all .2s;
+  aspect-ratio: 16/10;
+  background: #f0f0f0;
+  cursor: pointer;
 }
-.port-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.1); transform: translateY(-4px); }
-.port-preview {
-  height: 240px;
+.port-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.port-item:hover .port-img { transform: scale(1.04); }
+.port-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,0) 50%);
   display: flex; flex-direction: column;
-  padding: 16px;
+  justify-content: flex-end;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity .3s ease;
 }
-.stikers-preview { background: linear-gradient(135deg, #1a1a2e, #0f3460); }
-.preview-dots { display: flex; gap: 6px; margin-bottom: 12px; }
-.preview-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.3); }
-.preview-content { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-.prev-header { color: #fff; font-weight: 700; font-size: 15px; }
-.prev-cats { display: flex; gap: 8px; flex-wrap: wrap; }
-.prev-cats span { background: rgba(255,255,255,.15); color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 11px; }
-.prev-grid { display: flex; gap: 8px; }
-.prev-item { background: rgba(255,255,255,.1); border-radius: 10px; padding: 8px 12px; text-align: center; font-size: 22px; color: #fff; }
-.prev-item small { display: block; font-size: 10px; color: rgba(255,255,255,.6); }
-.prev-cart { background: #e94560; color: #fff; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; align-self: flex-start; margin-top: auto; }
-.pronto-preview {
-  background: #f8f8f8;
-  align-items: center; justify-content: center;
-  gap: 12px; border-bottom: 1px solid #eee;
-}
-.pronto-icon { font-size: 52px; }
-.pronto-preview p { color: #aaa; font-size: 14px; }
-.port-pronto .port-preview { height: 240px; }
-.port-info { padding: 24px; }
-.port-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-.port-info p { font-size: 14px; color: #666; margin-bottom: 16px; line-height: 1.6; }
-.port-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.port-item:hover .port-overlay { opacity: 1; }
+.port-overlay h3 { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.port-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .port-tags span {
-  background: #f0ebff; color: #6c47ff;
+  background: rgba(255,255,255,.2);
+  color: #fff;
   padding: 4px 12px; border-radius: 12px;
   font-size: 12px; font-weight: 600;
+  backdrop-filter: blur(4px);
 }
-.btn-ver {
-  color: #6c47ff; font-size: 14px; font-weight: 700;
-  transition: gap .2s;
+.port-overlay-link {
+  color: #fff; font-size: 13px; font-weight: 700;
+  background: #6c47ff;
+  padding: 8px 18px; border-radius: 20px;
+  align-self: flex-start;
+  transition: background .2s;
 }
-.btn-ver:hover { text-decoration: underline; }
-.mockup-preview { padding: 0; height: 240px; }
-.mockup-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.port-overlay-link:hover { background: #5535e0; }
+.port-cta {
+  background: #f0ebff;
+  aspect-ratio: 16/10;
+  display: flex; align-items: center; justify-content: center;
+}
+.port-cta-inner { text-align: center; padding: 32px; }
+.port-cta-icon { font-size: 48px; margin-bottom: 16px; }
+.port-cta-inner h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: #111; }
+.port-cta-inner p { font-size: 14px; color: #666; margin-bottom: 20px; }
+
+@media (max-width: 768px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
 
 /* ===== TESTIMONIOS ===== */
 .testimonios {
