@@ -205,6 +205,8 @@ nav a:hover { color: #6c47ff; }
   transition: gap .2s;
 }
 .btn-ver:hover { text-decoration: underline; }
+.mockup-preview { padding: 0; height: 240px; }
+.mockup-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ===== TESTIMONIOS ===== */
 .testimonios {
