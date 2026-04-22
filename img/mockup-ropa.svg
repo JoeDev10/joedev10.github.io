@@ -1,46 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <defs>
+    <linearGradient id="heroR" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1a1a" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#1a1a1a" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#1a1a1a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="imgR" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4b896"/>
+      <stop offset="100%" stop-color="#a08050"/>
+    </linearGradient>
+  </defs>
+
   <!-- Fondo -->
-  <rect width="600" height="400" fill="#fafafa"/>
+  <rect width="800" height="520" fill="#f8f6f2"/>
 
-  <!-- Header -->
-  <rect width="600" height="56" fill="#fff"/>
-  <rect width="600" height="1" y="56" fill="#eee"/>
-  <text x="32" y="36" font-family="Arial" font-weight="bold" font-size="20" fill="#111">NOVA <tspan fill="#c9a96e">Studio</tspan></text>
-  <text x="350" y="36" font-family="Arial" font-size="13" fill="#555">Colecciones</text>
-  <text x="430" y="36" font-family="Arial" font-size="13" fill="#555">Nosotras</text>
-  <text x="500" y="36" font-family="Arial" font-size="13" fill="#555">Contacto</text>
+  <!-- HEADER -->
+  <rect width="800" height="68" fill="#fff"/>
+  <rect x="0" y="67" width="800" height="1" fill="#e8e0d0"/>
+  <text x="32" y="32" font-family="Georgia" font-weight="bold" font-size="11" fill="#bbb" letter-spacing="3">NUEVA COLECCION 2026</text>
+  <text x="32" y="54" font-family="Georgia" font-weight="bold" font-size="22" fill="#111">NOVA <tspan fill="#c9a96e">Studio</tspan></text>
+  <text x="400" y="42" font-family="Arial" font-size="12" fill="#777">Colecciones</text>
+  <text x="480" y="42" font-family="Arial" font-size="12" fill="#777">Nosotras</text>
+  <text x="544" y="42" font-family="Arial" font-size="12" fill="#777">Lookbook</text>
+  <text x="612" y="42" font-family="Arial" font-size="12" fill="#777">Contacto</text>
+  <rect x="680" y="22" width="90" height="32" rx="2" fill="#111"/>
+  <text x="725" y="43" font-family="Arial" font-weight="700" font-size="12" fill="#fff" text-anchor="middle">Ver tienda</text>
 
-  <!-- Hero -->
-  <rect x="0" y="57" width="600" height="180" fill="#f5f0e8"/>
-  <text x="52" y="120" font-family="Georgia" font-weight="bold" font-size="34" fill="#111">Moda que</text>
-  <text x="52" y="158" font-family="Georgia" font-weight="bold" font-size="34" fill="#c9a96e">te define</text>
-  <text x="52" y="190" font-family="Arial" font-size="13" fill="#777">Nueva colección otoño 2026 disponible</text>
-  <rect x="52" y="205" width="140" height="36" rx="4" fill="#111"/>
-  <text x="122" y="228" font-family="Arial" font-weight="bold" font-size="13" fill="#fff" text-anchor="middle">Ver colección</text>
+  <!-- HERO - fondo simulando foto de moda -->
+  <rect x="0" y="68" width="800" height="230" fill="#2a2218"/>
+  <rect x="420" y="68" width="380" height="230" fill="url(#imgR)" opacity="0.7"/>
+  <circle cx="620" cy="183" r="110" fill="#c9a96e" opacity="0.15"/>
+  <text x="620" y="210" font-family="Arial" font-size="100" text-anchor="middle" opacity="0.5">👗</text>
+  <rect x="0" y="68" width="800" height="230" fill="url(#heroR)"/>
+  <!-- Contenido hero -->
+  <text x="32" y="118" font-family="Georgia" font-size="12" fill="#c9a96e" letter-spacing="3">OTOÑO · INVIERNO 2026</text>
+  <text x="32" y="162" font-family="Georgia" font-weight="bold" font-size="38" fill="#fff">Moda que</text>
+  <text x="32" y="204" font-family="Georgia" font-weight="bold" font-size="38" fill="#c9a96e">te define</text>
+  <text x="32" y="236" font-family="Arial" font-size="13" fill="#aaa">Piezas únicas para mujeres que marcan tendencia</text>
+  <rect x="32" y="254" width="160" height="38" rx="2" fill="#c9a96e"/>
+  <text x="112" y="278" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">Ver colección</text>
+  <rect x="202" y="254" width="130" height="38" rx="2" fill="transparent" stroke="#fff" stroke-width="1.5"/>
+  <text x="267" y="278" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle">Nuestro lookbook</text>
 
-  <!-- Imagen decorativa ropa -->
-  <circle cx="470" cy="147" r="80" fill="#e8dcc8"/>
-  <text x="470" y="165" font-family="Arial" font-size="70" text-anchor="middle">👗</text>
+  <!-- SECCIÓN PRODUCTOS -->
+  <rect x="0" y="298" width="800" height="222" fill="#f8f6f2"/>
+  <text x="400" y="330" font-family="Georgia" font-weight="bold" font-size="20" fill="#111" text-anchor="middle">Destacados de la temporada</text>
+  <line x1="330" y1="340" x2="470" y2="340" stroke="#c9a96e" stroke-width="1.5"/>
 
-  <!-- Sección productos -->
-  <rect x="0" y="237" width="600" height="163" fill="#fff"/>
-  <text x="300" y="268" font-family="Georgia" font-weight="bold" font-size="16" fill="#111" text-anchor="middle">Destacados</text>
+  <!-- Producto 1 -->
+  <rect x="28" y="354" width="172" height="148" rx="8" fill="#ede8e0"/>
+  <text x="114" y="430" font-family="Arial" font-size="60" text-anchor="middle">👗</text>
+  <rect x="28" y="460" width="172" height="42" rx="0 0 8 8" fill="#fff"/>
+  <text x="114" y="477" font-family="Georgia" font-weight="bold" font-size="13" fill="#111" text-anchor="middle">Vestido lino</text>
+  <text x="114" y="494" font-family="Arial" font-size="12" fill="#c9a96e" text-anchor="middle">$28.000</text>
 
-  <!-- Card 1 -->
-  <rect x="24" y="280" width="168" height="100" rx="8" fill="#f5f0e8"/>
-  <text x="108" y="318" font-family="Arial" font-size="28" text-anchor="middle">👗</text>
-  <text x="108" y="342" font-family="Arial" font-weight="bold" font-size="12" fill="#111" text-anchor="middle">Vestido lino</text>
-  <text x="108" y="360" font-family="Arial" font-size="12" fill="#c9a96e" text-anchor="middle">$28.000</text>
+  <!-- Producto 2 -->
+  <rect x="212" y="354" width="172" height="148" rx="8" fill="#ede8e0"/>
+  <text x="298" y="430" font-family="Arial" font-size="60" text-anchor="middle">👚</text>
+  <rect x="212" y="460" width="172" height="42" rx="0 0 8 8" fill="#fff"/>
+  <text x="298" y="477" font-family="Georgia" font-weight="bold" font-size="13" fill="#111" text-anchor="middle">Remera oversize</text>
+  <text x="298" y="494" font-family="Arial" font-size="12" fill="#c9a96e" text-anchor="middle">$14.000</text>
 
-  <!-- Card 2 -->
-  <rect x="216" y="280" width="168" height="100" rx="8" fill="#f5f0e8"/>
-  <text x="300" y="318" font-family="Arial" font-size="28" text-anchor="middle">👚</text>
-  <text x="300" y="342" font-family="Arial" font-weight="bold" font-size="12" fill="#111" text-anchor="middle">Remera oversize</text>
-  <text x="300" y="360" font-family="Arial" font-size="12" fill="#c9a96e" text-anchor="middle">$14.000</text>
+  <!-- Producto 3 -->
+  <rect x="396" y="354" width="172" height="148" rx="8" fill="#ede8e0"/>
+  <text x="482" y="430" font-family="Arial" font-size="60" text-anchor="middle">👖</text>
+  <rect x="396" y="460" width="172" height="42" rx="0 0 8 8" fill="#fff"/>
+  <text x="482" y="477" font-family="Georgia" font-weight="bold" font-size="13" fill="#111" text-anchor="middle">Jean tiro alto</text>
+  <text x="482" y="494" font-family="Arial" font-size="12" fill="#c9a96e" text-anchor="middle">$32.000</text>
 
-  <!-- Card 3 -->
-  <rect x="408" y="280" width="168" height="100" rx="8" fill="#f5f0e8"/>
-  <text x="492" y="318" font-family="Arial" font-size="28" text-anchor="middle">👖</text>
-  <text x="492" y="342" font-family="Arial" font-weight="bold" font-size="12" fill="#111" text-anchor="middle">Jean tiro alto</text>
-  <text x="492" y="360" font-family="Arial" font-size="12" fill="#c9a96e" text-anchor="middle">$32.000</text>
+  <!-- Producto 4 -->
+  <rect x="580" y="354" width="172" height="148" rx="8" fill="#ede8e0"/>
+  <text x="666" y="430" font-family="Arial" font-size="60" text-anchor="middle">🧥</text>
+  <rect x="580" y="460" width="172" height="42" rx="0 0 8 8" fill="#fff"/>
+  <text x="666" y="477" font-family="Georgia" font-weight="bold" font-size="13" fill="#111" text-anchor="middle">Tapado clásico</text>
+  <text x="666" y="494" font-family="Arial" font-size="12" fill="#c9a96e" text-anchor="middle">$58.000</text>
 </svg>

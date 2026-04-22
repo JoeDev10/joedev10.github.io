@@ -1,45 +1,95 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
-  <!-- Fondo -->
-  <rect width="600" height="400" fill="#1a1a2e"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <!-- Fondo página -->
+  <rect width="800" height="520" fill="#0d0d1a"/>
 
-  <!-- Header -->
-  <rect width="600" height="56" fill="#0f3460"/>
-  <text x="32" y="36" font-family="Arial" font-weight="bold" font-size="18" fill="#fff">🏷️ <tspan fill="#e94560">Tecno</tspan>Stikers</text>
-  <text x="400" y="36" font-family="Arial" font-size="13" fill="#aaa">Simpsons</text>
-  <text x="460" y="36" font-family="Arial" font-size="13" fill="#aaa">Anime</text>
-  <text x="510" y="36" font-family="Arial" font-size="13" fill="#aaa">Cine</text>
+  <!-- HEADER -->
+  <rect width="800" height="64" fill="#111129"/>
+  <rect x="28" y="20" width="36" height="36" rx="8" fill="#e94560"/>
+  <text x="72" y="44" font-family="Arial" font-weight="900" font-size="17" fill="#fff">TECNO<tspan fill="#e94560">STIKERS</tspan></text>
+  <text x="480" y="40" font-family="Arial" font-size="13" fill="#aaa">Inicio</text>
+  <text x="530" y="40" font-family="Arial" font-size="13" fill="#aaa">Catálogos</text>
+  <text x="598" y="40" font-family="Arial" font-size="13" fill="#aaa">Nosotros</text>
+  <rect x="660" y="22" width="110" height="34" rx="17" fill="#e94560"/>
+  <text x="715" y="44" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">Ver catálogo</text>
 
-  <!-- Hero banner -->
-  <rect x="0" y="56" width="600" height="80" fill="#16213e"/>
-  <text x="300" y="90" font-family="Arial" font-weight="bold" font-size="22" fill="#fff" text-anchor="middle">Stikers para cada fandom</text>
-  <text x="300" y="116" font-family="Arial" font-size="13" fill="#aaa" text-anchor="middle">+180 diseños únicos · Envío a todo el país</text>
+  <!-- HERO -->
+  <rect x="0" y="64" width="800" height="200" fill="#13132b"/>
+  <!-- Gradient overlay -->
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#13132b" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#13132b" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#13132b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e94560" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6c47ff" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <!-- Sticker decorativos fondo -->
+  <circle cx="600" cy="164" r="100" fill="#1e1e3f"/>
+  <circle cx="650" cy="134" r="60" fill="#252545"/>
+  <text x="580" y="140" font-family="Arial" font-size="52" text-anchor="middle">😴</text>
+  <text x="680" y="120" font-family="Arial" font-size="38" text-anchor="middle">⚡</text>
+  <text x="720" y="200" font-family="Arial" font-size="44" text-anchor="middle">🎬</text>
+  <text x="540" y="220" font-family="Arial" font-size="36" text-anchor="middle">🍩</text>
+  <!-- Overlay gradiente sobre el héroe -->
+  <rect x="0" y="64" width="800" height="200" fill="url(#g1)"/>
 
-  <!-- Grid productos -->
-  <rect x="16" y="148" width="130" height="110" rx="10" fill="#0f3460"/>
-  <text x="81" y="198" font-family="Arial" font-size="36" text-anchor="middle">😴</text>
-  <text x="81" y="224" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">Homer Durmiendo</text>
-  <text x="81" y="242" font-family="Arial" font-size="11" fill="#e94560" text-anchor="middle">$850</text>
+  <!-- Badge -->
+  <rect x="28" y="84" width="160" height="26" rx="13" fill="#e94560" opacity="0.2"/>
+  <text x="108" y="102" font-family="Arial" font-size="12" fill="#e94560" font-weight="700" text-anchor="middle">🏷️ +180 diseños únicos</text>
+  <!-- Título hero -->
+  <text x="28" y="148" font-family="Arial" font-weight="900" font-size="34" fill="#fff">Stikers para</text>
+  <text x="28" y="188" font-family="Arial" font-weight="900" font-size="34" fill="#e94560">cada fandom</text>
+  <text x="28" y="218" font-family="Arial" font-size="13" fill="#888">Simpsons · Anime · Cine · Deportes · y más</text>
+  <!-- CTA hero -->
+  <rect x="28" y="232" width="150" height="38" rx="19" fill="#e94560"/>
+  <text x="103" y="256" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">Ver catálogos →</text>
 
-  <rect x="158" y="148" width="130" height="110" rx="10" fill="#0f3460"/>
-  <text x="223" y="198" font-family="Arial" font-size="36" text-anchor="middle">🛹</text>
-  <text x="223" y="224" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">Skater Bart</text>
-  <text x="223" y="242" font-family="Arial" font-size="11" fill="#e94560" text-anchor="middle">$850</text>
+  <!-- CATEGORÍAS -->
+  <rect x="0" y="264" width="800" height="50" fill="#111129"/>
+  <rect x="28" y="278" width="110" height="28" rx="14" fill="#e94560"/>
+  <text x="83" y="297" font-family="Arial" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">Todos</text>
+  <rect x="148" y="278" width="90" height="28" rx="14" fill="#1e1e3f"/>
+  <text x="193" y="297" font-family="Arial" font-size="12" fill="#aaa" text-anchor="middle">Simpsons</text>
+  <rect x="248" y="278" width="70" height="28" rx="14" fill="#1e1e3f"/>
+  <text x="283" y="297" font-family="Arial" font-size="12" fill="#aaa" text-anchor="middle">Anime</text>
+  <rect x="328" y="278" width="60" height="28" rx="14" fill="#1e1e3f"/>
+  <text x="358" y="297" font-family="Arial" font-size="12" fill="#aaa" text-anchor="middle">Cine</text>
+  <rect x="398" y="278" width="90" height="28" rx="14" fill="#1e1e3f"/>
+  <text x="443" y="297" font-family="Arial" font-size="12" fill="#aaa" text-anchor="middle">Deportes</text>
 
-  <rect x="300" y="148" width="130" height="110" rx="10" fill="#0f3460"/>
-  <text x="365" y="198" font-family="Arial" font-size="36" text-anchor="middle">⚡</text>
-  <text x="365" y="224" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">Pikachu Attack</text>
-  <text x="365" y="242" font-family="Arial" font-size="11" fill="#e94560" text-anchor="middle">$950</text>
+  <!-- GRID PRODUCTOS -->
+  <!-- Producto 1 -->
+  <rect x="28" y="326" width="168" height="168" rx="14" fill="#1e1e3f"/>
+  <text x="112" y="405" font-family="Arial" font-size="56" text-anchor="middle">😴</text>
+  <rect x="28" y="448" width="168" height="46" rx="0 0 14 14" fill="#252545"/>
+  <text x="112" y="468" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">Homer Durmiendo</text>
+  <text x="112" y="484" font-family="Arial" font-size="12" fill="#e94560" text-anchor="middle">$850</text>
 
-  <rect x="442" y="148" width="130" height="110" rx="10" fill="#0f3460"/>
-  <text x="507" y="198" font-family="Arial" font-size="36" text-anchor="middle">🎬</text>
-  <text x="507" y="224" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">Cine Clásico</text>
-  <text x="507" y="242" font-family="Arial" font-size="11" fill="#e94560" text-anchor="middle">$900</text>
+  <!-- Producto 2 -->
+  <rect x="208" y="326" width="168" height="168" rx="14" fill="#1e1e3f"/>
+  <text x="292" y="405" font-family="Arial" font-size="56" text-anchor="middle">🛹</text>
+  <rect x="208" y="448" width="168" height="46" rx="0 0 14 14" fill="#252545"/>
+  <text x="292" y="468" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">Skater Bart</text>
+  <text x="292" y="484" font-family="Arial" font-size="12" fill="#e94560" text-anchor="middle">$850</text>
+
+  <!-- Producto 3 -->
+  <rect x="388" y="326" width="168" height="168" rx="14" fill="#1e1e3f"/>
+  <text x="472" y="405" font-family="Arial" font-size="56" text-anchor="middle">⚡</text>
+  <rect x="388" y="448" width="168" height="46" rx="0 0 14 14" fill="#252545"/>
+  <text x="472" y="468" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">Pikachu Attack</text>
+  <text x="472" y="484" font-family="Arial" font-size="12" fill="#e94560" text-anchor="middle">$950</text>
+
+  <!-- Producto 4 -->
+  <rect x="568" y="326" width="168" height="168" rx="14" fill="#1e1e3f"/>
+  <text x="652" y="405" font-family="Arial" font-size="56" text-anchor="middle">🎬</text>
+  <rect x="568" y="448" width="168" height="46" rx="0 0 14 14" fill="#252545"/>
+  <text x="652" y="468" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">Cine Clásico</text>
+  <text x="652" y="484" font-family="Arial" font-size="12" fill="#e94560" text-anchor="middle">$900</text>
 
   <!-- Carrito flotante -->
-  <rect x="16" y="272" width="568" height="50" rx="10" fill="#e94560"/>
-  <text x="300" y="302" font-family="Arial" font-weight="bold" font-size="15" fill="#fff" text-anchor="middle">🛒 Ver carrito · 3 productos · $2.550</text>
-
-  <!-- Footer -->
-  <rect x="0" y="340" width="600" height="60" fill="#0f3460"/>
-  <text x="300" y="375" font-family="Arial" font-size="12" fill="#aaa" text-anchor="middle">Pedidos por WhatsApp · Envío a todo el país · Pago por transferencia</text>
+  <rect x="560" y="232" width="212" height="46" rx="23" fill="#e94560"/>
+  <text x="666" y="261" font-family="Arial" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">🛒 Carrito · 3 items · $2.600</text>
 </svg>
