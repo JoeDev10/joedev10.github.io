@@ -206,6 +206,48 @@ nav a:hover { color: #6c47ff; }
 }
 .btn-ver:hover { text-decoration: underline; }
 
+/* ===== TESTIMONIOS ===== */
+.testimonios {
+  max-width: 1100px; margin: auto;
+  padding: 80px 24px;
+  text-align: center;
+}
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+  text-align: left;
+}
+.testimonio-card {
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.testimonio-estrellas { color: #f5a623; font-size: 18px; }
+.testimonio-texto { font-size: 15px; color: #444; line-height: 1.7; flex: 1; }
+.testimonio-autor { display: flex; align-items: center; gap: 12px; }
+.testimonio-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: #6c47ff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.testimonio-nombre { font-weight: 700; font-size: 15px; color: #111; }
+.testimonio-rol { font-size: 13px; color: #888; }
+
+@media (max-width: 768px) {
+  .testimonios-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== PRECIOS ===== */
 .precios {
   background: #fafafa;
