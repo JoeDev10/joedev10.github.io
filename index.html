@@ -271,6 +271,57 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-label">FAQ</div>
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-lista">
+
+      <div class="faq-item">
+        <button class="faq-pregunta">¿Qué necesito para empezar? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>Solo contarme de tu negocio: qué hacés, qué querés mostrar y si tenés fotos o logo. Con eso ya puedo arrancar. No necesitás saber nada de tecnología.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">¿En cuánto tiempo me entregás la página? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>En 48 horas tenés tu página lista. Una vez que me mandás la información de tu negocio, me pongo a trabajar y te entrego el resultado en menos de dos días.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">¿El precio incluye hosting y dominio? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>El hosting (tu página publicada en internet) está incluido. El dominio personalizado (como tunegocio.com) tiene un costo adicional de alrededor de $15 USD por año, aunque también podés usar un dominio gratuito.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">¿Puedo pedir cambios después de la entrega? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>Sí. Incluyo 30 días de soporte post-entrega sin costo. Cambios de texto, fotos, precios o colores los resuelvo por WhatsApp sin problema.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">¿Se puede pagar en cuotas? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>Sí, podemos coordinar un pago del 50% para arrancar y el resto al entregar la página. Hablame por WhatsApp y lo arreglamos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">¿Qué pasa si no me gusta el resultado? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>Trabajamos juntos hasta que quedes conforme. Antes de entregar te muestro un avance y hacemos todos los ajustes necesarios. Tu satisfacción es la prioridad.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- PRECIOS -->
   <section class="precios" id="precios">
     <div class="section-label">Precios</div>
@@ -542,6 +593,12 @@
   input.addEventListener("input", () => {
     input.style.height = "auto";
     input.style.height = Math.min(input.scrollHeight, 100) + "px";
+  });
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-pregunta').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
   });
 
   const hamburger = document.getElementById('hamburger');

@@ -248,6 +248,55 @@ nav a:hover { color: #6c47ff; }
   .testimonios-grid { grid-template-columns: 1fr; }
 }
 
+/* ===== FAQ ===== */
+.faq {
+  max-width: 780px; margin: auto;
+  padding: 80px 24px;
+  text-align: center;
+}
+.faq-lista {
+  margin-top: 48px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.faq-pregunta {
+  width: 100%;
+  background: #fafafa;
+  border: none;
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .2s;
+}
+.faq-pregunta:hover { background: #f0ebff; color: #6c47ff; }
+.faq-icono { font-size: 22px; font-weight: 400; color: #6c47ff; transition: transform .3s; }
+.faq-item.open .faq-icono { transform: rotate(45deg); }
+.faq-respuesta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+.faq-item.open .faq-respuesta { max-height: 200px; }
+.faq-respuesta p {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+}
+
 /* ===== PRECIOS ===== */
 .precios {
   background: #fafafa;
