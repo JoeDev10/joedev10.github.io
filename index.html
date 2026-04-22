@@ -58,8 +58,20 @@
       <a href="https://wa.me/5491144091981?text=Hola%20Joel!%20Quiero%20una%20p%C3%A1gina%20web" class="btn-header" target="_blank">
         📱 Hablemos
       </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- MENÚ MOBILE -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicios" class="mobile-link">Servicios</a>
+    <a href="#portfolio" class="mobile-link">Portfolio</a>
+    <a href="#precios" class="mobile-link">Precios</a>
+    <a href="#contacto" class="mobile-link">Contacto</a>
+    <a href="https://wa.me/5491144091981?text=Hola%20Joel!%20Quiero%20una%20p%C3%A1gina%20web" class="mobile-link mobile-wa" target="_blank">📱 Hablemos por WhatsApp</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -485,6 +497,19 @@
   input.addEventListener("input", () => {
     input.style.height = "auto";
     input.style.height = Math.min(input.scrollHeight, 100) + "px";
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    });
   });
 </script>
 

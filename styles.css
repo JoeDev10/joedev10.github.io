@@ -303,10 +303,67 @@ nav a:hover { color: #6c47ff; }
 /* ===== FOOTER ===== */
 footer { background: #0a0a0a; color: #555; text-align: center; padding: 24px; font-size: 14px; }
 
+/* ===== HAMBURGER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #111;
+  border-radius: 2px;
+  transition: all .3s;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 24px 20px;
+  position: sticky;
+  top: 57px;
+  z-index: 99;
+}
+.mobile-menu.open { display: flex; }
+.mobile-link {
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  border-bottom: 1px solid #f5f5f5;
+  transition: color .2s;
+}
+.mobile-link:hover { color: #6c47ff; }
+.mobile-wa {
+  margin-top: 8px;
+  color: #fff;
+  background: #6c47ff;
+  text-align: center;
+  padding: 14px;
+  border-radius: 24px;
+  font-weight: 700;
+  border: none;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .hero h1 { font-size: 38px; }
   nav { display: none; }
+  .btn-header { display: none; }
+  .hamburger { display: flex; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .precio-card.destacado { transform: none; }
   .paso-arrow { display: none; }
