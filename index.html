@@ -434,6 +434,7 @@
 
 
 <!-- CHAT WIDGET -->
+<div id="chat-tooltip">💬 ¡Hola! ¿Querés una página web? <span class="tooltip-close" id="tooltip-close">✕</span></div>
 <button id="chat-toggle" title="Chatear con nosotros">💬</button>
 
 <div id="chat-window" class="hidden">
@@ -454,14 +455,60 @@
 <style>
   #chat-toggle {
     position: fixed; bottom: 24px; right: 24px;
-    width: 60px; height: 60px; border-radius: 50%;
-    background: #6c63ff; color: #fff; border: none;
-    cursor: pointer; font-size: 26px;
-    box-shadow: 0 4px 16px rgba(108,99,255,.45);
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, #6c63ff, #a78bfa);
+    color: #fff; border: none;
+    cursor: pointer; font-size: 28px;
+    box-shadow: 0 6px 24px rgba(108,99,255,.55);
     display: flex; align-items: center; justify-content: center;
     transition: transform .2s; z-index: 1000;
+    animation: chat-bounce 2.5s ease-in-out 4s 3;
   }
-  #chat-toggle:hover { transform: scale(1.08); }
+  #chat-toggle:hover { transform: scale(1.1); }
+
+  @keyframes chat-pulse-ring {
+    0%   { transform: scale(1);   opacity: .6; }
+    100% { transform: scale(1.9); opacity: 0;  }
+  }
+  #chat-toggle::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    background: rgba(108,99,255,.45);
+    animation: chat-pulse-ring 2s ease-out infinite;
+    z-index: -1;
+  }
+  @keyframes chat-bounce {
+    0%, 100% { transform: translateY(0); }
+    30%       { transform: translateY(-10px); }
+    60%       { transform: translateY(-5px); }
+  }
+
+  #chat-tooltip {
+    position: fixed; bottom: 96px; right: 24px;
+    background: #fff; color: #111;
+    padding: 10px 14px; border-radius: 12px;
+    font-size: 13px; font-weight: 500;
+    box-shadow: 0 4px 18px rgba(0,0,0,.13);
+    white-space: nowrap; z-index: 1001;
+    display: flex; align-items: center; gap: 6px;
+    animation: tooltip-in .35s ease;
+  }
+  #chat-tooltip::after {
+    content: '';
+    position: absolute; bottom: -7px; right: 22px;
+    border: 7px solid transparent;
+    border-bottom: none; border-top-color: #fff;
+  }
+  #chat-tooltip .tooltip-close {
+    margin-left: 6px; cursor: pointer; opacity: .5;
+    font-size: 12px; line-height: 1;
+  }
+  #chat-tooltip .tooltip-close:hover { opacity: 1; }
+  @keyframes tooltip-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
   #chat-window {
     position: fixed; bottom: 100px; right: 24px;
@@ -535,6 +582,14 @@
 <script>
   const API_URL = "https://chatbot-joeldev-production.up.railway.app/chat";
 
+  // Tooltip
+  const tooltip = document.getElementById("chat-tooltip");
+  tooltip.style.display = "none";
+  setTimeout(() => { tooltip.style.display = "flex"; }, 3000);
+  document.getElementById("tooltip-close").addEventListener("click", (e) => {
+    e.stopPropagation(); tooltip.style.display = "none";
+  });
+
   const toggle   = document.getElementById("chat-toggle");
   const chatWin  = document.getElementById("chat-window");
   const messages = document.getElementById("messages");
@@ -547,6 +602,7 @@
     isOpen = !isOpen;
     chatWin.classList.toggle("hidden", !isOpen);
     toggle.textContent = isOpen ? "✕" : "💬";
+    tooltip.style.display = "none";
     if (isOpen && history.length === 0)
       addBubble("bot", "¡Hola! 👋 Soy el asistente de JoelDev. Puedo ayudarte con info sobre los servicios de creación de páginas web. ¿Qué necesitás saber?");
   });
