@@ -518,6 +518,17 @@
   @media (max-width: 400px) {
     #chat-window { width: calc(100vw - 24px); right: 12px; bottom: 90px; }
   }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 
 <script>
@@ -591,6 +602,59 @@
     input.style.height = "auto";
     input.style.height = Math.min(input.scrollHeight, 100) + "px";
   });
+
+  // Scroll reveal
+  (function() {
+    const groups = document.querySelectorAll(
+      '.servicios-grid, .quien-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
+    );
+    groups.forEach(g => {
+      Array.from(g.children).forEach((child, i) => {
+        child.style.transitionDelay = (i * 0.1) + 's';
+        child.classList.add('reveal');
+      });
+    });
+    document.querySelectorAll('.section-label, section > h2, .hero-stats, .portfolio-sub, .precios-sub').forEach(el => {
+      el.classList.add('reveal');
+    });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  })();
+
+  // Animated counters
+  function animateCounter(el, target, suffix, duration) {
+    let start = null;
+    const step = ts => {
+      if (!start) start = ts;
+      const progress = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.stat strong').forEach(stat => {
+          const t = stat.textContent;
+          if (t.includes('48')) animateCounter(stat, 48, 'hs', 1200);
+          else if (t.includes('100')) animateCounter(stat, 100, '%', 1400);
+        });
+        statsObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObs.observe(heroStats);
 
   document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-pregunta').addEventListener('click', () => {
