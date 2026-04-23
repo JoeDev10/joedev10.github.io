@@ -364,6 +364,11 @@ nav a:hover { color: #6c47ff; }
   margin-bottom: 28px;
 }
 .plan-precio span { font-size: 14px; color: #888; font-weight: 400; margin-left: 4px; }
+.precio-tachado {
+  font-size: 18px; font-weight: 500;
+  color: #aaa; text-decoration: line-through;
+  display: block; margin-bottom: 2px;
+}
 .plan-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
 .plan-items li { font-size: 14px; color: #444; }
 .btn-plan {
