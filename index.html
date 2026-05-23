@@ -77,8 +77,8 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-badge">🚀 Páginas listas en 48 horas</div>
-    <h1>Tu negocio <span class="accent">online</span><br/>sin complicaciones</h1>
-    <p>Creo páginas web profesionales para emprendedores y pequeños negocios. Rápido, accesible y con todo incluido.</p>
+    <h1>Tu negocio vende <span class="accent">solo</span>,<br/>incluso cuando no estás</h1>
+    <p>Creo páginas web profesionales para emprendedores que quieren dejar de depender del boca en boca y los mensajes de WhatsApp para conseguir clientes nuevos.</p>
     <div class="hero-btns">
       <a href="https://wa.me/5491144091981?text=Hola%20Joel!%20Quiero%20una%20p%C3%A1gina%20web" class="btn-primary" target="_blank">
         Quiero mi página web 🚀
@@ -105,6 +105,39 @@
       <div class="quien-card">🏋️<p>Gimnasios y entrenadores</p></div>
       <div class="quien-card">📦<p>Cualquier negocio que quiera crecer</p></div>
     </div>
+  </section>
+
+  <!-- DOLORES -->
+  <section class="dolores">
+    <div class="section-label">¿Te suena esto?</div>
+    <h2>Los problemas que te frenan de crecer</h2>
+    <div class="dolores-grid">
+      <div class="dolor-item">
+        <span class="dolor-icon">😰</span>
+        <p>¿Perdés clientes porque tardás en responder mensajes de WhatsApp?</p>
+      </div>
+      <div class="dolor-item">
+        <span class="dolor-icon">😤</span>
+        <p>¿Tus productos no se ven profesionales y la gente no te toma en serio?</p>
+      </div>
+      <div class="dolor-item">
+        <span class="dolor-icon">😓</span>
+        <p>¿No sabés cómo mostrar lo que vendés de forma clara y organizada?</p>
+      </div>
+      <div class="dolor-item">
+        <span class="dolor-icon">😞</span>
+        <p>¿Tus clientes te preguntan "¿tenés página web?" y no sabés qué decirles?</p>
+      </div>
+      <div class="dolor-item">
+        <span class="dolor-icon">😩</span>
+        <p>¿Dependés 100% del boca en boca y no conseguís clientes nuevos solos?</p>
+      </div>
+      <div class="dolor-item">
+        <span class="dolor-icon">🤯</span>
+        <p>¿Tu competencia tiene página web y vos todavía no, y se nota?</p>
+      </div>
+    </div>
+    <p class="dolores-cierre">Si dijiste que sí a alguna de estas, una página web profesional es tu próximo paso. Y la tenés lista en 48 horas.</p>
   </section>
 
   <!-- SERVICIOS -->
@@ -185,31 +218,34 @@
     <div class="portfolio-grid">
 
       <div class="port-item">
-        <img src="img/Captura de pantalla (148).png" alt="Viejo Karma" class="port-img"/>
+        <img src="img/Captura de pantalla (148).png" alt="Diseño web para tienda de ropa — Viejo Karma: catálogo online con pedidos por WhatsApp" class="port-img"/>
         <div class="port-overlay">
-          <h3>Viejo Karma</h3>
+          <h3>Diseño web para tienda de ropa</h3>
+          <p class="port-cliente">Viejo Karma</p>
           <div class="port-tags">
-            <span>Tienda</span><span>Catálogo</span><span>Remeras</span>
+            <span>Tienda online</span><span>Catálogo</span><span>Pedidos WhatsApp</span>
           </div>
         </div>
       </div>
 
       <div class="port-item">
-        <img src="img/Captura de pantalla (152).png" alt="Black Edge Barbería" class="port-img"/>
+        <img src="img/Captura de pantalla (152).png" alt="Diseño web para barbería — Black Edge: reserva de turnos y contacto por WhatsApp" class="port-img"/>
         <div class="port-overlay">
-          <h3>Black Edge Barbería</h3>
+          <h3>Diseño web para barbería</h3>
+          <p class="port-cliente">Black Edge Barbería</p>
           <div class="port-tags">
-            <span>Barbería</span><span>Turnos</span><span>WhatsApp</span>
+            <span>Barbería</span><span>Reserva de turnos</span><span>WhatsApp</span>
           </div>
         </div>
       </div>
 
       <div class="port-item">
-        <img src="img/Captura de pantalla (154).png" alt="Dulce Origen Pastelería" class="port-img"/>
+        <img src="img/Captura de pantalla (154).png" alt="Diseño web para pastelería — Dulce Origen: catálogo de productos y pedidos online" class="port-img"/>
         <div class="port-overlay">
-          <h3>Dulce Origen</h3>
+          <h3>Diseño web para pastelería</h3>
+          <p class="port-cliente">Dulce Origen Pastelería</p>
           <div class="port-tags">
-            <span>Pastelería</span><span>Pedidos</span><span>WhatsApp</span>
+            <span>Pastelería</span><span>Pedidos online</span><span>WhatsApp</span>
           </div>
         </div>
       </div>
@@ -663,7 +699,7 @@
   // Scroll reveal
   (function() {
     const groups = document.querySelectorAll(
-      '.servicios-grid, .quien-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
+      '.servicios-grid, .quien-grid, .dolores-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
     );
     groups.forEach(g => {
       Array.from(g.children).forEach((child, i) => {

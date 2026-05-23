@@ -116,6 +116,47 @@ nav a:hover { color: #6c47ff; }
 }
 .quien-card p { font-size: 14px; font-weight: 600; color: #333; }
 
+/* ===== DOLORES ===== */
+.dolores {
+  max-width: 1100px; margin: auto;
+  padding: 80px 24px;
+  text-align: center;
+}
+.dolores h2 { font-size: 36px; font-weight: 800; margin-bottom: 48px; }
+.dolores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.dolor-item {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+  transition: all .2s;
+}
+.dolor-item:hover {
+  border-color: #f5a623;
+  box-shadow: 0 6px 20px rgba(245,166,35,.1);
+  transform: translateY(-2px);
+}
+.dolor-icon { font-size: 32px; flex-shrink: 0; line-height: 1; }
+.dolor-item p { font-size: 15px; color: #444; line-height: 1.6; font-weight: 500; }
+.dolores-cierre {
+  font-size: 17px; font-weight: 700;
+  color: #6c47ff;
+  background: #f0ebff;
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 14px;
+  max-width: 680px;
+}
+
 /* ===== SERVICIOS ===== */
 .servicios {
   max-width: 1100px; margin: auto;
@@ -201,7 +242,8 @@ nav a:hover { color: #6c47ff; }
   transition: opacity .3s ease;
 }
 .port-item:hover .port-overlay { opacity: 1; }
-.port-overlay h3 { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.port-overlay h3 { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.port-cliente { color: rgba(255,255,255,.7); font-size: 13px; margin-bottom: 12px; }
 .port-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .port-tags span {
   background: rgba(255,255,255,.2);
