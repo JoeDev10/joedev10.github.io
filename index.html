@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joel Dev — Páginas Web para Emprendedores | Argentina</title>
-  <meta name="description" content="Creamos tu página web profesional en 48 horas. Diseño personalizado, tienda online y hosting incluido. Ideal para emprendedores y negocios en Argentina." />
+  <meta name="description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web profesionales para emprendedores en Argentina. Entrega en 48hs, diseño personalizado y hosting incluido." />
   <meta name="keywords" content="páginas web para emprendedores, diseño web Argentina, tienda online, landing page, página web barata, web para negocios" />
   <meta name="author" content="Joel Rodriguez" />
   <link rel="canonical" href="https://joedev10.github.io/joel-servicios-web/" />
@@ -14,13 +14,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://joedev10.github.io/joel-servicios-web/" />
   <meta property="og:title" content="Joel Dev — Páginas Web para Emprendedores en 48hs" />
-  <meta property="og:description" content="Tu negocio online sin complicaciones. Diseño web profesional, tienda online y hosting incluido. Empezá hoy." />
+  <meta property="og:description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web en 48hs para emprendedores. Diseño personalizado y hosting incluido." />
+  <meta property="og:image" content="https://joedev10.github.io/joel-servicios-web/img/mockup-lubit.png" />
   <meta property="og:locale" content="es_AR" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Joel Dev — Páginas Web para Emprendedores en 48hs" />
-  <meta name="twitter:description" content="Tu negocio online sin complicaciones. Diseño web profesional, tienda online y hosting incluido." />
+  <meta name="twitter:description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web en 48hs para emprendedores argentinos." />
 
   <!-- Schema.org: datos estructurados para Google -->
   <script type="application/ld+json">
@@ -219,7 +220,7 @@
     <div class="portfolio-grid">
 
       <div class="port-item">
-        <img src="img/Captura de pantalla (148).png" alt="Diseño web para tienda de ropa — Viejo Karma: catálogo online con pedidos por WhatsApp" class="port-img"/>
+        <img src="img/Captura de pantalla (148).png" alt="Diseño web para tienda de ropa — Viejo Karma: catálogo online con pedidos por WhatsApp" class="port-img" loading="lazy"/>
         <div class="port-overlay">
           <h3>Diseño web para tienda de ropa</h3>
           <p class="port-cliente">Viejo Karma</p>
@@ -230,7 +231,7 @@
       </div>
 
       <div class="port-item">
-        <img src="img/Captura de pantalla (152).png" alt="Diseño web para barbería — Black Edge: reserva de turnos y contacto por WhatsApp" class="port-img"/>
+        <img src="img/Captura de pantalla (152).png" alt="Diseño web para barbería — Black Edge: reserva de turnos y contacto por WhatsApp" class="port-img" loading="lazy"/>
         <div class="port-overlay">
           <h3>Diseño web para barbería</h3>
           <p class="port-cliente">Black Edge Barbería</p>
@@ -241,7 +242,7 @@
       </div>
 
       <div class="port-item">
-        <img src="img/Captura de pantalla (154).png" alt="Diseño web para pastelería — Dulce Origen: catálogo de productos y pedidos online" class="port-img"/>
+        <img src="img/Captura de pantalla (154).png" alt="Diseño web para pastelería — Dulce Origen: catálogo de productos y pedidos online" class="port-img" loading="lazy"/>
         <div class="port-overlay">
           <h3>Diseño web para pastelería</h3>
           <p class="port-cliente">Dulce Origen Pastelería</p>
@@ -252,7 +253,7 @@
       </div>
 
       <div class="port-item">
-        <img src="img/mockup-lubit.png" alt="Diseño web para venta y reparación de celulares — Lubit: catálogo de smartphones, turnos y servicio técnico en Buenos Aires" class="port-img"/>
+        <img src="img/mockup-lubit.png" alt="Diseño web para venta y reparación de celulares — Lubit: catálogo de smartphones, turnos y servicio técnico en Buenos Aires" class="port-img" loading="lazy"/>
         <div class="port-overlay">
           <h3>Diseño web para celulares y reparaciones</h3>
           <p class="port-cliente">Lubit Celulares</p>
@@ -264,7 +265,7 @@
       </div>
 
       <div class="port-item">
-        <img src="img/mockup-heladeria.png" alt="Diseño web para heladería — Pablo Helados: catálogo online de potes, tortas y postres con delivery a domicilio" class="port-img"/>
+        <img src="img/mockup-heladeria.png" alt="Diseño web para heladería — Pablo Helados: catálogo online de potes, tortas y postres con delivery a domicilio" class="port-img" loading="lazy"/>
         <div class="port-overlay">
           <h3>Diseño web para heladería</h3>
           <p class="port-cliente">Pablo Helados</p>
@@ -490,7 +491,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Joel Rodriguez — Páginas web para emprendedores</p>
+    <p>© 2026 Joel Rodriguez — Páginas web para emprendedores</p>
   </footer>
 
 
@@ -633,7 +634,14 @@
   .chat-input button:disabled { background: #c0bdf7; cursor: default; }
 
   @media (max-width: 400px) {
-    #chat-window { width: calc(100vw - 24px); right: 12px; bottom: 90px; }
+    #chat-window { width: calc(100vw - 24px); right: 12px; }
+  }
+
+  /* Mobile: subir chat por encima de la sticky bar */
+  @media (max-width: 768px) {
+    #chat-toggle { bottom: 90px !important; }
+    #chat-tooltip { display: none !important; } /* tooltip oculto en mobile, tapa contenido */
+    #chat-window { bottom: 162px !important; right: 12px !important; width: calc(100vw - 24px) !important; }
   }
 
   /* Scroll reveal */
