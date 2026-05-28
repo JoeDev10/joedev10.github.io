@@ -497,6 +497,12 @@ nav a:hover { color: #6c47ff; }
 .btn-plan:hover { background: #333; }
 .btn-plan-dest { background: #6c47ff; }
 .btn-plan-dest:hover { background: #5535e0; }
+.plan-garantia {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 10px;
+}
 
 /* ===== POR QUE YO ===== */
 .porqueyosec {
