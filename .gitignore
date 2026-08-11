@@ -1,0 +1,8 @@
+# Estado local de la CLI de Netlify (no va al repo)
+.netlify/
+
+# Dependencias y basura del sistema
+node_modules/
+Thumbs.db
+desktop.ini
+.DS_Store
