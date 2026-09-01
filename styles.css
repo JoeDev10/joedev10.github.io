@@ -473,6 +473,19 @@ section > h2 {
   background: #2f9e44;
 }
 
+.port-done {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--paper); color: var(--ink-3);
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em;
+  padding: 5px 10px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.port-done::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--ink-3);
+}
+
 .port-meta { display: flex; flex-direction: column; gap: 8px; }
 .port-head {
   display: flex; align-items: baseline;

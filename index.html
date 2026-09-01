@@ -22,13 +22,18 @@
   <meta property="og:url" content="https://joedev10.github.io/" />
   <meta property="og:title" content="Deploy — Páginas Web para Emprendedores en 48hs" />
   <meta property="og:description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web en 48hs para emprendedores. Diseño personalizado y hosting incluido." />
-  <meta property="og:image" content="https://joedev10.github.io/img/mockup-lubit.png" />
+  <meta property="og:image" content="https://joedev10.github.io/img/lubit.jpg" />
+  <meta property="og:image:width" content="1440" />
+  <meta property="og:image:height" content="855" />
+  <meta property="og:image:alt" content="Ejemplo de página web hecha por Deploy: catálogo de celulares con turnos y pedidos por WhatsApp" />
+  <meta property="og:site_name" content="Deploy" />
   <meta property="og:locale" content="es_AR" />
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Deploy — Páginas Web para Emprendedores en 48hs" />
   <meta name="twitter:description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web en 48hs para emprendedores argentinos." />
+  <meta name="twitter:image" content="https://joedev10.github.io/img/lubit.jpg" />
 
   <!-- Schema.org: datos estructurados para Google -->
   <script type="application/ld+json">
@@ -125,7 +130,7 @@
     <div class="hero-stats">
       <div class="stat"><strong>48hs</strong><span>entrega</span></div>
       <div class="stat-div"></div>
-      <div class="stat"><strong>15+</strong><span>proyectos entregados</span></div>
+      <div class="stat"><strong>7</strong><span>proyectos entregados</span></div>
       <div class="stat-div"></div>
       <div class="stat"><strong>100%</strong><span>clientes satisfechos</span></div>
     </div>
@@ -308,6 +313,7 @@
 
       <div class="port-item">
         <div class="port-frame">
+          <span class="port-done">Entregado</span>
           <img src="img/tecno-stikers.jpg" alt="Diseño web para tienda de stickers — TecnoStikers: catálogo por categorías temáticas con carrito de compras y pedidos por WhatsApp" class="port-img" loading="lazy" width="1440" height="855"/>
         </div>
         <div class="port-meta">
@@ -323,6 +329,7 @@
 
       <div class="port-item">
         <div class="port-frame">
+          <span class="port-done">Entregado</span>
           <img src="img/Captura de pantalla (148).png" alt="Diseño web para tienda de ropa — Viejo Karma: catálogo online con pedidos por WhatsApp" class="port-img" loading="lazy"/>
         </div>
         <div class="port-meta">
@@ -338,6 +345,7 @@
 
       <div class="port-item">
         <div class="port-frame">
+          <span class="port-done">Entregado</span>
           <img src="img/Captura de pantalla (152).png" alt="Diseño web para barbería — Black Edge: reserva de turnos y contacto por WhatsApp" class="port-img" loading="lazy"/>
         </div>
         <div class="port-meta">
@@ -353,6 +361,7 @@
 
       <div class="port-item">
         <div class="port-frame">
+          <span class="port-done">Entregado</span>
           <img src="img/Captura de pantalla (154).png" alt="Diseño web para pastelería — Dulce Origen: catálogo de productos y pedidos online" class="port-img" loading="lazy"/>
         </div>
         <div class="port-meta">
@@ -877,7 +886,7 @@
         e.target.querySelectorAll('.stat strong').forEach(stat => {
           const t = stat.textContent;
           if (t.includes('48')) animateCounter(stat, 48, 'hs', 1200);
-          else if (t.includes('15')) animateCounter(stat, 15, '+', 1000);
+          else if (t.includes('7')) animateCounter(stat, 7, '', 1000);
           else if (t.includes('100')) animateCounter(stat, 100, '%', 1400);
         });
         statsObs.unobserve(e.target);
