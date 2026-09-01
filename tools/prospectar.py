@@ -230,12 +230,18 @@ def main():
     ap.add_argument("--paginas", type=int, default=PAGINAS_POR_BUSQUEDA)
     args = ap.parse_args()
 
-    key = os.environ.get("GOOGLE_PLACES_KEY")
+    # La key sale de la variable de entorno o del archivo local, que está
+    # fuera del repo. Nunca del código: joedev10.github.io es público.
+    archivo_key = SALIDA / ".key"
+    key = os.environ.get("GOOGLE_PLACES_KEY") or (
+        archivo_key.read_text(encoding="utf-8").strip()
+        if archivo_key.exists() else ""
+    )
     if not key:
         sys.exit(
-            "Falta GOOGLE_PLACES_KEY.\n"
-            '  PowerShell:  $env:GOOGLE_PLACES_KEY="tu_key"\n'
-            "  bash:        export GOOGLE_PLACES_KEY=tu_key"
+            "Falta la API key de Google Places.\n"
+            f"  Guardala en:  {archivo_key}\n"
+            '  o exportala:  $env:GOOGLE_PLACES_KEY="tu_key"'
         )
 
     rubros = [r.strip() for r in args.rubros.split(",")] if args.rubros else RUBROS
