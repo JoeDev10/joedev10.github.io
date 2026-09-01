@@ -452,6 +452,7 @@ section > h2 {
   border: 1px solid var(--rule-2);
   margin-bottom: 18px;
 }
+.port-frame picture { display: block; width: 100%; height: 100%; }
 .port-img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center;
