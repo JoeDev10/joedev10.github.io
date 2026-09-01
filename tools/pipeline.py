@@ -10,6 +10,7 @@ USO
     python tools/pipeline.py importar        # trae lo último de prospectar.py
     python tools/pipeline.py hoy             # el tablero del día: a quién escribirle
     python tools/pipeline.py calificar 123   # las 5 preguntas, te dice si va preview
+    python tools/pipeline.py preview 123     # arma la maqueta del negocio, lista para mandar
     python tools/pipeline.py marcar 123 respondio --nota "pidio precio"
     python tools/pipeline.py lista --estado caliente
 
@@ -39,6 +40,8 @@ MI_EJEMPLO = "https://joedev10.github.io/lubit/"
 CAMPOS = [
     "place_id", "negocio", "barrio", "telefono", "whatsapp",
     "puntaje_frio", "calificacion", "estado", "contactado", "ultimo_toque", "notas",
+    # lo que usa la preview; en pipelines viejos quedan vacíos y no pasa nada
+    "rubro", "direccion", "estrellas", "reseñas", "maps",
 ]
 
 # estado -> (días hasta el próximo toque, qué mandar)
@@ -47,7 +50,7 @@ CADENCIA = {
     "contactado": (3, "Seguimiento día 3 (guión D)"),
     "seguido":    (4, "Cierre de ciclo (guión E)"),
     "respondio":  (0, "Calificalo: python tools/pipeline.py calificar <n>"),
-    "caliente":   (0, "Hacele la preview HOY"),
+    "caliente":   (0, "Hacele la preview HOY: python tools/pipeline.py preview <n>"),
     "tibio":      (2, "Seguí la conversación, todavía no gastes la preview"),
     "frio":       (30, "Guardalo para dentro de un mes"),
     "preview":    (2, "Preguntale si la vio"),
@@ -129,6 +132,11 @@ def cmd_importar(args):
                 "contactado": "",
                 "ultimo_toque": "",
                 "notas": "",
+                "rubro": p.get("rubro", ""),
+                "direccion": p.get("direccion", ""),
+                "estrellas": p.get("estrellas", ""),
+                "reseñas": p.get("reseñas", ""),
+                "maps": p.get("maps", ""),
             })
             nuevos += 1
 
@@ -176,6 +184,7 @@ def cmd_hoy(args):
         print(f"\n  EN CONVERSACIÓN — {len(urgentes)} esperando algo tuyo\n")
         for i, f, d in urgentes:
             _, accion = CADENCIA.get(f["estado"], (0, "revisar"))
+            accion = accion.replace("<n>", str(i))
             atraso = "hoy" if d == 0 else f"hace {d}d"
             print(f"  [{i:>3}] {f['negocio'][:34]:<34} {f['estado']:<10} {atraso}")
             print(f"        -> {accion}")
@@ -238,7 +247,8 @@ def cmd_calificar(args):
     if total >= 9:
         estado, veredicto = "caliente", "CALIENTE"
         que_hacer = ("Hacele la preview hoy mismo. Este es de los que cierran:\n"
-                     "  no lo dejes enfriar más de 24 horas.")
+                     "  no lo dejes enfriar más de 24 horas.\n"
+                     f"  python tools/pipeline.py preview {args.ref}")
     elif total >= 5:
         estado, veredicto = "tibio", "TIBIO"
         que_hacer = ("Seguí la conversación, todavía no gastes la preview.\n"
@@ -257,6 +267,39 @@ def cmd_calificar(args):
 
     print(f"\n  {veredicto} — {total}/12")
     print(f"  {que_hacer}\n")
+
+
+# ── preview ────────────────────────────────────────────────────────────────────
+
+def cmd_preview(args):
+    """Arma la maqueta del negocio y la abre. Mandarla y marcarla siguen a mano."""
+    import preview   # vive al lado, en tools/preview.py
+
+    filas = cargar()
+    f = buscar_fila(filas, args.ref)
+
+    if f["estado"] in ("nuevo", "contactado", "seguido"):
+        print(f"\n  Ojo: {f['negocio']} está en '{f['estado']}', todavía no contestó.")
+        print("  La preview es lo caro. Conviene calificarlo antes de gastarla.")
+    elif f["estado"] in ("tibio", "frio"):
+        print(f"\n  Ojo: {f['negocio']} calificó {f['calificacion'] or f['estado']}.")
+        print("  Igual la armo, pero fijate si no conviene seguir la charla primero.")
+
+    archivo = preview.escribir(f, SALIDA / "previews")
+    print(f"\n  Maqueta: {archivo}")
+    if not f.get("rubro"):
+        print("  (sin rubro en el pipeline: quedó genérica. Los importados de ahora"
+              " en más lo traen.)")
+
+    print(
+        "\n  Para que la pueda abrir desde el celular, subila:\n"
+        f"    arrastrá la carpeta  {archivo.parent}  a  https://app.netlify.com/drop\n"
+        "    (o: netlify deploy --dir \"" + str(archivo.parent) + "\" --prod)\n"
+        "\n  Mandale el link, y recién ahí:\n"
+        f"    python tools/pipeline.py marcar {args.ref} preview\n"
+    )
+    if not args.no_abrir:
+        webbrowser.open(archivo.resolve().as_uri())
 
 
 # ── marcar / listar ────────────────────────────────────────────────────────────
@@ -352,6 +395,7 @@ def cmd_tablero(args):
         partes.append(f"<h2>En conversación · {len(urgentes)} esperando algo tuyo</h2>")
         for i, f, d in urgentes:
             _, accion = CADENCIA.get(f["estado"], (0, "revisar"))
+            accion = accion.replace("<n>", str(i))
             atraso = "para hoy" if d == 0 else f"hace {d} días"
             clase = "hot" if f["estado"] in ("caliente", "respondio") else ""
             partes.append(tarjeta(i, f, clase, f"{f['estado']} · {atraso}", accion))
@@ -378,7 +422,8 @@ def cmd_tablero(args):
 Cada botón abre WhatsApp con el mensaje ya escrito. Leelo, cambiale lo que quieras
 y apretá enviar vos — mandarlos en automático te banea el número.<br><br>
 Después de escribir: <code>python tools/pipeline.py marcar N contactado</code><br>
-Cuando te contesten: <code>python tools/pipeline.py calificar N</code>
+Cuando te contesten: <code>python tools/pipeline.py calificar N</code><br>
+Si sale caliente: <code>python tools/pipeline.py preview N</code>
 </div></div></body></html>"""
 
     SALIDA.mkdir(parents=True, exist_ok=True)
@@ -419,6 +464,10 @@ def main():
     p.add_argument("ref")
     p.add_argument("--nota", default="")
 
+    p = sub.add_parser("preview", help="armar la maqueta del negocio para mandarle")
+    p.add_argument("ref")
+    p.add_argument("--no-abrir", action="store_true")
+
     p = sub.add_parser("marcar", help="cambiar el estado de un lead")
     p.add_argument("ref")
     p.add_argument("estado")
@@ -433,7 +482,8 @@ def main():
 
     args = ap.parse_args()
     {"importar": cmd_importar, "hoy": cmd_hoy, "calificar": cmd_calificar,
-     "marcar": cmd_marcar, "tablero": cmd_tablero, "lista": cmd_lista}[args.cmd](args)
+     "preview": cmd_preview, "marcar": cmd_marcar, "tablero": cmd_tablero,
+     "lista": cmd_lista}[args.cmd](args)
 
 
 if __name__ == "__main__":
