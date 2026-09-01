@@ -6,3 +6,8 @@ node_modules/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Salida de la prospección: datos de terceros, no van a un repo público
+tools/salida/
+__pycache__/
+*.pyc
