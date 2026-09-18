@@ -55,7 +55,8 @@ BARRIOS = [
 ]
 
 MIN_PUNTAJE = 5          # menos que esto no lo trabajes esta semana
-PAGINAS_POR_BUSQUEDA = 2  # 20 resultados por página, máx 3 páginas por Google
+PAGINAS_POR_BUSQUEDA = 1  # 20 resultados por búsqueda. Con 1 página, 4 corridas al mes
+                          # entran en las 1.000 gratis de Google; con 2 se pasa.
 
 # Un "sitio web" que en realidad es una red social es exactamente el mismo hueco
 # que no tener ninguno: no hay dónde ver el catálogo.
