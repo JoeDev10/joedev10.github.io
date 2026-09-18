@@ -11,7 +11,17 @@ echo.
 
 if not exist "tools\salida" mkdir "tools\salida"
 
+rem /auto: lo corre el Programador de tareas los lunes. Sin nadie que
+rem escriba la key, no se queda esperando en el teclado: avisa y sale.
+set "AUTO="
+set "ARGS=%*"
+if /i "%~1"=="/auto" (
+    set "AUTO=1"
+    set "ARGS="
+)
+
 if exist "tools\salida\.key" goto :buscar
+if defined AUTO goto :sinkey
 
 echo   Primera vez: necesito tu API key de Google Places.
 echo   Se saca en console.cloud.google.com, habilitando "Places API (New)".
@@ -26,7 +36,7 @@ echo.
 
 :buscar
 echo   [1/3] Buscando negocios sin pagina web...
-python "tools\prospectar.py" %*
+python "tools\prospectar.py" %ARGS%
 if errorlevel 1 goto :error
 
 echo.
@@ -50,7 +60,8 @@ goto :fin
 
 :sinkey
 echo.
-echo   Sin la key no puedo buscar. Volve a correr esto cuando la tengas.
+echo   Sin la key no puedo buscar. Corre este archivo a mano una vez,
+echo   pegala, y desde ahi los lunes sale solo.
 goto :fin
 
 :error
