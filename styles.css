@@ -396,6 +396,111 @@ section > h2 {
 }
 .servicio-card p { font-size: 14.5px; line-height: 1.62; color: rgba(245,241,234,.62); }
 
+/* ===== AUTOMATIZACIONES ===== */
+.automatizaciones {
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--rule);
+  padding: 88px 0;
+}
+.automatizaciones > * { max-width: var(--shell); margin-inline: auto; padding-inline: var(--pad); }
+.auto-intro {
+  display: grid; grid-template-columns: 1.1fr .9fr;
+  gap: 56px; align-items: start;
+  margin-bottom: 56px;
+}
+.auto-intro h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  max-width: 14ch;
+  margin-bottom: 20px;
+}
+.auto-intro h2 em { font-style: italic; color: var(--accent); }
+.auto-sub { font-size: 17px; color: var(--ink-2); max-width: 46ch; }
+
+/* Mini línea de tiempo: la venta que se hace sola */
+.auto-flujo {
+  background: var(--paper-3);
+  border: 1px solid var(--rule-2);
+  padding: 24px 28px 18px;
+}
+.auto-flujo figcaption {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .16em;
+  color: var(--ink-3);
+  margin-bottom: 10px;
+}
+.auto-flujo ol { list-style: none; }
+.auto-flujo li {
+  display: grid; grid-template-columns: 50px 1fr; gap: 14px;
+  padding: 11px 0;
+}
+.auto-flujo li + li { border-top: 1px dashed var(--rule); }
+.flujo-hora {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+}
+.auto-flujo p { font-size: 14.5px; color: var(--ink); line-height: 1.5; }
+.auto-flujo .flujo-fin { border-top: 1px solid var(--ink); }
+.auto-flujo .flujo-fin .flujo-hora { color: var(--accent); }
+.auto-flujo .flujo-fin p {
+  font-family: var(--f-display);
+  font-size: 19px; font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Sin padding lateral: el fondo de la grilla son las líneas, no un marco */
+.automatizaciones > .auto-grid,
+.servicios > .servicios-grid,
+.precios > .precios-grid {
+  padding-inline: 0;
+  width: min(calc(100% - 2 * var(--pad)), calc(var(--shell) - 2 * var(--pad)));
+}
+.auto-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-2);
+  border: 1px solid var(--rule-2);
+}
+.auto-card {
+  background: var(--paper);
+  padding: 32px 28px 30px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: background .3s var(--ease);
+}
+.auto-card:hover { background: var(--paper-3); }
+.auto-card .serv-icon { margin-bottom: 10px; }
+.auto-card h3 { font-size: 21px; font-weight: 500; }
+.auto-card p { font-size: 14.5px; color: var(--ink-2); line-height: 1.62; }
+.auto-card .auto-ideal {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-size: 12.5px; color: var(--ink-3); line-height: 1.5;
+}
+.auto-ideal strong { color: var(--accent); font-weight: 600; }
+
+.auto-prueba {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px;
+  margin-top: 44px;
+}
+.auto-prueba p {
+  font-size: 16px; color: var(--ink-2);
+  max-width: 58ch;
+  padding-left: 22px;
+  border-left: 2px solid var(--accent);
+}
+.auto-prueba p strong { color: var(--ink); font-weight: 600; }
+.auto-prueba .btn-primary {
+  flex-shrink: 0;
+  border: none; cursor: pointer;
+  font-family: inherit;
+}
+
 /* ===== CÓMO FUNCIONA ===== */
 .como-funciona {
   max-width: var(--shell); margin: auto;
@@ -733,6 +838,44 @@ section > h2 {
 }
 .destacado .plan-garantia { color: rgba(245,241,234,.45); }
 
+/* Automatizaciones: banda debajo de los planes (ingreso mensual) */
+.precio-extra-wrap { margin-top: 28px; }
+.precio-extra {
+  display: grid; grid-template-columns: 1.25fr 1fr;
+  gap: 48px; align-items: center;
+  background: var(--ink);
+  padding: 40px 40px;
+  border-left: 3px solid var(--accent);
+}
+.precio-extra .plan-name { color: rgba(245,241,234,.6); }
+.extra-texto h3 {
+  color: var(--paper);
+  font-size: clamp(22px, 2.4vw, 28px); font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  max-width: 24ch;
+}
+.extra-texto p { font-size: 14.5px; color: rgba(245,241,234,.62); line-height: 1.62; max-width: 50ch; }
+.extra-precios { display: flex; flex-direction: column; }
+.extra-fila {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245,241,234,.14);
+}
+.extra-fila:first-child { padding-top: 0; }
+.extra-monto {
+  font-family: var(--f-display);
+  font-size: 26px; font-weight: 500;
+  letter-spacing: -.03em;
+  color: var(--paper);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.extra-monto small { font-family: var(--f-text); font-size: 13px; letter-spacing: 0; color: rgba(245,241,234,.5); }
+.extra-detalle { font-size: 12.5px; color: rgba(245,241,234,.5); text-align: right; }
+.extra-precios .btn-plan { margin-top: 22px; }
+
 /* ===== POR QUÉ YO ===== */
 .porqueyosec {
   max-width: var(--shell); margin: auto;
@@ -902,6 +1045,8 @@ footer p { max-width: var(--shell); margin-inline: auto; }
   .testimonios-grid,
   .precios-grid,
   .quien-grid { grid-template-columns: repeat(2, 1fr); }
+  .auto-grid { grid-template-columns: repeat(2, 1fr); }
+  .auto-intro, .precio-extra { grid-template-columns: 1fr; gap: 32px; }
   .pasos { grid-template-columns: 1fr; border-top: none; }
   .paso { border-right: none; border-top: 1px solid var(--rule); padding: 26px 0 32px; }
 }
@@ -928,7 +1073,7 @@ footer p { max-width: var(--shell); margin-inline: auto; }
   .stat:last-of-type { border-bottom: none; }
   .stat strong { margin-bottom: 0; font-size: 34px; }
 
-  .para-quien, .dolores, .servicios, .como-funciona,
+  .para-quien, .dolores, .servicios, .automatizaciones, .como-funciona,
   .portfolio, .testimonios, .faq, .precios, .porqueyosec { padding-block: 60px; }
   .cta-final { padding-block: 72px; }
 
@@ -938,7 +1083,15 @@ footer p { max-width: var(--shell); margin-inline: auto; }
   .testimonios-grid,
   .precios-grid,
   .razones,
+  .auto-grid,
   .portfolio-grid { grid-template-columns: 1fr; }
+
+  .auto-intro { margin-bottom: 40px; }
+  .auto-flujo { padding: 20px 20px 14px; }
+  .auto-prueba { flex-direction: column; align-items: stretch; gap: 20px; }
+  .auto-prueba .btn-primary { justify-content: center; }
+  .precio-extra { padding: 30px 22px; }
+  .extra-monto { font-size: 22px; }
 
   .portfolio-grid { gap: 40px; }
   .port-item:first-child .port-frame { aspect-ratio: 16 / 10; }

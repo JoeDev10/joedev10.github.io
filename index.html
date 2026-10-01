@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deploy — Páginas Web para Emprendedores | Argentina</title>
-  <meta name="description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web profesionales para emprendedores en Argentina. Entrega en 48hs, diseño personalizado y hosting incluido." />
-  <meta name="keywords" content="páginas web para emprendedores, diseño web Argentina, tienda online, landing page, página web barata, web para negocios" />
+  <title>Deploy — Páginas Web y Automatizaciones para Emprendedores | Argentina</title>
+  <meta name="description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web en 48hs y automatizaciones para emprendedores en Argentina: asistente con IA, turnos y pedidos que se ordenan solos." />
+  <meta name="keywords" content="páginas web para emprendedores, diseño web Argentina, automatizaciones para negocios, chatbot con IA, turnos online, tienda online, landing page, web para negocios" />
   <meta name="author" content="Joel Rodriguez" />
   <link rel="canonical" href="https://joedev10.github.io/" />
 
@@ -21,7 +21,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://joedev10.github.io/" />
   <meta property="og:title" content="Deploy — Páginas Web para Emprendedores en 48hs" />
-  <meta property="og:description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web en 48hs para emprendedores. Diseño personalizado y hosting incluido." />
+  <meta property="og:description" content="Tu negocio vende solo, incluso cuando no estás. Páginas web en 48hs y automatizaciones que responden, agendan y ordenan pedidos por vos." />
   <meta property="og:image" content="https://joedev10.github.io/img/og-lubit.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="712" />
@@ -41,10 +41,10 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Deploy",
-    "description": "Diseño de páginas web profesionales para emprendedores y negocios en Argentina",
+    "description": "Diseño de páginas web y automatizaciones para emprendedores y negocios en Argentina",
     "url": "https://joedev10.github.io/",
     "areaServed": "Argentina",
-    "serviceType": "Diseño Web",
+    "serviceType": ["Diseño Web", "Automatización de negocios", "Chatbot con IA"],
     "priceRange": "$$",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -67,11 +67,14 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'TU_PIXEL_ID');
-    fbq('track', 'PageView');
+    // Reemplazar por el ID real del Pixel. Mientras siga el placeholder no se
+    // inicializa: Meta rechaza el ID inválido y los Leads no se contarían igual.
+    var PIXEL_ID = 'TU_PIXEL_ID';
+    if (PIXEL_ID !== 'TU_PIXEL_ID') {
+      fbq('init', PIXEL_ID);
+      fbq('track', 'PageView');
+    }
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
   <!-- End Meta Pixel Code -->
 
   <!-- Microsoft Clarity -->
@@ -92,6 +95,7 @@
       <div class="logo"><span class="logo-mark">D</span> <strong>Deploy</strong> <span class="badge-disponible">Disponible</span></div>
       <nav>
         <a href="#servicios">Servicios</a>
+        <a href="#automatizaciones">Automatizaciones</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#precios">Precios</a>
         <a href="#contacto">Contacto</a>
@@ -108,6 +112,7 @@
   <!-- MENÚ MOBILE -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#servicios" class="mobile-link">Servicios</a>
+    <a href="#automatizaciones" class="mobile-link">Automatizaciones</a>
     <a href="#portfolio" class="mobile-link">Portfolio</a>
     <a href="#precios" class="mobile-link">Precios</a>
     <a href="#contacto" class="mobile-link">Contacto</a>
@@ -119,7 +124,7 @@
   <section class="hero">
     <div class="hero-badge">Páginas listas en 48 horas</div>
     <h1>Tu negocio vende <span class="accent">solo</span>,<br/>incluso cuando no estás</h1>
-    <p>Creo páginas web profesionales para emprendedores que quieren dejar de depender del boca en boca y los mensajes de WhatsApp para conseguir clientes nuevos.</p>
+    <p>Creo páginas web y automatizaciones para emprendedores: tu página muestra lo que vendés, un asistente responde las consultas y los pedidos se ordenan solos. Vos dejás de depender del boca en boca y de contestar WhatsApp a toda hora.</p>
     <div class="hero-btns">
       <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn-primary" target="_blank" rel="noopener noreferrer">
         Quiero mi página web
@@ -228,9 +233,81 @@
     </div>
   </section>
 
+  <!-- AUTOMATIZACIONES -->
+  <section class="automatizaciones" id="automatizaciones">
+    <div class="section-label"><span class="num">03</span> Automatizaciones</div>
+    <div class="auto-intro">
+      <div>
+        <h2>Tu página atiende. <em>Vos descansás.</em></h2>
+        <p class="auto-sub">Una página muestra tu negocio. Las automatizaciones hacen el trabajo repetitivo: responden consultas, agendan turnos, ordenan pedidos y te avisan lo importante. Vos te enterás cuando ya está resuelto.</p>
+      </div>
+      <figure class="auto-flujo">
+        <figcaption>Una venta mientras dormís</figcaption>
+        <ol>
+          <li><span class="flujo-hora">23:40</span><p>Una clienta pregunta si hay talle M en negro.</p></li>
+          <li><span class="flujo-hora">23:40</span><p>El asistente le responde con stock y precio.</p></li>
+          <li><span class="flujo-hora">23:42</span><p>Arma el pedido y lo manda por WhatsApp.</p></li>
+          <li><span class="flujo-hora">23:42</span><p>El pedido queda anotado en tu planilla.</p></li>
+          <li class="flujo-fin"><span class="flujo-hora">08:00</span><p>Te levantás con la venta hecha.</p></li>
+        </ol>
+      </figure>
+    </div>
+
+    <div class="auto-grid">
+
+      <div class="auto-card">
+        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.6a8.4 8.4 0 0 1-9 8.4 9.1 9.1 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.6 8.5 8.5 0 0 1 12.5 3.2 8.5 8.5 0 0 1 21 11.6z"/><path d="M8.5 11.5h.01M12.5 11.5h.01M16.5 11.5h.01"/></svg></div>
+        <h3>Asistente con IA 24/7</h3>
+        <p>Responde precios, horarios, stock y formas de pago al instante, de día o de noche. Si la consulta necesita de vos, te la pasa.</p>
+        <p class="auto-ideal"><strong>Ideal para</strong> tiendas y negocios con muchas consultas repetidas</p>
+      </div>
+
+      <div class="auto-card">
+        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="m9.2 14.8 2 2 3.6-3.7"/></svg></div>
+        <h3>Turnos que se agendan solos</h3>
+        <p>El cliente elige día y horario libre, y le llega un recordatorio antes del turno. Menos ausencias, cero ida y vuelta de mensajes.</p>
+        <p class="auto-ideal"><strong>Ideal para</strong> barberías, estética, consultorios y entrenadores</p>
+      </div>
+
+      <div class="auto-card">
+        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3" width="17" height="18" rx="1.5"/><path d="M3.5 8.5h17M3.5 14h17M9.5 8.5V21"/></svg></div>
+        <h3>Pedidos ordenados</h3>
+        <p>Cada pedido de la web queda anotado en una planilla con fecha, productos y total, y te llega un aviso. Se terminaron los pedidos perdidos en el chat.</p>
+        <p class="auto-ideal"><strong>Ideal para</strong> gastronomía, delivery y tiendas</p>
+      </div>
+
+      <div class="auto-card">
+        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4.5h-4.5"/><path d="m12 8.2 1.1 2.3 2.5.3-1.8 1.7.5 2.5-2.3-1.2-2.3 1.2.5-2.5-1.8-1.7 2.5-.3z"/></svg></div>
+        <h3>Seguimiento y reseñas</h3>
+        <p>Un mensaje a quien consultó y no compró, y un pedido de reseña en Google a quien ya compró. Más ventas y mejor reputación, sin acordarte de nada.</p>
+        <p class="auto-ideal"><strong>Ideal para</strong> cualquier negocio que quiera más clientes que vuelvan</p>
+      </div>
+
+      <div class="auto-card">
+        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="1.5"/><path d="M2.5 10h19M6.5 14.5h4"/></svg></div>
+        <h3>Cobros con link de pago</h3>
+        <p>El cliente paga con Mercado Pago desde la web y el pedido se confirma solo. No más "¿me pasás el alias?" ni comprobantes por chat.</p>
+        <p class="auto-ideal"><strong>Ideal para</strong> tiendas, señas de turnos y pedidos anticipados</p>
+      </div>
+
+      <div class="auto-card">
+        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.5h18"/><path d="M6 17V12M10.5 17V7.5M15 17v-6M19.5 17V4.5"/></svg></div>
+        <h3>Resumen de cada semana</h3>
+        <p>Los lunes te llega un resumen: cuántas visitas, consultas y pedidos tuviste, y qué producto se movió más. Decidís con números, no a ojo.</p>
+        <p class="auto-ideal"><strong>Ideal para</strong> dueños que quieren saber cómo viene el negocio</p>
+      </div>
+
+    </div>
+
+    <div class="auto-prueba">
+      <p><strong>Probalo ahora mismo.</strong> El asistente de esta página es una automatización hecha por mí: preguntale lo que quieras y fijate cómo respondería en tu negocio.</p>
+      <button type="button" class="btn-primary" id="abrir-asistente">Hablar con el asistente</button>
+    </div>
+  </section>
+
   <!-- COMO FUNCIONA -->
   <section class="como-funciona">
-    <div class="section-label"><span class="num">03</span> Proceso</div>
+    <div class="section-label"><span class="num">04</span> Proceso</div>
     <h2>¿Cómo funciona?</h2>
     <div class="pasos">
       <div class="paso">
@@ -255,7 +332,7 @@
 
   <!-- PORTFOLIO -->
   <section class="portfolio" id="portfolio">
-    <div class="section-label"><span class="num">04</span> Portfolio</div>
+    <div class="section-label"><span class="num">05</span> Portfolio</div>
     <h2>Trabajos realizados</h2>
     <p class="portfolio-sub">Cada proyecto es único. Así se ven algunas de las páginas que hice.</p>
     <div class="portfolio-grid">
@@ -410,7 +487,7 @@
 
   <!-- FAQ -->
   <section class="faq" id="faq">
-    <div class="section-label"><span class="num">05</span> FAQ</div>
+    <div class="section-label"><span class="num">06</span> FAQ</div>
     <h2>Preguntas frecuentes</h2>
     <div class="faq-lista">
 
@@ -443,6 +520,20 @@
       </div>
 
       <div class="faq-item">
+        <button type="button" class="faq-pregunta">¿Qué es una automatización y para qué me sirve? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>Es una tarea que corre sola, sin que tengas que estar. Por ejemplo: contestar a las 2 de la mañana cuánto sale un producto, anotar cada pedido en una planilla o recordarle un turno a un cliente. Te saca trabajo repetitivo y evita que pierdas ventas por no responder a tiempo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-pregunta">¿Por qué las automatizaciones tienen un costo mensual? <span class="faq-icono">+</span></button>
+        <div class="faq-respuesta">
+          <p>Porque siguen trabajando todos los días: el asistente con IA usa un servicio que se paga por uso, y yo me encargo de que todo funcione, de ajustar las respuestas y de sumar cambios cuando tu negocio cambia. La página en sí sigue siendo un único pago.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
         <button type="button" class="faq-pregunta">¿Se puede pagar en cuotas? <span class="faq-icono">+</span></button>
         <div class="faq-respuesta">
           <p>Sí, podemos coordinar un pago del 50% para arrancar y el resto al entregar la página. Hablame por WhatsApp y lo arreglamos.</p>
@@ -461,7 +552,7 @@
 
   <!-- TESTIMONIOS -->
   <section class="testimonios">
-    <div class="section-label"><span class="num">06</span> Testimonios</div>
+    <div class="section-label"><span class="num">07</span> Testimonios</div>
     <h2>Lo que dicen mis clientes</h2>
     <div class="testimonios-grid">
 
@@ -506,7 +597,7 @@
 
   <!-- PRECIOS -->
   <section class="precios" id="precios">
-    <div class="section-label"><span class="num">07</span> Precios</div>
+    <div class="section-label"><span class="num">08</span> Precios</div>
     <h2>Planes simples y claros</h2>
     <p class="precios-sub">Sin sorpresas. Sabés exactamente qué recibís.</p>
     <div class="precios-grid">
@@ -550,7 +641,7 @@
         <ul class="plan-items">
           <li>Todo lo del plan Tienda</li>
           <li>Diseño 100% personalizado</li>
-          <li>Funciones especiales</li>
+          <li>Automatizaciones a medida</li>
           <li>Dominio propio (.com.ar)</li>
           <li>Múltiples páginas</li>
           <li>Soporte mensual</li>
@@ -562,11 +653,26 @@
       </div>
 
     </div>
+
+    <div class="precio-extra-wrap">
+      <div class="precio-extra">
+        <div class="extra-texto">
+          <div class="plan-name">Automatizaciones · se suman a cualquier plan</div>
+          <h3>Que tu negocio siga vendiendo aunque no mires el celular</h3>
+          <p>Asistente con IA, turnos, pedidos a planilla, cobros con Mercado Pago y resumen semanal. Elegís las que te sirven y las armo sobre tu página.</p>
+        </div>
+        <div class="extra-precios">
+          <div class="extra-fila"><span class="extra-monto">Desde $150.000</span><span class="extra-detalle">configuración, único pago</span></div>
+          <div class="extra-fila"><span class="extra-monto">+ $35.000<small>/mes</small></span><span class="extra-detalle">mantenimiento, ajustes y costos de IA</span></div>
+          <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20automatizar%20mi%20negocio" class="btn-plan btn-plan-dest" target="_blank" rel="noopener noreferrer">Quiero automatizar mi negocio</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- POR QUE YO -->
   <section class="porqueyosec">
-    <div class="section-label"><span class="num">08</span> Por qué elegirme</div>
+    <div class="section-label"><span class="num">09</span> Por qué elegirme</div>
     <h2>Lo que me diferencia</h2>
     <div class="razones">
       <div class="razon">
@@ -614,7 +720,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Joel Rodriguez — Páginas web para emprendedores</p>
+    <p>© 2026 Joel Rodriguez — Páginas web y automatizaciones para emprendedores</p>
   </footer>
 
 
@@ -810,6 +916,12 @@
       addBubble("bot", "¡Hola! 👋 Soy el asistente de Deploy. Puedo ayudarte con info sobre los servicios de creación de páginas web. ¿Qué necesitás saber?");
   });
 
+  // "Hablar con el asistente" de la sección Automatizaciones: la demo en vivo
+  document.getElementById("abrir-asistente").addEventListener("click", () => {
+    if (!isOpen) toggle.click();
+    input.focus();
+  });
+
   function addBubble(role, text, typing = false) {
     const el = document.createElement("div");
     el.className = `bubble ${role}${typing ? " typing" : ""}`;
@@ -866,7 +978,7 @@
   // Scroll reveal
   (function() {
     const groups = document.querySelectorAll(
-      '.servicios-grid, .quien-grid, .dolores-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
+      '.servicios-grid, .auto-grid, .auto-flujo ol, .quien-grid, .dolores-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
     );
     groups.forEach(g => {
       Array.from(g.children).forEach((child, i) => {
@@ -874,7 +986,7 @@
         child.classList.add('reveal');
       });
     });
-    document.querySelectorAll('.section-label, section > h2, .hero-stats, .portfolio-sub, .precios-sub').forEach(el => {
+    document.querySelectorAll('.section-label, section > h2, .auto-intro h2, .auto-prueba, .precio-extra, .hero-stats, .portfolio-sub, .precios-sub').forEach(el => {
       el.classList.add('reveal');
     });
     const obs = new IntersectionObserver(entries => {
@@ -954,7 +1066,8 @@
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {
           content_name: 'WhatsApp Click',
-          content_category: link.closest('.precios') ? 'Pricing' :
+          content_category: link.closest('.precio-extra') ? 'Automatizaciones' :
+                            link.closest('.precios') ? 'Pricing' :
                             link.closest('.hero')    ? 'Hero'    :
                             link.closest('.cta-final') ? 'CTA Final' :
                             link.closest('.portfolio') ? 'Portfolio' : 'Other'
