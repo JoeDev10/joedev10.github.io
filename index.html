@@ -844,6 +844,13 @@
   .bubble.bot { background: var(--paper-2); color: var(--ink); align-self: flex-start; border-bottom-left-radius: 4px; }
   .bubble.user { background: var(--accent); color: var(--paper-3); align-self: flex-end; border-bottom-right-radius: 4px; }
   .bubble.typing { opacity: .65; font-style: italic; }
+  .bubble .chat-wa {
+    display: block; margin-top: 10px;
+    background: var(--wa); color: #fff;
+    padding: 9px 14px; border-radius: 999px;
+    font-weight: 600; font-size: 13.5px; text-align: center;
+  }
+  .bubble .chat-wa:hover { filter: brightness(1.08); }
 
   .chat-input {
     display: flex; gap: 8px; padding: 10px 12px;
@@ -889,7 +896,83 @@
 </style>
 
 <script>
-  const API_URL = "https://chatbot-joeldev-production.up.railway.app/chat";
+  const API_BASE = "https://chatbot-joeldev-production.up.railway.app";
+  const API_URL = API_BASE + "/chat";
+  const WA_NUM = "5491144091981";
+
+  // El asistente con IA vive en Railway. Si no responde, contesta el
+  // asistente local (respuestas fijas, sin servidor) y lo que no sabe
+  // lo deriva a WhatsApp con la pregunta ya escrita.
+  let botOnline = true;
+  function marcarBotCaido() { botOnline = false; }
+
+  const RESPUESTAS = [
+    { claves: ["automatiz", "chatbot", " bot", "asistente", " ia ", "inteligencia"],
+      texto: "Las automatizaciones hacen el trabajo repetitivo por vos: un asistente que responde consultas 24/7, turnos que se agendan solos, pedidos que se anotan en una planilla, cobros con Mercado Pago y un resumen semanal. Se suman a cualquier plan desde $150.000 de configuración + $35.000/mes." },
+    { claves: ["turno", "agenda", "reserva", "recordatorio"],
+      texto: "Con la automatización de turnos el cliente elige día y horario libre desde la web y le llega un recordatorio antes. Menos ausencias y cero ida y vuelta de mensajes. Se suma a cualquier plan desde $150.000 + $35.000/mes." },
+    { claves: ["mercado pago", "mercadopago", "link de pago", "cobr"],
+      texto: "Se puede integrar Mercado Pago: el cliente paga desde la web y el pedido se confirma solo, sin pedir alias ni comprobantes. Es parte de las automatizaciones, desde $150.000 + $35.000/mes." },
+    { claves: ["mensual", "por mes", "abono", "/mes"],
+      texto: "La página es un único pago. Lo mensual ($35.000) es solo si sumás automatizaciones, porque siguen trabajando todos los días: cubre el servicio de IA, el mantenimiento y los ajustes." },
+    { claves: ["tienda", "carrito", "catalogo", "ecommerce", "vender online", "productos"],
+      texto: "Para vender productos te recomiendo el plan Tienda: $449.000 pago único, con catálogo de hasta 200 productos, filtros por categoría, carrito y pedidos por WhatsApp. Es el más pedido." },
+    { claves: ["basico", "presentacion", "simple", "barat", "economic"],
+      texto: "El plan Básico sale $249.000 pago único: página de presentación, sección de productos o servicios, botón de WhatsApp, adaptada al celular, hosting 1 año y 30 días de soporte." },
+    { claves: ["a medida", "personaliz", "varias paginas", "multiples"],
+      texto: "El plan A medida arranca en $750.000: diseño 100% personalizado, varias páginas, automatizaciones a medida, dominio .com.ar y soporte mensual. Para cotizarlo bien, contale tu proyecto a Joel por WhatsApp.", wa: true },
+    { claves: ["precio", "cuanto", " sale", "cuesta", "costo", "valor", "plan", "tarifa"],
+      texto: "Hay tres planes de pago único: Básico $249.000, Tienda $449.000 (el más pedido) y A medida desde $750.000. Las automatizaciones se suman desde $150.000 + $35.000/mes. ¿Qué tipo de negocio tenés? Así te digo cuál te conviene." },
+    { claves: ["cuota", " pago ", "pagar", "transferencia", "seña", "adelanto"],
+      texto: "Se paga 50% para arrancar y 50% cuando te entrega la página. Y si no quedás conforme con el resultado, no pagás." },
+    { claves: ["cuanto tiempo", "cuantos dias", "cuando la", "tarda", "tiempo", "demora", "rapido", "48", "plazo", "entrega"],
+      texto: "En 48 horas tenés la primera versión lista para ver. Después se hacen los ajustes que necesites y queda online con tu link. Joel toma solo 3 proyectos nuevos por mes para sostener ese plazo." },
+    { claves: ["dominio", "hosting", ".com", " url"],
+      texto: "El hosting está incluido. El dominio propio (tunegocio.com) cuesta aparte unos 15 USD por año, salvo en el plan A medida donde va incluido. También podés usar un dominio gratuito." },
+    { claves: ["garantia", "no me gusta", "conforme", "devolu", "riesgo"],
+      texto: "Antes de entregar te muestra un avance y se hacen todos los ajustes necesarios. Si no quedás conforme, no pagás." },
+    { claves: ["cambio", "soporte", "modific", "actualiz", "mantenimiento"],
+      texto: "Tenés soporte sin costo después de la entrega: 30 días en el plan Básico y 60 en el plan Tienda. Cambios de textos, fotos o precios se resuelven por WhatsApp." },
+    { claves: ["ejemplo", "portfolio", "trabajos", "hiciste", "clientes"],
+      texto: "Algunos trabajos: Tinta Fundida (impresión 3D), Lubit (celulares), Pablo Helados (heladería con delivery), Black Edge (barbería con turnos) y Viejo Karma (ropa). Los ves todos en la sección Portfolio de esta página." },
+    { claves: ["necesito", "empezar", "requisito", "que te paso", "arrancar"],
+      texto: "Solo contarle a Joel de tu negocio: qué hacés, qué querés mostrar y si tenés fotos o logo. No necesitás saber nada de tecnología. Escribile por WhatsApp y arrancan.", wa: true },
+    { claves: ["restaurant", "comida", "delivery", "heladeria", "pasteleria", "gastronom", "cafe", "pizzeria"],
+      texto: "Para gastronomía va muy bien el plan Tienda ($449.000): menú con fotos, carrito y pedidos directo a tu WhatsApp. Si recibís muchos pedidos, sumale la automatización que los anota solos en una planilla." },
+    { claves: ["barberia", "peluqueria", "estetica", "consultorio", "gimnasio", "entrenador", "pilates", "nutricion"],
+      texto: "Para un negocio de turnos te conviene el plan Básico ($249.000) más la automatización de turnos con recordatorio (desde $150.000 + $35.000/mes). Así la gente reserva sola y faltan menos." },
+    { claves: ["ropa", "indumentaria", "stickers", "accesorios"],
+      texto: "Si vendés productos, el plan Tienda ($449.000) es el indicado: catálogo con filtros, carrito y pedidos por WhatsApp. ¿Cuántos productos manejás más o menos?" },
+    { claves: ["contacto", "whatsapp", "telefono", "llamar", "hablar con joel", "instagram"],
+      texto: "Podés escribirle a Joel por WhatsApp al +54 9 11 4409 1981, te responde el mismo día. También está en Instagram como @joelrodrigueznk.", wa: true },
+    { claves: ["gracias", "genial", "perfecto", "buenisimo", "joya"],
+      texto: "¡De nada! Cuando quieras arrancar, escribile a Joel por WhatsApp y en 48 horas tenés tu página.", wa: true },
+    { claves: ["hola", "buenas", "buen dia", "que tal"],
+      texto: "¡Hola! Te puedo contar precios, plazos, formas de pago y automatizaciones. ¿Qué tipo de negocio tenés?" },
+  ];
+
+  function normalizar(t) {
+    return " " + t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[¿?¡!.,;:]/g, " ") + " ";
+  }
+  // Gana la respuesta con más palabras clave; a igualdad, la que está primero
+  function respuestaLocal(pregunta) {
+    const t = normalizar(pregunta);
+    let mejor = null, puntos = 0;
+    for (const r of RESPUESTAS) {
+      const n = r.claves.filter(c => t.includes(c)).length;
+      if (n > puntos) { mejor = r; puntos = n; }
+    }
+    return mejor;
+  }
+  function linkWhatsApp(pregunta) {
+    const msg = pregunta
+      ? "Hola Joel! Te escribo desde la web. Te quería consultar: " + pregunta
+      : "Hola Joel! Te escribo desde la web.";
+    return "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(msg);
+  }
+  fetch(API_BASE + "/health", { signal: AbortSignal.timeout(8000) })
+    .then(r => { if (!r.ok) marcarBotCaido(); })
+    .catch(marcarBotCaido);
 
   // Tooltip
   const tooltip = document.getElementById("chat-tooltip");
@@ -913,7 +996,7 @@
     toggle.textContent = isOpen ? "✕" : "💬";
     tooltip.style.display = "none";
     if (isOpen && history.length === 0)
-      addBubble("bot", "¡Hola! 👋 Soy el asistente de Deploy. Puedo ayudarte con info sobre los servicios de creación de páginas web. ¿Qué necesitás saber?");
+      addBubble("bot", "¡Hola! 👋 Soy el asistente de Deploy. Te cuento sobre páginas web, precios y automatizaciones. ¿Qué necesitás saber?");
   });
 
   // "Hablar con el asistente" de la sección Automatizaciones: la demo en vivo
@@ -931,11 +1014,59 @@
     return el;
   }
 
+  // Respuesta de respaldo: botón de WhatsApp con la pregunta precargada
+  function derivarAWhatsApp(bubble, pregunta) {
+    bubble.classList.remove("typing");
+    bubble.textContent = "Esa te la responde Joel en persona. Tocá acá y le llega tu consulta ya escrita:";
+    const a = document.createElement("a");
+    a.href = linkWhatsApp(pregunta);
+    a.target = "_blank"; a.rel = "noopener noreferrer";
+    a.className = "chat-wa";
+    a.textContent = "Seguir por WhatsApp →";
+    bubble.appendChild(a);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // Escribe la respuesta de a poco, como el asistente con IA
+  function escribir(bubble, texto, conWa, pregunta) {
+    bubble.classList.remove("typing");
+    bubble.textContent = "";
+    let i = 0;
+    const paso = () => {
+      i = Math.min(texto.length, i + 3);
+      bubble.textContent = texto.slice(0, i);
+      messages.scrollTop = messages.scrollHeight;
+      if (i < texto.length) return setTimeout(paso, 12);
+      if (conWa) {
+        const a = document.createElement("a");
+        a.href = linkWhatsApp(pregunta);
+        a.target = "_blank"; a.rel = "noopener noreferrer";
+        a.className = "chat-wa";
+        a.textContent = "Escribirle a Joel por WhatsApp →";
+        bubble.appendChild(a);
+        messages.scrollTop = messages.scrollHeight;
+      }
+    };
+    paso();
+  }
+
+  function responderLocal(bubble, pregunta) {
+    const r = respuestaLocal(pregunta);
+    if (!r) return derivarAWhatsApp(bubble, pregunta);
+    history.push({ role: "assistant", content: r.texto });
+    setTimeout(() => escribir(bubble, r.texto, !!r.wa, pregunta), 500);
+  }
+
   async function send() {
     const text = input.value.trim();
     if (!text || isStreaming) return;
     input.value = ""; input.style.height = "auto";
     addBubble("user", text);
+    if (!botOnline) {
+      history.push({ role: "user", content: text });
+      responderLocal(addBubble("bot", "Escribiendo...", true), text);
+      return;
+    }
     history.push({ role: "user", content: text });
     isStreaming = true; sendBtn.disabled = true;
     const botBubble = addBubble("bot", "Escribiendo...", true);
@@ -945,6 +1076,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: history }),
+        signal: AbortSignal.timeout(25000),
       });
       if (!res.ok) throw new Error();
       const reader = res.body.getReader();
@@ -959,8 +1091,8 @@
       }
       history.push({ role: "assistant", content: accumulated });
     } catch {
-      botBubble.innerHTML = 'Hubo un error al conectar. <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer" style="color:#c8452a;font-weight:700;display:block;margin-top:6px;">Escribime directo por WhatsApp →</a>';
-      history.pop();
+      marcarBotCaido();
+      responderLocal(botBubble, text);
     } finally {
       isStreaming = false; sendBtn.disabled = false; input.focus();
     }
