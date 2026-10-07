@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,500..600&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,500..600&display=swap" />
-  <meta name="theme-color" content="#f5f1ea" />
+  <meta name="theme-color" content="#0a0c11" />
   <meta name="google-site-verification" content="h86icTbwb3S9qbp7W2l2WvmPVMAV3jF7Z7BXBaU97Ys" />
 
   <!-- Open Graph (Facebook, WhatsApp, Instagram) -->
@@ -122,22 +122,57 @@
   <!-- HERO -->
   <div class="hero-bg">
   <section class="hero">
-    <div class="hero-badge">Páginas listas en 48 horas</div>
-    <h1>Tu negocio vende <span class="accent">solo</span>,<br/>incluso cuando no estás</h1>
-    <p>Creo páginas web y automatizaciones para emprendedores: tu página muestra lo que vendés, un asistente responde las consultas y los pedidos se ordenan solos. Vos dejás de depender del boca en boca y de contestar WhatsApp a toda hora.</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn-primary" target="_blank" rel="noopener noreferrer">
-        Quiero mi página web
-      </a>
-      <a href="#portfolio" class="btn-secondary">Ver ejemplos</a>
+    <div class="hero-copy">
+      <div class="hero-badge">Páginas listas en 48 horas</div>
+      <h1>Tu negocio vende <span class="accent">solo</span>, incluso cuando no estás</h1>
+      <p>Creo páginas web y automatizaciones para emprendedores: tu página muestra lo que vendés, un asistente responde las consultas y los pedidos se ordenan solos. Vos dejás de depender del boca en boca y de contestar WhatsApp a toda hora.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Quiero mi página web
+        </a>
+        <a href="#portfolio" class="btn-secondary">Ver ejemplos</a>
+      </div>
+      <div class="hero-urgencia">Solo tomo <strong>3 proyectos nuevos por mes</strong> para poder sostener la entrega en 48hs.</div>
     </div>
-    <div class="hero-urgencia">Solo tomo <strong>3 proyectos nuevos por mes</strong> para poder sostener la entrega en 48hs.</div>
+
+    <!-- Vitrina: un trabajo real + lo que pasa mientras el dueño duerme -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-browser hv-atras">
+        <div class="hv-barra"><i></i><i></i><i></i><span>lubit</span></div>
+        <picture>
+          <source type="image/webp" srcset="img/lubit.webp"/>
+          <img src="img/lubit.jpg" alt="" width="1100" height="653" decoding="async"/>
+        </picture>
+      </div>
+      <div class="hv-browser hv-frente">
+        <div class="hv-barra"><i></i><i></i><i></i><span>tinta-fundida · en vivo</span></div>
+        <picture>
+          <source type="image/webp" srcset="img/tinta-fundida.webp"/>
+          <img src="img/tinta-fundida.jpg" alt="" width="1440" height="855" decoding="async" fetchpriority="high"/>
+        </picture>
+      </div>
+      <div class="hv-noti hv-n1">
+        <span class="hv-ico">$</span>
+        <div><b>Nuevo pedido</b><small>2 potes de 1 kg · $18.500</small></div>
+        <time>23:42</time>
+      </div>
+      <div class="hv-noti hv-n2">
+        <span class="hv-ico hv-ico-ok">✓</span>
+        <div><b>Turno confirmado</b><small>Sábado 10:30 · recordatorio enviado</small></div>
+        <time>00:15</time>
+      </div>
+      <div class="hv-chat">
+        <small>Asistente · respondió al instante</small>
+        Sí, hay talle M en negro. ¿Te lo reservo?
+      </div>
+    </div>
+
     <div class="hero-stats">
       <div class="stat"><strong>48hs</strong><span>entrega</span></div>
       <div class="stat-div"></div>
       <div class="stat"><strong>7</strong><span>proyectos entregados</span></div>
       <div class="stat-div"></div>
-      <div class="stat"><strong>100%</strong><span>clientes satisfechos</span></div>
+      <div class="stat"><strong>24/7</strong><span>tu negocio atendiendo</span></div>
     </div>
   </section>
   </div>
@@ -145,13 +180,9 @@
   <!-- PARA QUIEN ES -->
   <section class="para-quien">
     <h2>¿Para quién es?</h2>
-    <div class="quien-grid">
-      <div class="quien-card"><p>Tiendas y emprendimientos</p></div>
-      <div class="quien-card"><p>Profesionales y servicios</p></div>
-      <div class="quien-card"><p>Restaurantes y delivery</p></div>
-      <div class="quien-card"><p>Artistas y creativos</p></div>
-      <div class="quien-card"><p>Gimnasios y entrenadores</p></div>
-      <div class="quien-card"><p>Cualquier negocio que quiera crecer</p></div>
+    <div class="quien-marquee">
+      <ul class="quien-track"><li>Tiendas y emprendimientos</li><li>Profesionales y servicios</li><li>Restaurantes y delivery</li><li>Artistas y creativos</li><li>Gimnasios y entrenadores</li><li>Barberías y estética</li><li>Cualquier negocio que quiera crecer</li></ul>
+      <ul class="quien-track" aria-hidden="true"><li>Tiendas y emprendimientos</li><li>Profesionales y servicios</li><li>Restaurantes y delivery</li><li>Artistas y creativos</li><li>Gimnasios y entrenadores</li><li>Barberías y estética</li><li>Cualquier negocio que quiera crecer</li></ul>
     </div>
   </section>
 
@@ -754,27 +785,27 @@
 <style>
   #chat-toggle {
     position: fixed; bottom: 24px; right: 24px;
-    width: 64px; height: 64px; border-radius: 50%;
-    background: var(--ink);
-    color: var(--paper); border: none;
-    cursor: pointer; font-size: 26px;
-    box-shadow: 0 6px 24px rgba(20,17,14,.35);
+    width: 62px; height: 62px; border-radius: 50%;
+    background: var(--accent);
+    color: #fff; border: none;
+    cursor: pointer; font-size: 25px;
+    box-shadow: 0 10px 30px var(--accent-glow);
     display: flex; align-items: center; justify-content: center;
     transition: transform .2s; z-index: 1000;
     animation: chat-bounce 2.5s ease-in-out 4s 3;
   }
-  #chat-toggle:hover { transform: scale(1.1); }
+  #chat-toggle:hover { transform: scale(1.08); }
 
   @keyframes chat-pulse-ring {
-    0%   { transform: scale(1);   opacity: .6; }
-    100% { transform: scale(1.9); opacity: 0;  }
+    0%   { transform: scale(1);   opacity: .55; }
+    100% { transform: scale(1.8); opacity: 0;  }
   }
   #chat-toggle::before {
     content: '';
     position: absolute; inset: 0;
     border-radius: 50%;
-    background: rgba(200,69,42,.5);
-    animation: chat-pulse-ring 2s ease-out infinite;
+    background: var(--accent);
+    animation: chat-pulse-ring 2.2s ease-out infinite;
     z-index: -1;
   }
   @keyframes chat-bounce {
@@ -784,12 +815,12 @@
   }
 
   #chat-tooltip {
-    position: fixed; bottom: 96px; right: 24px;
-    background: var(--paper-3); color: var(--ink);
-    padding: 10px 14px; border-radius: 2px;
-    border: 1px solid var(--rule);
+    position: fixed; bottom: 98px; right: 24px;
+    background: var(--surface-2); color: var(--text);
+    padding: 10px 14px; border-radius: 12px;
+    border: 1px solid var(--line-2);
     font-size: 13px; font-weight: 500;
-    box-shadow: 0 4px 18px rgba(0,0,0,.13);
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
     white-space: nowrap; z-index: 1001;
     display: flex; align-items: center; gap: 6px;
     animation: tooltip-in .35s ease;
@@ -798,7 +829,7 @@
     content: '';
     position: absolute; bottom: -7px; right: 22px;
     border: 7px solid transparent;
-    border-bottom: none; border-top-color: var(--paper-3);
+    border-bottom: none; border-top-color: var(--surface-2);
   }
   #chat-tooltip .tooltip-close {
     margin-left: 6px; cursor: pointer; opacity: .5;
@@ -813,21 +844,21 @@
   #chat-window {
     position: fixed; bottom: 100px; right: 24px;
     width: 360px; max-height: 520px;
-    background: var(--paper); border-radius: 2px;
-    border: 1px solid var(--rule-2);
-    box-shadow: 0 12px 40px rgba(20,17,14,.22);
+    background: var(--surface); border-radius: 18px;
+    border: 1px solid var(--line-2);
+    box-shadow: 0 24px 60px rgba(0,0,0,.55);
     display: flex; flex-direction: column; overflow: hidden;
     z-index: 999; transition: opacity .25s, transform .25s;
   }
   #chat-window.hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }
 
   #chat-window .chat-header {
-    background: var(--ink); color: var(--paper);
+    background: linear-gradient(135deg, var(--accent), #e04a1f); color: #fff;
     padding: 14px 16px; display: flex; align-items: center; gap: 10px;
   }
   #chat-window .chat-header .avatar {
     width: 38px; height: 38px; border-radius: 50%;
-    background: rgba(255,255,255,.25);
+    background: rgba(255,255,255,.22);
     display: flex; align-items: center; justify-content: center; font-size: 18px;
   }
   #chat-window .chat-header .info .name { font-weight: 600; font-size: 15px; }
@@ -841,8 +872,8 @@
     max-width: 82%; padding: 10px 13px; border-radius: 16px;
     font-size: 14px; line-height: 1.45; word-wrap: break-word;
   }
-  .bubble.bot { background: var(--paper-2); color: var(--ink); align-self: flex-start; border-bottom-left-radius: 4px; }
-  .bubble.user { background: var(--accent); color: var(--paper-3); align-self: flex-end; border-bottom-right-radius: 4px; }
+  .bubble.bot { background: var(--surface-2); color: var(--text); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .bubble.user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
   .bubble.typing { opacity: .65; font-style: italic; }
   .bubble .chat-wa {
     display: block; margin-top: 10px;
@@ -854,23 +885,23 @@
 
   .chat-input {
     display: flex; gap: 8px; padding: 10px 12px;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid var(--line);
   }
   .chat-input textarea {
-    flex: 1; border: 1px solid var(--rule-2); border-radius: 2px;
-    background: var(--paper-3); color: var(--ink);
+    flex: 1; border: 1px solid var(--line-2); border-radius: 12px;
+    background: var(--bg); color: var(--text);
     padding: 9px 14px; font-size: 14px; resize: none; outline: none;
     line-height: 1.4; max-height: 100px; font-family: inherit;
   }
   .chat-input textarea:focus { border-color: var(--accent); }
   .chat-input button {
-    width: 40px; height: 40px; border-radius: 2px;
-    background: var(--accent); border: none; color: var(--paper-3);
+    width: 40px; height: 40px; border-radius: 12px;
+    background: var(--accent); border: none; color: #fff;
     cursor: pointer; font-size: 18px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; align-self: flex-end; transition: background .2s;
   }
-  .chat-input button:disabled { background: var(--rule-2); cursor: default; }
+  .chat-input button:disabled { background: var(--line-2); cursor: default; }
 
   @media (max-width: 400px) {
     #chat-window { width: calc(100vw - 24px); right: 12px; }
@@ -881,17 +912,6 @@
     #chat-toggle { bottom: 90px !important; }
     #chat-tooltip { display: none !important; } /* tooltip oculto en mobile, tapa contenido */
     #chat-window { bottom: 162px !important; right: 12px !important; width: calc(100vw - 24px) !important; }
-  }
-
-  /* Scroll reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 </style>
 
@@ -1110,7 +1130,7 @@
   // Scroll reveal
   (function() {
     const groups = document.querySelectorAll(
-      '.servicios-grid, .auto-grid, .auto-flujo ol, .quien-grid, .dolores-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
+      '.servicios-grid, .auto-grid, .auto-flujo ol, .dolores-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
     );
     groups.forEach(g => {
       Array.from(g.children).forEach((child, i) => {
@@ -1151,7 +1171,7 @@
         e.target.querySelectorAll('.stat strong').forEach(stat => {
           const t = stat.textContent;
           if (t.includes('48')) animateCounter(stat, 48, 'hs', 1200);
-          else if (t.includes('7')) animateCounter(stat, 7, '', 1000);
+          else if (t === '7') animateCounter(stat, 7, '', 1000);
           else if (t.includes('100')) animateCounter(stat, 100, '%', 1400);
         });
         statsObs.unobserve(e.target);
