@@ -9,12 +9,12 @@
   <meta name="author" content="Joel Rodriguez" />
   <link rel="canonical" href="https://joedev10.github.io/" />
 
-  <!-- Tipografías: Fraunces (display) + Archivo (texto) -->
+  <!-- Tipografías: Inter Tight (todo) + Instrument Serif (acentos en itálica) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,500..600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,500..600&display=swap" />
-  <meta name="theme-color" content="#0a0c11" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" />
+  <meta name="theme-color" content="#F3F0EA" />
   <meta name="google-site-verification" content="h86icTbwb3S9qbp7W2l2WvmPVMAV3jF7Z7BXBaU97Ys" />
 
   <!-- Open Graph (Facebook, WhatsApp, Instagram) -->
@@ -55,7 +55,7 @@
   </script>
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="estilos.css" />
 
   <!-- Meta Pixel Code -->
   <script>
@@ -87,471 +87,391 @@
   </script>
   <!-- End Microsoft Clarity -->
 </head>
-<body>
+<body class="no-js">
+<script>document.body.classList.replace("no-js", "js");</script>
 
   <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <div class="logo"><span class="logo-mark">D</span> <strong>Deploy</strong> <span class="badge-disponible">Disponible</span></div>
-      <nav>
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-row">
+      <a href="#top" class="brand" aria-label="Deploy, volver arriba"><span class="brand-dot"></span>Deploy</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#trabajos">Trabajos</a>
         <a href="#servicios">Servicios</a>
-        <a href="#automatizaciones">Automatizaciones</a>
-        <a href="#portfolio">Portfolio</a>
         <a href="#precios">Precios</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#faq">Preguntas</a>
       </nav>
-      <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn-header" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" width="16" height="16" style="vertical-align:middle;margin-right:5px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Hablemos
-      </a>
-      <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn btn-solid header-cta" target="_blank" rel="noopener noreferrer">Hablemos <span class="arr">→</span></a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- MENÚ MOBILE -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#servicios" class="mobile-link">Servicios</a>
-    <a href="#automatizaciones" class="mobile-link">Automatizaciones</a>
-    <a href="#portfolio" class="mobile-link">Portfolio</a>
-    <a href="#precios" class="mobile-link">Precios</a>
-    <a href="#contacto" class="mobile-link">Contacto</a>
-    <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="mobile-link mobile-wa" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Hablemos por WhatsApp</a>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#trabajos" class="m-link">Trabajos</a>
+    <a href="#servicios" class="m-link">Servicios</a>
+    <a href="#precios" class="m-link">Precios</a>
+    <a href="#faq" class="m-link">Preguntas</a>
+    <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Escribime por WhatsApp <span class="arr">→</span></a>
   </div>
 
-  <!-- HERO -->
-  <div class="hero-bg">
-  <section class="hero">
-    <div class="hero-copy">
-      <div class="hero-badge">Páginas listas en 48 horas</div>
-      <h1>Tu negocio vende <span class="accent">solo</span>, incluso cuando no estás</h1>
-      <p>Páginas web y automatizaciones para emprendedores: mostrás lo que vendés, un asistente responde las consultas y los pedidos se ordenan solos.</p>
-      <div class="hero-btns">
-        <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn-primary" target="_blank" rel="noopener noreferrer">
-          Quiero mi página web
-        </a>
-        <a href="#portfolio" class="btn-secondary">Ver ejemplos</a>
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-meta fade-up">
+        <span>Estudio web — Buenos Aires</span>
+        <span class="status"><i></i>Disponible · 3 cupos por mes</span>
       </div>
-      <div class="hero-urgencia">Solo tomo <strong>3 proyectos nuevos por mes</strong> para poder sostener la entrega en 48hs.</div>
+
+      <h1 class="hero-title" id="hero-title">
+        <span class="word"><span style="--i:0">Tu</span></span>
+        <span class="word"><span style="--i:1">negocio</span></span>
+        <span class="word"><span style="--i:2">vende</span></span>
+        <span class="word"><span style="--i:3" class="serif accent">solo,</span></span>
+        <span class="word"><span style="--i:4">incluso</span></span>
+        <span class="word"><span style="--i:5">cuando</span></span>
+        <span class="word"><span style="--i:6">no</span></span>
+        <span class="word"><span style="--i:7">estás.</span></span>
+      </h1>
+
+      <div class="hero-foot fade-up">
+        <p>Páginas web y automatizaciones para emprendedores. Mostrás lo que vendés, un asistente responde las consultas y los pedidos se ordenan solos. <strong>Lista en 48&nbsp;horas.</strong></p>
+        <div class="hero-actions" id="heroActions">
+          <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn btn-solid" target="_blank" rel="noopener noreferrer">Quiero mi página <span class="arr">→</span></a>
+          <a href="#trabajos" class="btn btn-line">Ver trabajos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUESINA -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Páginas web <i class="star">✦</i></span>
+        <span><em class="serif">Tiendas online</em> <i class="star">✦</i></span>
+        <span>Turnos que se agendan solos <i class="star">✦</i></span>
+        <span><em class="serif">Asistente con IA</em> <i class="star">✦</i></span>
+        <span>Pedidos por WhatsApp <i class="star">✦</i></span>
+        <span><em class="serif">Entrega en 48 horas</em> <i class="star">✦</i></span>
+        <!-- Copia idéntica para que el loop no tenga salto -->
+        <span>Páginas web <i class="star">✦</i></span>
+        <span><em class="serif">Tiendas online</em> <i class="star">✦</i></span>
+        <span>Turnos que se agendan solos <i class="star">✦</i></span>
+        <span><em class="serif">Asistente con IA</em> <i class="star">✦</i></span>
+        <span>Pedidos por WhatsApp <i class="star">✦</i></span>
+        <span><em class="serif">Entrega en 48 horas</em> <i class="star">✦</i></span>
+      </div>
     </div>
 
-    <!-- Vitrina: un trabajo real + lo que pasa mientras el dueño duerme -->
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hv-browser hv-atras">
-        <div class="hv-barra"><i></i><i></i><i></i><span>lubit</span></div>
-        <picture>
-          <source type="image/webp" srcset="img/lubit.webp"/>
-          <img src="img/lubit.jpg" alt="" width="1100" height="653" decoding="async"/>
-        </picture>
-      </div>
-      <div class="hv-browser hv-frente">
-        <div class="hv-barra"><i></i><i></i><i></i><span>tinta-fundida · en vivo</span></div>
-        <picture>
-          <source type="image/webp" srcset="img/tinta-fundida.webp"/>
-          <img src="img/tinta-fundida.jpg" alt="" width="1440" height="855" decoding="async" fetchpriority="high"/>
-        </picture>
-      </div>
-      <div class="hv-noti hv-n1">
-        <span class="hv-ico">$</span>
-        <div><b>Nuevo pedido</b><small>2 potes de 1 kg · $18.500</small></div>
-        <time>23:42</time>
-      </div>
-      <div class="hv-noti hv-n2">
-        <span class="hv-ico hv-ico-ok">✓</span>
-        <div><b>Turno confirmado</b><small>Sábado 10:30 · recordatorio enviado</small></div>
-        <time>00:15</time>
-      </div>
-      <div class="hv-chat">
-        <small>Asistente · respondió al instante</small>
-        Sí, hay talle M en negro. ¿Te lo reservo?
-      </div>
-    </div>
+    <!-- TRABAJOS -->
+    <section class="section portfolio" id="trabajos" aria-labelledby="trabajos-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="label rv"><b>01</b> Trabajos</p>
+          <h2 class="h2 rv" id="trabajos-title">Páginas reales, <span class="serif accent">online ahora.</span></h2>
+          <p class="lead rv" style="--d:1">Entrá y probalas. Cada una se hizo en 48 horas para un negocio que necesitaba vender más.</p>
+        </div>
 
-    <div class="hero-stats">
-      <div class="stat"><strong>48hs</strong><span>entrega</span></div>
-      <div class="stat-div"></div>
-      <div class="stat"><strong>7</strong><span>proyectos entregados</span></div>
-      <div class="stat-div"></div>
-      <div class="stat"><strong>24/7</strong><span>tu negocio atendiendo</span></div>
-    </div>
-  </section>
-  </div>
+        <div class="works">
+          <a class="work rv" href="https://joedev10.github.io/tinta-fundida/" target="_blank" rel="noopener noreferrer">
+            <div class="work-media">
+              <picture>
+                <source type="image/webp" srcset="img/tinta-fundida.webp"/>
+                <img src="img/tinta-fundida.jpg" alt="Diseño web para taller de impresión 3D — Tinta Fundida: hero oscuro con cubo wireframe, catálogo de piezas y pedidos a medida por WhatsApp" loading="lazy" decoding="async" width="1440" height="855"/>
+              </picture>
+              <span class="work-badge">Ver sitio ↗</span>
+            </div>
+            <div class="work-info">
+              <div>
+                <h3 class="work-title">Tinta Fundida</h3>
+                <p class="work-kind">Catálogo para taller de impresión 3D</p>
+              </div>
+              <span class="work-num">01</span>
+            </div>
+            <ul class="work-tags"><li>Catálogo</li><li>Diseños a medida</li><li>Pedidos WhatsApp</li></ul>
+          </a>
 
-  <!-- DOLORES -->
-  <section class="dolores">
-    <div class="section-label"><span class="num">01</span> ¿Te suena esto?</div>
-    <h2>Lo que te frena de crecer</h2>
-    <div class="dolores-grid">
-      <div class="dolor-item">
-        <span class="dolor-icon">01</span>
-        <p>Perdés ventas porque tardás en contestar WhatsApp.</p>
-      </div>
-      <div class="dolor-item">
-        <span class="dolor-icon">02</span>
-        <p>Dependés del boca en boca y no te llegan clientes nuevos.</p>
-      </div>
-      <div class="dolor-item">
-        <span class="dolor-icon">03</span>
-        <p>Tu competencia tiene página y vos todavía no.</p>
-      </div>
-    </div>
-  </section>
+          <a class="work rv" style="--d:1" href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer">
+            <div class="work-media">
+              <picture>
+                <source type="image/webp" srcset="img/lubit.webp"/>
+                <img src="img/lubit.jpg" alt="Diseño web para venta y reparación de celulares — Lubit: catálogo de smartphones, turnos y servicio técnico" loading="lazy" decoding="async" width="1100" height="653"/>
+              </picture>
+              <span class="work-badge">Ver sitio ↗</span>
+            </div>
+            <div class="work-info">
+              <div>
+                <h3 class="work-title">Lubit</h3>
+                <p class="work-kind">Venta de celulares y reparaciones</p>
+              </div>
+              <span class="work-num">02</span>
+            </div>
+            <ul class="work-tags"><li>Catálogo</li><li>Reparaciones</li><li>Turnos online</li></ul>
+          </a>
 
-  <!-- SERVICIOS -->
-  <section class="servicios" id="servicios">
-    <div class="section-label"><span class="num">02</span> Servicios</div>
-    <h2>¿Qué incluye tu página?</h2>
-    <div class="servicios-grid">
+          <a class="work rv" href="https://heladeria-pablo.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <div class="work-media">
+              <picture>
+                <source type="image/webp" srcset="img/pablo-helados.webp"/>
+                <img src="img/pablo-helados.jpg" alt="Diseño web para heladería — Pablo Helados: catálogo online de potes, tortas y postres con delivery" loading="lazy" decoding="async" width="1100" height="688"/>
+              </picture>
+              <span class="work-badge">Ver sitio ↗</span>
+            </div>
+            <div class="work-info">
+              <div>
+                <h3 class="work-title">Pablo Helados</h3>
+                <p class="work-kind">Heladería con delivery</p>
+              </div>
+              <span class="work-num">03</span>
+            </div>
+            <ul class="work-tags"><li>Catálogo online</li><li>Delivery</li></ul>
+          </a>
 
-      <div class="servicio-card">
-        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5 4 4"/><path d="M13 3 3 13v8h8L21 11z"/></svg></div>
-        <h3>Diseño a tu medida</h3>
-        <p>Tus colores, tu logo, tu estilo. Nada de plantillas genéricas.</p>
+          <a class="work-next rv" style="--d:1" href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer">
+            <span class="serif">¿Tu negocio?</span>
+            <div>
+              <p>Contame qué vendés y en 48&nbsp;horas tenés tu página online.</p>
+              <span class="go" style="margin-top:20px">Quiero mi página <span class="arr">→</span></span>
+            </div>
+          </a>
+        </div>
       </div>
+    </section>
 
-      <div class="servicio-card">
-        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.2"/><path d="M10.8 18.2h2.4"/></svg></div>
-        <h3>Pensada para el celular</h3>
-        <p>Rápida y cómoda en el teléfono, que es desde donde te visitan.</p>
-      </div>
+    <!-- SERVICIOS + AUTOMATIZACIONES -->
+    <section class="section" id="servicios" aria-labelledby="servicios-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="label rv"><b>02</b> Servicios</p>
+          <h2 class="h2 rv" id="servicios-title">Tu página atiende. <span class="serif accent">Vos descansás.</span></h2>
+          <p class="lead rv" style="--d:1">Lo que se ve y lo que trabaja por detrás. Las automatizaciones hacen lo repetitivo; te enterás cuando ya está resuelto.</p>
+        </div>
 
-      <div class="servicio-card">
-        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L21.2 7H6"/></svg></div>
-        <h3>Pedidos por WhatsApp</h3>
-        <p>Catálogo y carrito: el cliente elige y el pedido te llega armado.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- AUTOMATIZACIONES -->
-  <section class="automatizaciones" id="automatizaciones">
-    <div class="section-label"><span class="num">03</span> Automatizaciones</div>
-    <div class="auto-intro">
-      <div>
-        <h2>Tu página atiende. <em>Vos descansás.</em></h2>
-        <p class="auto-sub">Las automatizaciones hacen el trabajo repetitivo por vos. Te enterás cuando ya está resuelto.</p>
-      </div>
-      <figure class="auto-flujo">
-        <figcaption>Una venta mientras dormís</figcaption>
-        <ol>
-          <li><span class="flujo-hora">23:40</span><p>Una clienta pregunta si hay talle M en negro.</p></li>
-          <li><span class="flujo-hora">23:40</span><p>El asistente le responde con stock y precio.</p></li>
-          <li><span class="flujo-hora">23:42</span><p>Arma el pedido y lo manda por WhatsApp.</p></li>
-          <li><span class="flujo-hora">23:42</span><p>El pedido queda anotado en tu planilla.</p></li>
-          <li class="flujo-fin"><span class="flujo-hora">08:00</span><p>Te levantás con la venta hecha.</p></li>
+        <ol class="services">
+          <li class="service rv">
+            <span class="service-n">01</span>
+            <h3>Diseño a tu medida</h3>
+            <p>Tus colores, tu logo, tu estilo. Nada de plantillas genéricas.</p>
+          </li>
+          <li class="service rv">
+            <span class="service-n">02</span>
+            <h3>Pensada para el celular</h3>
+            <p>Rápida y cómoda en el teléfono, que es desde donde te visitan.</p>
+          </li>
+          <li class="service rv">
+            <span class="service-n">03</span>
+            <h3>Pedidos por WhatsApp</h3>
+            <p>Catálogo y carrito: el cliente elige y el pedido te llega armado.</p>
+          </li>
+          <li class="service rv">
+            <span class="service-n">04</span>
+            <h3>Asistente con IA 24/7</h3>
+            <p>Responde precios, horarios y stock al instante. Si hace falta, te pasa la consulta.</p>
+            <span class="service-tag">Automatización</span>
+          </li>
+          <li class="service rv">
+            <span class="service-n">05</span>
+            <h3>Turnos que se agendan solos</h3>
+            <p>El cliente elige horario libre y le llega un recordatorio. Menos ausencias, cero ida y vuelta.</p>
+            <span class="service-tag">Automatización</span>
+          </li>
+          <li class="service rv">
+            <span class="service-n">06</span>
+            <h3>Pedidos y cobros solos</h3>
+            <p>Paga con Mercado Pago, el pedido queda anotado en tu planilla y te llega el aviso.</p>
+            <span class="service-tag">Automatización</span>
+          </li>
         </ol>
-      </figure>
-    </div>
 
-    <div class="auto-grid">
-
-      <div class="auto-card">
-        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.6a8.4 8.4 0 0 1-9 8.4 9.1 9.1 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.6 8.5 8.5 0 0 1 12.5 3.2 8.5 8.5 0 0 1 21 11.6z"/><path d="M8.5 11.5h.01M12.5 11.5h.01M16.5 11.5h.01"/></svg></div>
-        <h3>Asistente con IA 24/7</h3>
-        <p>Responde precios, horarios y stock al instante. Si hace falta, te pasa la consulta.</p>
-      </div>
-
-      <div class="auto-card">
-        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="m9.2 14.8 2 2 3.6-3.7"/></svg></div>
-        <h3>Turnos que se agendan solos</h3>
-        <p>El cliente elige horario libre y le llega un recordatorio. Menos ausencias, cero ida y vuelta.</p>
-      </div>
-
-      <div class="auto-card">
-        <div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="1.5"/><path d="M2.5 10h19M6.5 14.5h4"/></svg></div>
-        <h3>Pedidos y cobros solos</h3>
-        <p>Paga con Mercado Pago, el pedido queda anotado en tu planilla y te llega el aviso.</p>
-      </div>
-
-    </div>
-
-    <div class="auto-prueba">
-      <p><strong>Probalo ahora.</strong> El asistente de esta página lo hice yo: preguntale lo que quieras.</p>
-      <button type="button" class="btn-primary" id="abrir-asistente">Hablar con el asistente</button>
-    </div>
-  </section>
-
-  <!-- COMO FUNCIONA -->
-  <section class="como-funciona">
-    <div class="section-label"><span class="num">04</span> Proceso</div>
-    <h2>¿Cómo funciona?</h2>
-    <div class="pasos">
-      <div class="paso">
-        <div class="paso-num">01</div>
-        <h3>Me contás tu negocio</h3>
-        <p>Por WhatsApp me explicás qué vendés, cómo querés que se vea y qué necesitás.</p>
-      </div>
-      <div class="paso-arrow">→</div>
-      <div class="paso">
-        <div class="paso-num">02</div>
-        <h3>Armo la página</h3>
-        <p>En 48 horas tenés una propuesta lista para que la veas y me des feedback.</p>
-      </div>
-      <div class="paso-arrow">→</div>
-      <div class="paso">
-        <div class="paso-num">03</div>
-        <h3>Ajustes y entrega</h3>
-        <p>Hacemos los cambios que necesitás y la página queda online con tu link.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section class="portfolio" id="portfolio">
-    <div class="section-label"><span class="num">05</span> Portfolio</div>
-    <h2>Trabajos realizados</h2>
-    <p class="portfolio-sub">Páginas reales, online ahora. Entrá y probalas.</p>
-    <div class="portfolio-grid">
-
-      <div class="port-item">
-        <div class="port-frame">
-          <span class="port-live">En vivo</span>
-          <picture>
-            <source type="image/webp" srcset="img/tinta-fundida.webp"/>
-            <img src="img/tinta-fundida.jpg" alt="Diseño web para taller de impresión 3D — Tinta Fundida: hero oscuro con cubo wireframe, catálogo de piezas y pedidos a medida por WhatsApp" class="port-img" loading="lazy" decoding="async" width="1440" height="855"/>
-          </picture>
-        </div>
-        <div class="port-meta">
-          <div class="port-head">
-            <h3>Catálogo para taller de impresión 3D</h3>
-            <span class="port-cliente">Tinta Fundida</span>
-          </div>
-          <div class="port-tags">
-            <span>Impresión 3D</span><span>Catálogo</span><span>Diseños a medida</span><span>Pedidos WhatsApp</span>
-          </div>
-          <a href="https://joedev10.github.io/tinta-fundida/" target="_blank" rel="noopener noreferrer" class="port-link">Ver sitio</a>
-        </div>
-      </div>
-
-      <div class="port-item">
-        <div class="port-frame">
-          <span class="port-live">En vivo</span>
-          <picture>
-            <source type="image/webp" srcset="img/lubit.webp"/>
-            <img src="img/lubit.jpg" alt="Diseño web para venta y reparación de celulares — Lubit: catálogo de smartphones, turnos y servicio técnico en CABA" class="port-img" loading="lazy" decoding="async" width="1100" height="653"/>
-          </picture>
-        </div>
-        <div class="port-meta">
-          <div class="port-head">
-            <h3>Celulares y reparaciones</h3>
-            <span class="port-cliente">Lubit</span>
-          </div>
-          <div class="port-tags">
-            <span>Venta de celulares</span><span>Reparaciones</span><span>Turnos online</span>
-          </div>
-          <a href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer" class="port-link">Ver sitio</a>
-        </div>
-      </div>
-
-      <div class="port-item">
-        <div class="port-frame">
-          <span class="port-live">En vivo</span>
-          <picture>
-            <source type="image/webp" srcset="img/pablo-helados.webp"/>
-            <img src="img/pablo-helados.jpg" alt="Diseño web para heladería — Pablo Helados: catálogo online de potes, tortas y postres con delivery a domicilio" class="port-img" loading="lazy" decoding="async" width="1100" height="688"/>
-          </picture>
-        </div>
-        <div class="port-meta">
-          <div class="port-head">
-            <h3>Heladería con delivery</h3>
-            <span class="port-cliente">Pablo Helados</span>
-          </div>
-          <div class="port-tags">
-            <span>Heladería</span><span>Catálogo online</span><span>Delivery</span>
-          </div>
-          <a href="https://heladeria-pablo.vercel.app/" target="_blank" rel="noopener noreferrer" class="port-link">Ver sitio</a>
-        </div>
-      </div>
-
-      <div class="port-item port-cta">
-        <div class="port-cta-inner">
-          <div class="port-cta-icon">→</div>
-          <h3>¿Tu negocio?</h3>
-          <p>Contactame y en 48hs tenés tu página online.</p>
-          <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Vi%20tu%20portfolio%20y%20quiero%20una%20p%C3%A1gina" target="_blank" rel="noopener noreferrer" class="btn-primary">Quiero mi página</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="testimonios">
-    <div class="section-label"><span class="num">06</span> Testimonios</div>
-    <h2>Lo que dicen mis clientes</h2>
-    <div class="testimonios-grid">
-
-      <div class="testimonio-card">
-        <div class="testimonio-estrellas">★★★★★</div>
-        <p class="testimonio-texto">"Joel me entregó la página en menos de 48 horas, tal como prometió. Quedó exactamente como la imaginé y mis clientes me preguntan constantemente quién me la hizo."</p>
-        <div class="testimonio-autor">
-          <div class="testimonio-avatar">M</div>
+        <div class="demo rv">
           <div>
-            <div class="testimonio-nombre">Martín G.</div>
-            <div class="testimonio-rol">Dueño de ferretería</div>
+            <h3>Una venta <span class="serif accent">mientras dormís.</span></h3>
+            <p>El asistente de esta página lo hice yo. Preguntale lo que quieras: precios, plazos, qué te conviene.</p>
+            <button type="button" class="btn btn-accent" id="abrir-asistente">Hablar con el asistente <span class="arr">→</span></button>
           </div>
+          <ol class="timeline">
+            <li><time>23:40</time><span>Una clienta pregunta si hay talle M en negro.</span></li>
+            <li><time>23:40</time><span>El asistente le responde con stock y precio.</span></li>
+            <li><time>23:42</time><span>Arma el pedido y lo manda por WhatsApp.</span></li>
+            <li><time>23:42</time><span>El pedido queda anotado en tu planilla.</span></li>
+            <li class="end"><time>08:00</time><span>Te levantás con la venta hecha.</span></li>
+          </ol>
         </div>
       </div>
+    </section>
 
-      <div class="testimonio-card">
-        <div class="testimonio-estrellas">★★★★★</div>
-        <p class="testimonio-texto">"Tenía miedo de que fuera complicado o caro, pero fue todo lo contrario. Joel me explicó cada paso y el resultado fue increíble. Ya recibo consultas por la web."</p>
-        <div class="testimonio-autor">
-          <div class="testimonio-avatar">L</div>
-          <div>
-            <div class="testimonio-nombre">Laura M.</div>
-            <div class="testimonio-rol">Emprendedora — tienda de ropa</div>
+    <!-- NÚMEROS -->
+    <section class="wrap" aria-label="En números" style="padding-bottom:var(--section)">
+      <div class="numbers" id="numbers">
+        <div class="number rv"><strong data-count="48" data-suffix="hs">48hs</strong><span>De la primera charla a tu página online</span></div>
+        <div class="number rv" style="--d:1"><strong data-count="7">7</strong><span>Proyectos entregados</span></div>
+        <div class="number rv" style="--d:2"><strong>24/7</strong><span>Tu negocio atendiendo, aunque no mires el celular</span></div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section" aria-labelledby="proceso-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="label rv"><b>03</b> Proceso</p>
+          <h2 class="h2 rv" id="proceso-title">Tres pasos. <span class="serif accent">Cero vueltas.</span></h2>
+        </div>
+        <ol class="steps">
+          <li class="step rv">
+            <span class="step-n">01</span>
+            <h3>Me contás tu negocio</h3>
+            <p>Por WhatsApp me explicás qué vendés, cómo querés que se vea y qué necesitás.</p>
+          </li>
+          <li class="step rv" style="--d:1">
+            <span class="step-n">02</span>
+            <h3>Armo la página</h3>
+            <p>En 48 horas tenés una propuesta lista para que la veas y me des feedback.</p>
+          </li>
+          <li class="step rv" style="--d:2">
+            <span class="step-n">03</span>
+            <h3>Ajustes y entrega</h3>
+            <p>Hacemos los cambios que necesitás y la página queda online con tu link.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!--
+      TESTIMONIOS — pendiente.
+      Los tres testimonios de la versión anterior (ferretería, tienda de ropa,
+      gimnasio) no coinciden con ningún trabajo del portfolio. Esta sección
+      vuelve cuando haya testimonios de clientes reales, idealmente con el
+      nombre del negocio y link a su página.
+    -->
+
+    <!-- BANDA OSCURA: PRECIOS + FAQ + CIERRE -->
+    <div class="dark">
+
+      <section class="section" id="precios" aria-labelledby="precios-title">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="label rv"><b>04</b> Precios</p>
+            <h2 class="h2 rv" id="precios-title">Simple y claro. <span class="serif accent">Un solo pago.</span></h2>
+            <p class="lead rv" style="--d:1">Si no quedás conforme, no pagás. Podés arrancar con el 50% y pagar el resto cuando la página esté lista.</p>
           </div>
-        </div>
-      </div>
 
-      <div class="testimonio-card">
-        <div class="testimonio-estrellas">★★★★★</div>
-        <p class="testimonio-texto">"Muy profesional y rápido. Me hizo ajustes después de la entrega sin ningún problema. Lo recomiendo a cualquier negocio que quiera tener presencia online."</p>
-        <div class="testimonio-autor">
-          <div class="testimonio-avatar">C</div>
-          <div>
-            <div class="testimonio-nombre">Carlos R.</div>
-            <div class="testimonio-rol">Dueño de gimnasio</div>
+          <div class="plans">
+            <article class="plan rv">
+              <div class="plan-top"><span class="plan-name">Básico</span></div>
+              <span class="plan-old">$380.000</span>
+              <p class="plan-price">$249.000</p>
+              <span class="plan-note">Único pago</span>
+              <ul>
+                <li>Página de tu negocio</li>
+                <li>Botón de WhatsApp</li>
+                <li>Hosting 1 año incluido</li>
+                <li>30 días de cambios gratis</li>
+              </ul>
+              <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20el%20plan%20B%C3%A1sico" class="btn btn-line" target="_blank" rel="noopener noreferrer">Quiero el Básico <span class="arr">→</span></a>
+            </article>
+
+            <article class="plan featured rv" style="--d:1">
+              <div class="plan-top"><span class="plan-name">Tienda</span><span class="plan-flag">Más pedido</span></div>
+              <span class="plan-old">$680.000</span>
+              <p class="plan-price">$449.000</p>
+              <span class="plan-note">Único pago</span>
+              <ul>
+                <li>Todo lo del Básico</li>
+                <li>Catálogo de hasta 200 productos</li>
+                <li>Carrito y pedidos por WhatsApp</li>
+                <li>60 días de cambios gratis</li>
+              </ul>
+              <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20el%20plan%20Tienda" class="btn btn-solid" target="_blank" rel="noopener noreferrer">Quiero la Tienda <span class="arr">→</span></a>
+            </article>
+
+            <article class="plan rv" style="--d:2">
+              <div class="plan-top"><span class="plan-name">A medida</span></div>
+              <span class="plan-old">$1.100.000</span>
+              <p class="plan-price">$750.000</p>
+              <span class="plan-note">Desde, según el proyecto</span>
+              <ul>
+                <li>Todo lo de Tienda</li>
+                <li>Varias páginas y dominio propio</li>
+                <li>Automatizaciones a medida</li>
+                <li>Soporte mensual con prioridad</li>
+              </ul>
+              <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20hablar%20de%20un%20proyecto%20a%20medida" class="btn btn-line" target="_blank" rel="noopener noreferrer">Hablemos del proyecto <span class="arr">→</span></a>
+            </article>
           </div>
+
+          <div class="addon precio-extra rv">
+            <div>
+              <p class="addon-kicker">Automatizaciones · se suman a cualquier plan</p>
+              <h3>Que tu negocio siga vendiendo aunque no mires el celular.</h3>
+              <p>Elegís las que te sirven y las sumo a tu página.</p>
+            </div>
+            <div class="addon-price">
+              <div><strong>$150.000</strong><span>configuración, único pago</span></div>
+              <div><strong>+ $35.000<small style="font-size:.5em">/mes</small></strong><span>mantenimiento, ajustes y costos de IA</span></div>
+            </div>
+            <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20automatizar%20mi%20negocio" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Automatizar <span class="arr">→</span></a>
+          </div>
+
+          <p class="guarantee rv">Solo tomo <strong>3 proyectos nuevos por mes</strong> para poder sostener la entrega en 48 horas.</p>
         </div>
-      </div>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title" style="padding-top:0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="label rv"><b>05</b> Preguntas</p>
+            <h2 class="h2 rv" id="faq-title">Lo que <span class="serif accent">siempre</span> me preguntan.</h2>
+          </div>
+
+          <ul class="faq">
+            <li class="faq-item rv">
+              <button type="button" class="faq-q" aria-expanded="false">¿Qué necesito para empezar?<span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Solo contarme de tu negocio: qué hacés, qué querés mostrar y si tenés fotos o logo. Con eso ya puedo arrancar. No necesitás saber nada de tecnología.</p></div></div>
+            </li>
+            <li class="faq-item rv">
+              <button type="button" class="faq-q" aria-expanded="false">¿El precio incluye hosting y dominio?<span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>El hosting (tu página publicada en internet) está incluido. El dominio personalizado (como tunegocio.com) tiene un costo adicional de alrededor de $15 USD por año, aunque también podés usar un dominio gratuito.</p></div></div>
+            </li>
+            <li class="faq-item rv">
+              <button type="button" class="faq-q" aria-expanded="false">¿Puedo pedir cambios después de la entrega?<span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Sí. Incluyo 30 días de soporte post-entrega sin costo. Cambios de texto, fotos, precios o colores los resuelvo por WhatsApp sin problema.</p></div></div>
+            </li>
+            <li class="faq-item rv">
+              <button type="button" class="faq-q" aria-expanded="false">¿Por qué las automatizaciones tienen un costo mensual?<span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Porque siguen trabajando todos los días: el asistente con IA usa un servicio que se paga por uso, y yo me encargo de que todo funcione, de ajustar las respuestas y de sumar cambios cuando tu negocio cambia. La página en sí sigue siendo un único pago.</p></div></div>
+            </li>
+            <li class="faq-item rv">
+              <button type="button" class="faq-q" aria-expanded="false">¿Se puede pagar en cuotas?<span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Sí, podemos coordinar un pago del 50% para arrancar y el resto al entregar la página. Hablame por WhatsApp y lo arreglamos.</p></div></div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="closing cta-final" id="contacto" aria-labelledby="cierre-title">
+        <div class="wrap">
+          <p class="closing-kicker rv">¿Listo para tener tu página?</p>
+          <h2 id="cierre-title" style="margin:0">
+            <a class="big-link rv" href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer">Hable<span class="serif">mos</span><span class="arr" aria-hidden="true">→</span></a>
+          </h2>
+          <p class="closing-sub rv">Escribime por WhatsApp y en menos de 5 minutos te cuento cómo empezamos.</p>
+
+          <footer class="footer">
+            <span>© 2026 Deploy · Joel Rodríguez · Buenos Aires</span>
+            <nav aria-label="Contacto">
+              <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href="https://www.instagram.com/joelrodrigueznk" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="#top">Volver arriba ↑</a>
+            </nav>
+          </footer>
+        </div>
+      </section>
 
     </div>
-  </section>
+  </main>
 
-  <!-- PRECIOS -->
-  <section class="precios" id="precios">
-    <div class="section-label"><span class="num">07</span> Precios</div>
-    <h2>Planes simples y claros</h2>
-    <p class="precios-sub">Un solo pago. Si no quedás conforme, no pagás.</p>
-    <div class="precios-grid">
-
-      <div class="precio-card">
-        <div class="plan-name">Básico</div>
-        <div class="plan-precio"><span class="precio-tachado">$380.000</span> $249.000<span>/único pago</span></div>
-        <ul class="plan-items">
-          <li>Página de tu negocio</li>
-          <li>Botón de WhatsApp</li>
-          <li>Hosting 1 año incluido</li>
-          <li>30 días de cambios gratis</li>
-        </ul>
-        <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Me%20interesa%20el%20plan%20B%C3%A1sico" class="btn-plan" target="_blank" rel="noopener noreferrer">Quiero el plan Básico</a>
-      </div>
-
-      <div class="precio-card destacado">
-        <div class="plan-badge">Más pedido</div>
-        <div class="plan-name">Tienda</div>
-        <div class="plan-precio"><span class="precio-tachado">$680.000</span> $449.000<span>/único pago</span></div>
-        <ul class="plan-items">
-          <li>Todo lo del Básico</li>
-          <li>Catálogo de hasta 200 productos</li>
-          <li>Carrito y pedidos por WhatsApp</li>
-          <li>60 días de cambios gratis</li>
-        </ul>
-        <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Me%20interesa%20el%20plan%20Tienda" class="btn-plan btn-plan-dest" target="_blank" rel="noopener noreferrer">Quiero el plan Tienda</a>
-      </div>
-
-      <div class="precio-card">
-        <div class="plan-name">A medida</div>
-        <div class="plan-precio"><span class="precio-tachado">$1.100.000</span> Desde $750.000<span></span></div>
-        <ul class="plan-items">
-          <li>Todo lo de Tienda</li>
-          <li>Varias páginas y dominio propio</li>
-          <li>Automatizaciones a medida</li>
-          <li>Soporte mensual con prioridad</li>
-        </ul>
-        <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20un%20plan%20a%20medida" class="btn-plan" target="_blank" rel="noopener noreferrer">Hablemos del proyecto</a>
-      </div>
-
-    </div>
-
-    <div class="precio-extra-wrap">
-      <div class="precio-extra">
-        <div class="extra-texto">
-          <div class="plan-name">Automatizaciones · se suman a cualquier plan</div>
-          <h3>Que tu negocio siga vendiendo aunque no mires el celular</h3>
-          <p>Elegís las que te sirven y las sumo a tu página.</p>
-        </div>
-        <div class="extra-precios">
-          <div class="extra-fila"><span class="extra-monto">Desde $150.000</span><span class="extra-detalle">configuración, único pago</span></div>
-          <div class="extra-fila"><span class="extra-monto">+ $35.000<small>/mes</small></span><span class="extra-detalle">mantenimiento, ajustes y costos de IA</span></div>
-          <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20automatizar%20mi%20negocio" class="btn-plan btn-plan-dest" target="_blank" rel="noopener noreferrer">Quiero automatizar mi negocio</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="section-label"><span class="num">08</span> FAQ</div>
-    <h2>Preguntas frecuentes</h2>
-    <div class="faq-lista">
-
-      <div class="faq-item">
-        <button type="button" class="faq-pregunta">¿Qué necesito para empezar? <span class="faq-icono">+</span></button>
-        <div class="faq-respuesta">
-          <p>Solo contarme de tu negocio: qué hacés, qué querés mostrar y si tenés fotos o logo. Con eso ya puedo arrancar. No necesitás saber nada de tecnología.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button type="button" class="faq-pregunta">¿El precio incluye hosting y dominio? <span class="faq-icono">+</span></button>
-        <div class="faq-respuesta">
-          <p>El hosting (tu página publicada en internet) está incluido. El dominio personalizado (como tunegocio.com) tiene un costo adicional de alrededor de $15 USD por año, aunque también podés usar un dominio gratuito.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button type="button" class="faq-pregunta">¿Puedo pedir cambios después de la entrega? <span class="faq-icono">+</span></button>
-        <div class="faq-respuesta">
-          <p>Sí. Incluyo 30 días de soporte post-entrega sin costo. Cambios de texto, fotos, precios o colores los resuelvo por WhatsApp sin problema.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button type="button" class="faq-pregunta">¿Por qué las automatizaciones tienen un costo mensual? <span class="faq-icono">+</span></button>
-        <div class="faq-respuesta">
-          <p>Porque siguen trabajando todos los días: el asistente con IA usa un servicio que se paga por uso, y yo me encargo de que todo funcione, de ajustar las respuestas y de sumar cambios cuando tu negocio cambia. La página en sí sigue siendo un único pago.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button type="button" class="faq-pregunta">¿Se puede pagar en cuotas? <span class="faq-icono">+</span></button>
-        <div class="faq-respuesta">
-          <p>Sí, podemos coordinar un pago del 50% para arrancar y el resto al entregar la página. Hablame por WhatsApp y lo arreglamos.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-final" id="contacto">
-    <h2>¿Listo para tener tu página?</h2>
-    <p>Escribime por WhatsApp y en menos de 5 minutos te cuento cómo empezamos.</p>
-    <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" class="btn-cta" target="_blank" rel="noopener noreferrer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" width="20" height="20" style="vertical-align:middle;margin-right:8px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Escribir por WhatsApp ahora
-    </a>
-    <div class="social-links">
-      <a href="https://www.instagram.com/joelrodrigueznk" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="vertical-align:middle;margin-right:6px"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FFDC80"/><stop offset="25%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#FD1D1D"/><stop offset="75%" stop-color="#C13584"/><stop offset="100%" stop-color="#405DE6"/></linearGradient></defs><path fill="url(#ig-grad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Joel Rodriguez — Páginas web y automatizaciones para emprendedores</p>
-  </footer>
-
-
-<!-- STICKY WHATSAPP BAR (mobile) -->
-<div class="sticky-wa-bar" id="stickyWaBar">
-  <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="sticky-wa-btn" target="_blank" rel="noopener noreferrer">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Quiero mi página web ahora
-  </a>
-</div>
+  <!-- Barra fija de WhatsApp en mobile, aparece cuando el botón del hero sale de pantalla -->
+  <div class="sticky-wa" id="stickyWa">
+    <a href="https://wa.me/5491144091981?text=Hola%20Deploy!%20Quiero%20una%20p%C3%A1gina%20web" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Escribime por WhatsApp <span class="arr">→</span></a>
+  </div>
 
 <!-- CHAT WIDGET -->
 <div id="chat-tooltip">💬 ¡Hola! ¿Querés una página web? <span class="tooltip-close" id="tooltip-close">✕</span></div>
@@ -917,102 +837,118 @@
     input.style.height = Math.min(input.scrollHeight, 100) + "px";
   });
 
-  // Scroll reveal
-  (function() {
-    const groups = document.querySelectorAll(
-      '.servicios-grid, .auto-grid, .auto-flujo ol, .dolores-grid, .portfolio-grid, .testimonios-grid, .precios-grid, .razones, .pasos, .faq-lista'
-    );
-    groups.forEach(g => {
-      Array.from(g.children).forEach((child, i) => {
-        child.style.transitionDelay = (i * 0.1) + 's';
-        child.classList.add('reveal');
-      });
-    });
-    document.querySelectorAll('.section-label, section > h2, .auto-intro h2, .auto-prueba, .precio-extra, .hero-stats, .portfolio-sub, .precios-sub').forEach(el => {
-      el.classList.add('reveal');
-    });
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  })();
+  /* ===== Comportamiento del rediseño ===== */
 
-  // Animated counters
-  function animateCounter(el, target, suffix, duration) {
-    let start = null;
-    const step = ts => {
-      if (!start) start = ts;
-      const progress = Math.min((ts - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const statsObs = new IntersectionObserver(entries => {
+  // Entrada del hero: las palabras suben recién cuando la página terminó de pintar
+  requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add("loaded")));
+
+  // Revelado al hacer scroll
+  const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.querySelectorAll('.stat strong').forEach(stat => {
-          const t = stat.textContent;
-          if (t.includes('48')) animateCounter(stat, 48, 'hs', 1200);
-          else if (t === '7') animateCounter(stat, 7, '', 1000);
-          else if (t.includes('100')) animateCounter(stat, 100, '%', 1400);
-        });
-        statsObs.unobserve(e.target);
+        e.target.classList.add("in");
+        revealObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.5 });
-  const heroStats = document.querySelector('.hero-stats');
-  if (heroStats) statsObs.observe(heroStats);
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  document.querySelectorAll(".rv").forEach(el => revealObs.observe(el));
 
-  // Sticky WhatsApp bar — show after hero CTA leaves viewport
-  const stickyWaBar = document.getElementById('stickyWaBar');
-  if (stickyWaBar) {
-    const heroBtns = document.querySelector('.hero-btns');
-    const stickyObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        stickyWaBar.classList.toggle('visible', !e.isIntersecting);
-      });
-    }, { threshold: 0 });
-    if (heroBtns) stickyObs.observe(heroBtns);
+  // Contadores
+  function contar(el) {
+    const target = Number(el.dataset.count);
+    const suffix = el.dataset.suffix || "";
+    if (reduceMotion) { el.textContent = target + suffix; return; }
+    const duracion = 1400;
+    let inicio = null;
+    const paso = ts => {
+      if (!inicio) inicio = ts;
+      const p = Math.min((ts - inicio) / duracion, 1);
+      el.textContent = Math.round((1 - Math.pow(1 - p, 4)) * target) + suffix;
+      if (p < 1) requestAnimationFrame(paso);
+    };
+    requestAnimationFrame(paso);
+  }
+  const numbersObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll("[data-count]").forEach(contar);
+        numbersObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  const numbers = document.getElementById("numbers");
+  if (numbers) numbersObs.observe(numbers);
+
+  // Header: se vuelve sólido al bajar, se esconde al seguir bajando, vuelve al subir
+  const header = document.getElementById("siteHeader");
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  let ultimoY = window.scrollY;
+  let pendiente = false;
+  window.addEventListener("scroll", () => {
+    if (pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      header.classList.toggle("solid", y > 40);
+      const menuAbierto = mobileMenu.classList.contains("open");
+      header.classList.toggle("hide", !menuAbierto && y > 480 && y > ultimoY);
+      ultimoY = y;
+      pendiente = false;
+    });
+  }, { passive: true });
+
+  // Menú mobile
+  function cerrarMenu() {
+    menuBtn.classList.remove("open");
+    mobileMenu.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    mobileMenu.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  menuBtn.addEventListener("click", () => {
+    const abrir = !mobileMenu.classList.contains("open");
+    if (!abrir) return cerrarMenu();
+    menuBtn.classList.add("open");
+    mobileMenu.classList.add("open");
+    menuBtn.setAttribute("aria-expanded", "true");
+    mobileMenu.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  });
+  mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", cerrarMenu));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") cerrarMenu(); });
+
+  // Preguntas frecuentes
+  document.querySelectorAll(".faq-item").forEach(item => {
+    const boton = item.querySelector(".faq-q");
+    boton.addEventListener("click", () => {
+      const abierto = item.classList.toggle("open");
+      boton.setAttribute("aria-expanded", String(abierto));
+    });
+  });
+
+  // Barra fija de WhatsApp: aparece cuando los botones del hero salen de pantalla
+  const stickyWa = document.getElementById("stickyWa");
+  const heroActions = document.getElementById("heroActions");
+  if (stickyWa && heroActions) {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => stickyWa.classList.toggle("visible", !e.isIntersecting && e.boundingClientRect.top < 0));
+    }).observe(heroActions);
   }
 
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-pregunta').addEventListener('click', () => {
-      item.classList.toggle('open');
-    });
-  });
-
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('open');
-  });
-  mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('open');
-    });
-  });
-
-  // Meta Pixel — track WhatsApp clicks as Lead conversions
+  // Meta Pixel — cada clic a WhatsApp cuenta como Lead, con la sección de origen
   document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-    link.addEventListener('click', () => {
-      if (typeof fbq === 'function') {
-        fbq('track', 'Lead', {
-          content_name: 'WhatsApp Click',
-          content_category: link.closest('.precio-extra') ? 'Automatizaciones' :
-                            link.closest('.precios') ? 'Pricing' :
-                            link.closest('.hero')    ? 'Hero'    :
-                            link.closest('.cta-final') ? 'CTA Final' :
-                            link.closest('.portfolio') ? 'Portfolio' : 'Other'
+    link.addEventListener("click", () => {
+      if (typeof fbq === "function") {
+        fbq("track", "Lead", {
+          content_name: "WhatsApp Click",
+          content_category: link.closest(".precio-extra") ? "Automatizaciones" :
+                            link.closest("#precios")      ? "Pricing" :
+                            link.closest(".hero")         ? "Hero" :
+                            link.closest(".cta-final")    ? "CTA Final" :
+                            link.closest(".portfolio")    ? "Portfolio" : "Other"
         });
       }
     });
