@@ -1,35 +1,39 @@
 /* ==========================================================
-   Deploy — rediseño editorial
-   Papel claro + tinta, un solo acento, tipografía grande,
-   mucho aire y movimiento al hacer scroll.
+   MJR Digital — rediseño según manual de marca (Natalia Peña)
+   Azul noche, azul intenso, blanco y negro.
+   Montserrat en títulos, Inter en el texto.
+   --wa: color de los botones de WhatsApp.
+         Hoy sigue la paleta (#0444E4).
+         Para el verde clásico, cambiar solo esta línea a #25D366.
    ========================================================== */
 
 :root {
-  /* Papel y tinta */
-  --bg: #F3F0EA;
-  --surface: #FBFAF7;
-  --surface-2: #ECE8E0;
-  --text: #141414;
-  --muted: #5F5B53;
-  --line: #DDD8CE;
-  --line-2: #C9C3B7;
+  /* Superficies claras */
+  --bg: #FFFFFF;
+  --surface: #F4F6F9;          /* tinte de azul noche sobre blanco */
+  --surface-2: #E6EAF1;
+  --text: #000000;
+  --muted: #3D3D3D;
+  --line: rgba(10, 25, 58, .14);
+  --line-2: rgba(10, 25, 58, .22);
 
-  /* Banda oscura (precios, cierre) */
-  --ink: #141414;
-  --ink-2: #1F1E1C;
-  --ink-line: #34322E;
-  --ink-text: #F3F0EA;
-  --ink-muted: #9A958B;
+  /* Banda oscura y hero */
+  --ink: #0A193A;
+  --ink-2: #102044;
+  --ink-line: rgba(255, 255, 255, .14);
+  --ink-text: #FFFFFF;
+  --ink-muted: rgba(255, 255, 255, .68);
 
-  /* Un solo acento */
-  --accent: #D63A12;
-  --accent-on-ink: #FF5A2C;
-  --accent-glow: rgba(214, 58, 18, .28);
-  --wa: #25D366;
+  /* Acento de marca */
+  --accent: #0444E4;
+  --accent-on-ink: #FFFFFF;
+  --accent-glow: rgba(4, 68, 228, .32);
+  --wa: #0444E4; /* DECISIÓN ABIERTA: cambiar a #25D366 si se prefiere el verde de WhatsApp */
 
   /* Tipografía */
-  --f-sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-head: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-serif: var(--f-head);
 
   /* Ritmo */
   --gutter: clamp(20px, 4vw, 56px);
@@ -48,6 +52,7 @@ body {
   color: var(--text);
   font-family: var(--f-sans);
   font-size: 17px;
+  font-weight: 500;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -74,10 +79,10 @@ button { font: inherit; color: inherit; }
 }
 
 .serif {
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -.01em;
+  font-family: var(--f-head);
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: -.04em;
 }
 
 .accent { color: var(--accent); }
@@ -112,8 +117,9 @@ button { font: inherit; color: inherit; }
 
 .h2 {
   margin: 0;
-  font-size: clamp(40px, 6.4vw, 96px);
-  font-weight: 500;
+  font-family: var(--f-head);
+  font-size: clamp(36px, 5.6vw, 84px);
+  font-weight: 800;
   line-height: .95;
   letter-spacing: -.045em;
 }
@@ -178,7 +184,7 @@ button { font: inherit; color: inherit; }
   border-bottom: 1px solid transparent;
 }
 .site-header.solid {
-  background: rgba(243, 240, 234, .82);
+  background: rgba(255, 255, 255, .9);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
   backdrop-filter: saturate(1.4) blur(14px);
   border-bottom-color: var(--line);
@@ -196,16 +202,20 @@ button { font: inherit; color: inherit; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -.03em;
+  line-height: 0;
 }
-.brand-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
+.brand img {
+  display: block;
+  height: 40px;
+  width: auto;
 }
+.brand .logo-original { display: none; }
+.brand .logo-negativo { display: block; }
+.site-header.solid .brand .logo-original { display: block; }
+.site-header.solid .brand .logo-negativo { display: none; }
+.mobile-menu .brand { margin-bottom: 12px; }
+.mobile-menu .brand .logo-original { display: block; }
+.mobile-menu .brand .logo-negativo { display: none; }
 
 .nav { display: flex; gap: 34px; font-size: 15px; }
 .nav a { position: relative; color: var(--muted); transition: color .3s; }
@@ -261,8 +271,9 @@ button { font: inherit; color: inherit; }
 }
 .mobile-menu.open { clip-path: inset(0 0 0 0); }
 .mobile-menu a {
-  font-size: clamp(40px, 12vw, 64px);
-  font-weight: 500;
+  font-family: var(--f-head);
+  font-size: clamp(36px, 11vw, 60px);
+  font-weight: 800;
   letter-spacing: -.045em;
   line-height: 1.1;
 }
@@ -300,21 +311,22 @@ button { font: inherit; color: inherit; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #2E9E5B;
-  box-shadow: 0 0 0 0 rgba(46, 158, 91, .5);
+  background: #0444E4;
+  box-shadow: 0 0 0 0 rgba(4, 68, 228, .5);
   animation: pulse 2.4s infinite;
 }
 @keyframes pulse {
-  70% { box-shadow: 0 0 0 9px rgba(46, 158, 91, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(46, 158, 91, 0); }
+  70% { box-shadow: 0 0 0 9px rgba(4, 68, 228, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(4, 68, 228, 0); }
 }
 
 .hero-title {
   margin: 0;
-  font-size: clamp(52px, 10.4vw, 168px);
-  font-weight: 500;
-  line-height: .9;
-  letter-spacing: -.055em;
+  font-family: var(--f-head);
+  font-size: clamp(40px, 7.2vw, 104px);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.045em;
 }
 .hero-title .serif { letter-spacing: -.03em; }
 
@@ -378,8 +390,9 @@ button { font: inherit; color: inherit; }
   align-items: center;
   gap: clamp(20px, 3vw, 44px);
   padding-right: clamp(20px, 3vw, 44px);
-  font-size: clamp(28px, 4.4vw, 64px);
-  font-weight: 500;
+  font-family: var(--f-head);
+  font-size: clamp(24px, 3.6vw, 52px);
+  font-weight: 700;
   letter-spacing: -.04em;
 }
 .marquee span:nth-child(even) .serif { color: var(--accent); }
@@ -449,8 +462,9 @@ button { font: inherit; color: inherit; }
 }
 .work-title {
   margin: 0;
+  font-family: var(--f-head);
   font-size: clamp(26px, 2.8vw, 40px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -.035em;
   line-height: 1.05;
 }
@@ -486,7 +500,7 @@ button { font: inherit; color: inherit; }
   transition: background .5s var(--ease);
 }
 .work-next:hover { background: var(--accent); }
-.work-next .serif { font-size: clamp(44px, 5vw, 76px); line-height: .95; }
+.work-next .serif { font-size: clamp(36px, 4.4vw, 64px); line-height: .95; }
 .work-next p { margin: 0; max-width: 26ch; color: inherit; opacity: .75; }
 .work-next .go {
   display: inline-flex;
@@ -527,10 +541,11 @@ button { font: inherit; color: inherit; }
 }
 .service h3 {
   margin: 0;
-  font-size: clamp(28px, 3.6vw, 52px);
-  font-weight: 500;
+  font-family: var(--f-head);
+  font-size: clamp(26px, 3.2vw, 46px);
+  font-weight: 700;
   letter-spacing: -.04em;
-  line-height: 1;
+  line-height: 1.05;
   transition: transform .6s var(--ease), color .4s;
 }
 .service:hover h3 { transform: translateX(10px); color: var(--accent); }
@@ -560,8 +575,9 @@ button { font: inherit; color: inherit; }
 }
 .demo h3 {
   margin: 0 0 14px;
+  font-family: var(--f-head);
   font-size: clamp(32px, 3.6vw, 52px);
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: -.04em;
   line-height: 1;
 }
@@ -580,7 +596,7 @@ button { font: inherit; color: inherit; }
 .timeline time { color: var(--muted); font-variant-numeric: tabular-nums; }
 .timeline .end time,
 .timeline .end span { color: var(--accent); }
-.timeline .end span { font-family: var(--f-serif); font-style: italic; font-size: 22px; }
+.timeline .end span { font-family: var(--f-head); font-weight: 800; font-size: 20px; }
 
 /* ---------- Números ---------- */
 
@@ -595,8 +611,9 @@ button { font: inherit; color: inherit; }
 }
 .number strong {
   display: block;
-  font-size: clamp(80px, 10.5vw, 160px);
-  font-weight: 500;
+  font-family: var(--f-head);
+  font-size: clamp(64px, 8.5vw, 128px);
+  font-weight: 800;
   letter-spacing: -.06em;
   line-height: .85;
   font-variant-numeric: tabular-nums;
@@ -626,16 +643,17 @@ button { font: inherit; color: inherit; }
 .step-n {
   display: block;
   margin-bottom: 40px;
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: clamp(64px, 7vw, 104px);
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: clamp(56px, 6.4vw, 96px);
   line-height: .8;
   color: var(--accent);
 }
 .step h3 {
   margin: 0 0 10px;
+  font-family: var(--f-head);
   font-size: clamp(24px, 2.2vw, 30px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -.03em;
 }
 .step p { margin: 0; color: var(--muted); max-width: 32ch; }
@@ -679,7 +697,7 @@ button { font: inherit; color: inherit; }
   gap: 12px;
   margin-bottom: 40px;
 }
-.plan-name { font-size: 20px; font-weight: 500; letter-spacing: -.02em; }
+.plan-name { font-family: var(--f-head); font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
 .plan-flag {
   padding: 5px 11px;
   border-radius: 999px;
@@ -692,8 +710,9 @@ button { font: inherit; color: inherit; }
 .plan.featured .plan-old { color: var(--muted); }
 .plan-price {
   margin: 6px 0 4px;
-  font-size: clamp(44px, 4.4vw, 64px);
-  font-weight: 500;
+  font-family: var(--f-head);
+  font-size: clamp(36px, 3.6vw, 52px);
+  font-weight: 800;
   letter-spacing: -.05em;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -736,14 +755,15 @@ button { font: inherit; color: inherit; }
 .addon-kicker { margin: 0 0 10px; color: var(--accent-on-ink); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
 .addon h3 {
   margin: 0 0 8px;
+  font-family: var(--f-head);
   font-size: clamp(24px, 2.6vw, 36px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -.035em;
   line-height: 1.05;
 }
 .addon p { margin: 0; color: var(--ink-muted); }
 .addon-price { display: flex; flex-wrap: wrap; gap: 8px 28px; }
-.addon-price strong { display: block; font-size: 30px; font-weight: 500; letter-spacing: -.04em; }
+.addon-price strong { display: block; font-family: var(--f-head); font-size: 30px; font-weight: 700; letter-spacing: -.04em; }
 .addon-price span { color: var(--ink-muted); font-size: 14px; }
 
 .guarantee {
@@ -768,8 +788,9 @@ button { font: inherit; color: inherit; }
   background: none;
   text-align: left;
   cursor: pointer;
+  font-family: var(--f-head);
   font-size: clamp(20px, 2vw, 26px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -.025em;
   color: var(--ink-text);
 }
@@ -819,17 +840,20 @@ button { font: inherit; color: inherit; }
 .big-link {
   display: inline-flex;
   align-items: baseline;
-  gap: .12em;
-  font-size: clamp(76px, 17vw, 280px);
-  font-weight: 500;
+  flex-wrap: wrap;
+  gap: 0;
+  font-family: var(--f-head);
+  font-size: clamp(52px, 10vw, 140px);
+  font-weight: 800;
   letter-spacing: -.07em;
-  line-height: .82;
+  line-height: .88;
   color: var(--ink-text);
   transition: color .5s var(--ease);
 }
 .big-link .serif { color: var(--accent-on-ink); letter-spacing: -.03em; }
 .big-link .arr {
   font-size: .38em;
+  margin-left: .16em;
   transform: translateY(-.1em);
   transition: transform .6s var(--ease);
 }
@@ -934,4 +958,186 @@ button { font: inherit; color: inherit; }
   }
   .rv, .word > span, .fade-up { opacity: 1; transform: none; }
   .marquee-track { animation: none; }
+}
+
+
+/* ---------- Hero oscuro + header sobre el hero ---------- */
+
+.hero-stage {
+  background: var(--ink);
+  color: var(--ink-text);
+}
+.hero-stage .hero-meta,
+.hero-stage .hero-foot p { color: var(--ink-muted); }
+.hero-stage .hero-foot p strong,
+.hero-stage .status { color: var(--ink-text); }
+.hero-stage .hero-foot { border-top-color: var(--ink-line); }
+.hero-stage .accent { color: #7BA0FF; } /* tinte claro del azul intenso, legible sobre azul noche */
+.hero-stage .btn-line { border-color: var(--ink-line); color: var(--ink-text); }
+.hero-stage .btn-line::before { background: #fff; }
+.hero-stage .btn-line:hover { color: var(--ink); border-color: #fff; }
+
+.site-header { color: var(--ink-text); }
+.site-header .nav a { color: var(--ink-muted); }
+.site-header .nav a:hover { color: var(--ink-text); }
+.site-header .menu-btn { border-color: var(--ink-line); }
+.site-header .menu-btn span { background: var(--ink-text); }
+
+.site-header.solid { color: var(--text); }
+.site-header.solid .nav a { color: var(--muted); }
+.site-header.solid .nav a:hover { color: var(--text); }
+.site-header.solid .menu-btn { border-color: var(--line-2); }
+.site-header.solid .menu-btn span { background: var(--text); }
+
+/* Marquesina sobre el hero oscuro */
+.hero-stage .marquee {
+  border-top-color: var(--ink-line);
+  border-bottom-color: var(--ink-line);
+  color: var(--ink-text);
+}
+
+/* ---------- Botón principal (WhatsApp) ---------- */
+
+.btn-wa {
+  background: var(--wa);
+  color: #fff;
+  font-weight: 600;
+}
+.btn-wa::before { background: var(--ink); }
+.btn-wa .wa-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: #25D366; /* icono chico en verde, reconocible; el botón usa --wa */
+}
+.btn-solid { background: var(--text); color: var(--bg); }
+.dark .btn-solid { background: var(--ink-text); color: var(--ink); }
+.dark .btn-solid::before { background: var(--accent); }
+.dark .btn-solid:hover { color: #fff; }
+.plan.featured .btn-solid { background: var(--ink); color: #fff; }
+.plan.featured .btn-solid::before { background: var(--accent); }
+
+/* ---------- Quién está detrás ---------- */
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px 32px;
+  padding: clamp(28px, 4vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  margin-top: clamp(48px, 6vw, 80px);
+}
+.about-kicker {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.about p {
+  margin: 0;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 32px);
+  letter-spacing: -.03em;
+  line-height: 1.25;
+  max-width: 28ch;
+}
+.about a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.about a:hover { color: var(--ink); }
+
+@media (min-width: 720px) {
+  .about {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+}
+
+/* ---------- Chips de demo del asistente ---------- */
+
+.demo-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 22px;
+}
+.chip {
+  border: 1px solid var(--line-2);
+  background: #fff;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .3s, color .3s, border-color .3s;
+}
+.chip:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ---------- Precios: alta + mensual ---------- */
+
+.plan-price-block { margin: 0; }
+.plan-price-block .plan-price { margin: 0; }
+.plan-alta {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+.plan.featured .plan-alta { color: var(--muted); }
+.plan-mes {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(22px, 2vw, 28px);
+  letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums;
+}
+.plan-trial {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--ink-line);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.plan.featured .plan-trial { border-color: var(--line-2); }
+
+.prices-note {
+  margin: 16px 0 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+  max-width: 62ch;
+}
+
+.dark .accent { color: #7BA0FF; }
+.big-link .serif { color: #7BA0FF; }
+.big-link:hover { color: #7BA0FF; }
+
+/* Asegurar contraste del tag sobre azul intenso */
+.service-tag, .plan-flag { font-weight: 600; }
+
+/* Sticky WA en mobile: no tapar con sombras naranjas */
+.sticky-wa .btn { box-shadow: 0 14px 40px rgba(10, 25, 58, .35); }
+
+
+/* Anclas: que el header fijo no tape el título de la sección */
+#demos, #servicios, #precios, #faq, #contacto, #proceso-title {
+  scroll-margin-top: 96px;
 }
