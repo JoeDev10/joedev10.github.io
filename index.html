@@ -41,7 +41,7 @@
     "url": "https://joedev10.github.io/",
     "areaServed": "Argentina",
     "serviceType": ["Automatización con IA", "Agente de WhatsApp", "Diseño Web"],
-        "founder": {
+    "founder": {
       "@type": "Person",
       "name": "Joel Rodriguez",
       "address": {
@@ -65,25 +65,9 @@
   <link rel="apple-touch-icon" href="img/apple-touch.png" />
   <link rel="stylesheet" href="estilos.css" />
 
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    // Reemplazar por el ID real del Pixel. Mientras siga el placeholder no se
-    // inicializa: Meta rechaza el ID inválido y los Leads no se contarían igual.
-    var PIXEL_ID = 'TU_PIXEL_ID';
-    if (PIXEL_ID !== 'TU_PIXEL_ID') {
-      fbq('init', PIXEL_ID);
-      fbq('track', 'PageView');
-    }
-  </script>
-  <!-- End Meta Pixel Code -->
+  <!-- Meta Pixel: desactivado hasta tener el ID real del Pixel.
+       Para activarlo, pegar acá el código oficial de Meta con ese ID.
+       Los clics a WhatsApp ya mandan el evento Lead si fbq existe. -->
 
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
@@ -110,17 +94,17 @@
         <a href="#precios">Combos</a>
         <a href="#faq">Preguntas</a>
       </nav>
-      <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa header-cta" target="_blank" rel="noopener noreferrer"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.44-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.44 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.8c2.17 0 4.2.85 5.73 2.38a8.07 8.07 0 0 1 2.38 5.73c0 4.48-3.64 8.12-8.11 8.12-1.42 0-2.82-.37-4.05-1.08l-.29-.17-3.12.82.83-3.04-.19-.31a8.1 8.1 0 0 1-1.24-4.34c0-4.47 3.64-8.11 8.11-8.11zm-2.7 4.36c-.17 0-.44.06-.67.31-.23.26-.89.87-.89 2.13 0 1.26.91 2.48 1.04 2.65.13.17 1.76 2.82 4.36 3.84 2.16.85 2.6.68 3.07.64.47-.04 1.52-.62 1.73-1.22.22-.6.22-1.11.15-1.22-.07-.11-.26-.17-.54-.3-.28-.13-1.66-.82-1.92-.91-.26-.1-.44-.13-.63.13-.19.26-.73.91-.89 1.1-.16.17-.33.2-.61.07-.28-.13-1.18-.43-2.25-1.39-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.56.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.49-.07-.13-.62-1.52-.86-2.08-.22-.53-.45-.46-.63-.47z"/></svg>Probalo 15 días gratis <span class="arr">→</span></a>
+      <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa header-cta" target="_blank" rel="noopener noreferrer"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.44-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.44 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.8c2.17 0 4.2.85 5.73 2.38a8.07 8.07 0 0 1 2.38 5.73c0 4.48-3.64 8.12-8.11 8.12-1.42 0-2.82-.37-4.05-1.08l-.29-.17-3.12.82.83-3.04-.19-.31a8.1 8.1 0 0 1-1.24-4.34c0-4.47 3.64-8.11 8.11-8.11zm-2.7 4.36c-.17 0-.44.06-.67.31-.23.26-.89.87-.89 2.13 0 1.26.91 2.48 1.04 2.65.13.17 1.76 2.82 4.36 3.84 2.16.85 2.6.68 3.07.64.47-.04 1.52-.62 1.73-1.22.22-.6.22-1.11.15-1.22-.07-.11-.26-.17-.54-.3-.28-.13-1.66-.82-1.92-.91-.26-.1-.44-.13-.63.13-.19.26-.73.91-.89 1.1-.16.17-.33.2-.61.07-.28-.13-1.18-.43-2.25-1.39-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.56.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.49-.07-.13-.62-1.52-.86-2.08-.22-.53-.45-.46-.63-.47z"/></svg>Probalo 15 días gratis <span class="arr">→</span></a>
       <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
     <a href="#demos" class="m-link">Demos</a>
     <a href="#servicios" class="m-link">Servicios</a>
     <a href="#precios" class="m-link">Combos</a>
     <a href="#faq" class="m-link">Preguntas</a>
-    <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
+    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
   </div>
 
   <main id="top">
@@ -144,7 +128,7 @@
       <div class="hero-foot fade-up">
         <p>Automatizaciones con IA para contadores, abogados y consultorios de zona sur: agente de WhatsApp, turnos, recordatorios y seguimiento. <strong>Y si no tenés web, te la armamos.</strong></p>
         <div class="hero-actions" id="heroActions">
-          <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
           <a href="#demos" class="btn btn-line">Ver demos</a>
         </div>
       </div>
@@ -192,7 +176,7 @@
               </div>
               <span class="work-num">01</span>
             </div>
-            <ul class="work-tags"><li>Catálogo</li><li>Diseños a medida</li><li>Pedidos WhatsApp</li></ul>
+            <ul class="work-tags"><li>Catálogo</li><li>Diseños a medida</li><li>Pedidos por WhatsApp</li></ul>
           </a>
 
           <a class="work rv" style="--d:1" href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer">
@@ -231,7 +215,7 @@
             <ul class="work-tags"><li>Catálogo online</li><li>Delivery</li></ul>
           </a>
 
-          <a class="work-next rv" style="--d:1" href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">
+          <a class="work-next rv" style="--d:1" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">
             <span class="serif">¿Tu consulta?</span>
             <div>
               <p>Probalo 15 días gratis en tu WhatsApp. Si no tenés web, también te la armamos.</p>
@@ -285,6 +269,7 @@
             <span class="service-n">05</span>
             <h3>Tu página web</h3>
             <p>Una página profesional para empezar, pensada para el celular e integrada con el agente. El punto de entrada si todavía no tenés web.</p>
+            <span class="service-tag">Punto de entrada</span>
           </li>
         </ol>
 
@@ -362,7 +347,7 @@
 
           <div class="plans">
             <article class="plan rv">
-              <div class="plan-top"><span class="plan-name">Arranque</span></div>
+              <div class="plan-top"><h3 class="plan-name">Arranque</h3></div>
               <div class="plan-price-block">
                 <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
                 <span class="plan-trial">15 días de prueba del agente</span>
@@ -373,11 +358,11 @@
                 <li>Hasta 2 cambios chicos por mes</li>
                 <li>Dominio propio, si lo querés</li>
               </ul>
-              <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
+              <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
             </article>
 
             <article class="plan featured rv" style="--d:1">
-              <div class="plan-top"><span class="plan-name">Básico</span><span class="plan-flag">Recomendado</span></div>
+              <div class="plan-top"><h3 class="plan-name">Básico</h3><span class="plan-flag">Recomendado</span></div>
               <div class="plan-price-block">
                 <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
                 <span class="plan-trial">15 días de prueba del agente</span>
@@ -388,11 +373,11 @@
                 <li>Dominio .com.ar el primer año, hosting y SSL</li>
                 <li>Alta en Google Search Console, 1 ronda de cambios y capacitación corta</li>
               </ul>
-              <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
+              <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
             </article>
 
             <article class="plan rv" style="--d:2">
-              <div class="plan-top"><span class="plan-name">Completo</span></div>
+              <div class="plan-top"><h3 class="plan-name">Completo</h3></div>
               <div class="plan-price-block">
                 <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
                 <span class="plan-trial">15 días de prueba del agente</span>
@@ -403,7 +388,7 @@
                 <li>Link de pedidos o de turnos, integrado en la web</li>
                 <li>Dominio .com.ar el primer año, hosting, SSL, Search Console, 2 rondas de cambios y capacitación</li>
               </ul>
-              <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
+              <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
             </article>
           </div>
 
@@ -437,10 +422,6 @@
               <div class="faq-a"><div><p>Sí. En Arranque, hasta 2 cambios chicos por mes. En Básico, 1 ronda de cambios en la web. En Completo, 2 rondas. Después, los ajustes del agente y de la web los vemos por WhatsApp.</p></div></div>
             </li>
             <li class="faq-item rv">
-              <button type="button" class="faq-q" aria-expanded="false">¿Por qué hay un costo mensual?<span class="faq-icon" aria-hidden="true"></span></button>
-              <div class="faq-a"><div><p>Porque el agente sigue trabajando todos los días: responde consultas, agenda y te pasa lo importante. La mensualidad cubre el servicio de IA, el hosting y que yo lo mantenga al día cuando cambia tu forma de atender.</p></div></div>
-            </li>
-            <li class="faq-item rv">
               <button type="button" class="faq-q" aria-expanded="false">¿Tengo que pagar algo para probarlo?<span class="faq-icon" aria-hidden="true"></span></button>
               <div class="faq-a"><div><p>No. Los 15 días del agente son gratis. La web se arma solo si, después de la prueba, decidís seguir con un combo.</p></div></div>
             </li>
@@ -452,14 +433,14 @@
         <div class="wrap">
           <p class="closing-kicker rv">¿Listo para probarlo 15 días gratis?</p>
           <h2 id="cierre-title" style="margin:0">
-            <a class="big-link rv" href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">Proba<span class="serif">lo</span><span class="arr" aria-hidden="true">→</span></a>
+            <a class="big-link rv" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">Proba<span class="serif">lo</span><span class="arr" aria-hidden="true">→</span></a>
           </h2>
           <p class="closing-sub rv">Escribime por WhatsApp y te cuento cómo dejar el agente andando en tu número.</p>
 
           <footer class="footer">
-            <span>© 2026 MJR Digital · Joel Rodríguez · Hudson, Buenos Aires</span>
+            <span>© 2026 MJR Digital · Joel Rodriguez · Hudson, Buenos Aires</span>
             <nav aria-label="Contacto">
-              <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">WhatsApp</a>
               <a href="https://www.instagram.com/joelrodrigueznk" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="#top">Volver arriba ↑</a>
             </nav>
@@ -472,24 +453,24 @@
   </main>
 
   <div class="sticky-wa" id="stickyWa">
-    <a href="https://wa.me/5491144091981?text=Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
+    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-wa" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
   </div>
 
-<div id="chat-tooltip">💬 ¿Querés ver cómo responde un agente? <span class="tooltip-close" id="tooltip-close">✕</span></div>
-<button type="button" id="chat-toggle" title="Probar el asistente">💬</button>
+<div id="chat-tooltip">💬 ¿Querés ver cómo responde un agente? <button type="button" class="tooltip-close" id="tooltip-close" aria-label="Cerrar aviso">✕</button></div>
+<button type="button" id="chat-toggle" title="Probar el asistente" aria-label="Abrir el asistente" aria-expanded="false" aria-controls="chat-window">💬</button>
 
-<div id="chat-window" class="hidden">
+<div id="chat-window" class="hidden" role="dialog" aria-label="Asistente MJR Digital" aria-hidden="true">
   <div class="chat-header">
-    <div class="avatar">🤖</div>
+    <div class="avatar" aria-hidden="true">🤖</div>
     <div class="info">
       <div class="name">Asistente MJR Digital</div>
       <div class="status">Preguntame o probame como un paciente</div>
     </div>
   </div>
-  <div id="messages"></div>
+  <div id="messages" aria-live="polite"></div>
   <div class="chat-input">
-    <textarea id="chat-input-text" rows="1" placeholder="Escribí tu consulta..." maxlength="500"></textarea>
-    <button type="button" id="send-btn" title="Enviar">➤</button>
+    <textarea id="chat-input-text" rows="1" placeholder="Escribí tu consulta…" aria-label="Escribí tu consulta" maxlength="500"></textarea>
+    <button type="button" id="send-btn" title="Enviar" aria-label="Enviar">➤</button>
   </div>
 </div>
 
@@ -543,7 +524,7 @@
     border-bottom: none; border-top-color: var(--surface-2);
   }
   #chat-tooltip .tooltip-close {
-    margin-left: 6px; cursor: pointer; opacity: .5;
+    margin-left: 6px; padding: 2px; border: 0; background: none; cursor: pointer; opacity: .5;
     font-size: 12px; line-height: 1;
   }
   #chat-tooltip .tooltip-close:hover { opacity: 1; }
@@ -612,7 +593,7 @@
   const API_BASE = "https://chatbot-joeldev-production.up.railway.app";
   const API_URL = API_BASE + "/chat";
   const WA_NUM = "5491144091981";
-  // El bot remoto todavía puede responder con precios y marca viejos (Deploy).
+  // El bot remoto (Railway) todavía tiene respuestas viejas; por eso queda apagado.
   // Queda el gancho listo; se enciende cuando el backend esté actualizado.
   const USAR_BOT_REMOTO = false;
 
@@ -625,7 +606,7 @@
     { claves: ["tenes turno", "tenés turno", "el jueves", "turno el"],
       texto: "Esto es una demo de cómo respondería el agente en tu WhatsApp: «Sí, el jueves tengo 10:00, 11:30 y 16:00. ¿Cuál te queda mejor?» El turno queda anotado y te llega el aviso. Si querés, lo probás 15 días gratis en tu número." },
     { claves: ["15 dias", "15 días", "prueba", "gratis", "probar"],
-      texto: "El agente lo probás 15 días gratis en tu WhatsApp, sin pagar nada. Yo lo dejo andando con tu forma de atender. Si te sirve, seguís con el combo que mejor te quede: Arranque, Básico o Completo. La web se arma cuando confirmás que seguís.", wa: true },
+      texto: "El agente lo probás 15 días gratis en tu WhatsApp, sin pagar nada. Joel lo deja andando con tu forma de atender. Si te sirve, seguís con el combo que mejor te quede: Arranque, Básico o Completo. La web se arma cuando confirmás que seguís.", wa: true },
     { claves: ["automatiz", "chatbot", " bot", "asistente", " ia ", "inteligencia", "agente"],
       texto: "El corazón de MJR Digital son las automatizaciones con IA para profesionales: un agente de WhatsApp que contesta, agenda turnos, manda recordatorios y te pasa lo importante. Si no tenés web, también te la armamos, integrada con el agente. Lo probás 15 días gratis." },
     { claves: ["recordatorio", "seguimiento"],
@@ -647,7 +628,7 @@
     { claves: ["cuota", " pago ", "pagar", "transferencia", "adelanto", "50%"],
       texto: "Los 15 días del agente son gratis, no hay seña para probarlo. La web se arma si, después de la prueba, decidís seguir con un combo. Para el precio y la forma de pago, escribile a Joel por WhatsApp.", wa: true },
     { claves: ["cuanto tiempo", "cuantos dias", "cuando la", "tarda", "tiempo", "demora", "rapido", "plazo", "entrega", "48"],
-      texto: "El agente lo dejo andando para la prueba de 15 días apenas me contás cómo atendés. La web del combo se arma cuando confirmás que seguís. Joel toma solo 3 cupos por mes." },
+      texto: "Joel deja el agente andando para la prueba de 15 días apenas le contás cómo atendés. La web del combo se arma cuando confirmás que seguís. Joel toma solo 3 cupos por mes." },
     { claves: ["dominio", "hosting", ".com", " url", "subdominio"],
       texto: "El hosting va incluido en los tres combos. En Arranque la página va en un subdominio, y si querés dominio propio lo ves con Joel por WhatsApp. En Básico y Completo, el dominio .com.ar del primer año está incluido." },
     { claves: ["garantia", "no me gusta", "conforme", "devolu", "riesgo", "compromiso"],
@@ -655,7 +636,7 @@
     { claves: ["cambio", "soporte", "modific", "actualiz", "mantenimiento"],
       texto: "En Arranque hay hasta 2 cambios chicos por mes. En Básico, 1 ronda de cambios en la web. En Completo, 2 rondas. Después, los ajustes del agente y de la web van por WhatsApp." },
     { claves: ["ejemplo", "portfolio", "trabajos", "demo", "hiciste", "clientes"],
-      texto: "En la web hay tres demos de muestra, no son clientes: Tinta Fundida (impresión 3D), Lubit (celulares) y Pablo Helados. Servís para ver cómo queda una página. El servicio que ofrezco hoy es el agente de WhatsApp para profesionales, y la web como complemento." },
+      texto: "En la web hay tres demos de muestra, no son clientes: Tinta Fundida (impresión 3D), Lubit (celulares) y Pablo Helados. Sirven para ver cómo queda una página. El servicio que ofrezco hoy es el agente de WhatsApp para profesionales, y la web como complemento." },
     { claves: ["necesito", "empezar", "requisito", "que te paso", "arrancar"],
       texto: "Solo contarle a Joel cómo atendés: horarios, servicios y cómo agendás. Con eso deja el agente andando en tu WhatsApp para la prueba de 15 días. No hace falta que sepas de tecnología.", wa: true },
     { claves: ["contador", "contadora", "abogad", "consultorio", "profesional", "estudio"],
@@ -688,8 +669,8 @@
   }
   function linkWhatsApp(pregunta) {
     const msg = pregunta
-      ? "Hola MJR Digital! Te escribo desde la web. Te quería consultar: " + pregunta
-      : "Hola! Quiero probar el agente 15 días gratis";
+      ? "¡Hola, MJR Digital! Te escribo desde la web. Te quería consultar: " + pregunta
+      : "¡Hola! Quiero probar el agente 15 días gratis";
     return "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(msg);
   }
   if (USAR_BOT_REMOTO) {
@@ -698,11 +679,27 @@
       .catch(marcarBotCaido);
   }
 
+  // El aviso del asistente aparece recién cuando los botones del hero ya no
+  // están en pantalla, para no taparlos.
   const tooltip = document.getElementById("chat-tooltip");
   tooltip.style.display = "none";
-  setTimeout(() => { tooltip.style.display = "flex"; }, 3000);
+  let tooltipCerrado = false, tooltipListo = false, heroEnPantalla = true;
+  function mostrarTooltip() {
+    if (tooltipCerrado || !tooltipListo || heroEnPantalla || isOpen) return;
+    tooltip.style.display = "flex";
+  }
+  setTimeout(() => { tooltipListo = true; mostrarTooltip(); }, 3000);
+  const heroBotones = document.getElementById("heroActions");
+  if (heroBotones) {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        heroEnPantalla = e.isIntersecting;
+        if (heroEnPantalla) tooltip.style.display = "none"; else mostrarTooltip();
+      });
+    }).observe(heroBotones);
+  } else { heroEnPantalla = false; }
   document.getElementById("tooltip-close").addEventListener("click", (e) => {
-    e.stopPropagation(); tooltip.style.display = "none";
+    e.stopPropagation(); tooltipCerrado = true; tooltip.style.display = "none";
   });
 
   const toggle   = document.getElementById("chat-toggle");
@@ -718,8 +715,11 @@
     if (isOpen) return;
     isOpen = true;
     chatWin.classList.remove("hidden");
+    chatWin.setAttribute("aria-hidden", "false");
     toggle.textContent = "✕";
-    tooltip.style.display = "none";
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Cerrar el asistente");
+    tooltip.style.display = "none"; tooltipCerrado = true;
     if (history.length === 0) addBubble("bot", SALUDO);
   }
 
@@ -727,7 +727,10 @@
     if (isOpen) {
       isOpen = false;
       chatWin.classList.add("hidden");
+      chatWin.setAttribute("aria-hidden", "true");
       toggle.textContent = "💬";
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Abrir el asistente");
     } else {
       abrirChat();
     }
@@ -907,6 +910,7 @@
     mobileMenu.classList.remove("open");
     menuBtn.setAttribute("aria-expanded", "false");
     mobileMenu.setAttribute("aria-hidden", "true");
+    mobileMenu.inert = true;
     document.body.style.overflow = "";
   }
   menuBtn.addEventListener("click", () => {
@@ -916,6 +920,7 @@
     mobileMenu.classList.add("open");
     menuBtn.setAttribute("aria-expanded", "true");
     mobileMenu.setAttribute("aria-hidden", "false");
+    mobileMenu.inert = false;
     document.body.style.overflow = "hidden";
     header.classList.add("solid");
   });
