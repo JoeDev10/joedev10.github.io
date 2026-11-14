@@ -2,9 +2,7 @@
    MJR Digital — rediseño según manual de marca (Natalia Peña)
    Azul noche, azul intenso, blanco y negro.
    Montserrat en títulos, Inter en el texto.
-   --wa: color de los botones de WhatsApp.
-         Hoy sigue la paleta (#0444E4).
-         Para el verde clásico, cambiar solo esta línea a #25D366.
+   --wa: color de los botones de WhatsApp (azul intenso de la paleta).
    ========================================================== */
 
 :root {
@@ -28,7 +26,7 @@
   --accent: #0444E4;
   --accent-on-ink: #FFFFFF;
   --accent-glow: rgba(4, 68, 228, .32);
-  --wa: #0444E4; /* DECISIÓN ABIERTA: cambiar a #25D366 si se prefiere el verde de WhatsApp */
+  --wa: #0444E4;
 
   /* Tipografía */
   --f-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -164,15 +162,11 @@ button { font: inherit; color: inherit; }
 }
 .btn:hover::before { transform: translateY(0); }
 
-.btn-solid { background: var(--text); color: var(--bg); }
-.btn-solid::before { background: var(--accent); }
 
 .btn-line { border-color: var(--line-2); color: var(--text); }
 .btn-line::before { background: var(--text); }
 .btn-line:hover { color: var(--bg); border-color: var(--text); }
 
-.btn-accent { background: var(--accent); color: #fff; }
-.btn-accent::before { background: var(--text); }
 
 /* ---------- Header ---------- */
 
@@ -697,7 +691,7 @@ button { font: inherit; color: inherit; }
   gap: 12px;
   margin-bottom: 40px;
 }
-.plan-name { font-family: var(--f-head); font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.plan-name { margin: 0; font-family: var(--f-head); font-size: 20px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
 .plan-flag {
   padding: 5px 11px;
   border-radius: 999px;
@@ -706,19 +700,6 @@ button { font: inherit; color: inherit; }
   font-size: 12px;
   font-weight: 500;
 }
-.plan-old { color: var(--ink-muted); text-decoration: line-through; font-size: 15px; }
-.plan.featured .plan-old { color: var(--muted); }
-.plan-price {
-  margin: 6px 0 4px;
-  font-family: var(--f-head);
-  font-size: clamp(36px, 3.6vw, 52px);
-  font-weight: 800;
-  letter-spacing: -.05em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.plan-note { color: var(--ink-muted); font-size: 14px; }
-.plan.featured .plan-note { color: var(--muted); }
 
 .plan ul {
   flex: 1;
@@ -742,29 +723,6 @@ button { font: inherit; color: inherit; }
 .dark .btn-line::before { background: var(--ink-text); }
 .dark .btn-line:hover { color: var(--ink); border-color: var(--ink-text); }
 
-.addon {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  align-items: center;
-  margin-top: 16px;
-  padding: clamp(28px, 3vw, 44px);
-  border: 1px dashed var(--ink-line);
-  border-radius: 6px;
-}
-.addon-kicker { margin: 0 0 10px; color: var(--accent-on-ink); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-.addon h3 {
-  margin: 0 0 8px;
-  font-family: var(--f-head);
-  font-size: clamp(24px, 2.6vw, 36px);
-  font-weight: 700;
-  letter-spacing: -.035em;
-  line-height: 1.05;
-}
-.addon p { margin: 0; color: var(--ink-muted); }
-.addon-price { display: flex; flex-wrap: wrap; gap: 8px 28px; }
-.addon-price strong { display: block; font-family: var(--f-head); font-size: 30px; font-weight: 700; letter-spacing: -.04em; }
-.addon-price span { color: var(--ink-muted); font-size: 14px; }
 
 .guarantee {
   margin: 40px 0 0;
@@ -893,7 +851,7 @@ button { font: inherit; color: inherit; }
   transition: transform .5s var(--ease);
 }
 .sticky-wa.visible { transform: none; }
-.sticky-wa .btn { width: 100%; justify-content: center; box-shadow: 0 14px 40px rgba(20, 20, 20, .28); }
+.sticky-wa .btn { width: 100%; justify-content: center; }
 
 /* ---------- Revelado al hacer scroll ---------- */
 
@@ -906,8 +864,6 @@ button { font: inherit; color: inherit; }
 .rv.in { opacity: 1; transform: none; }
 
 /* Línea que se dibuja */
-.rv-line { transform: scaleX(0); transform-origin: left; transition: transform 1.4s var(--ease); }
-.rv-line.in { transform: scaleX(1); }
 
 /* Sin JavaScript: todo visible */
 .no-js .rv, .no-js .word > span, .no-js .fade-up { opacity: 1; transform: none; }
@@ -922,8 +878,8 @@ button { font: inherit; color: inherit; }
   .numbers { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .number { border-bottom: 0; padding-right: 24px; }
   .number + .number { border-left: 1px solid var(--line); padding-left: clamp(20px, 3vw, 40px); }
+  .number strong { font-size: clamp(44px, 5vw, 84px); }
   .steps { grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 48px); }
-  .addon { grid-template-columns: 1fr auto auto; }
 }
 
 @media (min-width: 960px) {
@@ -1008,14 +964,8 @@ button { font: inherit; color: inherit; }
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  fill: #25D366; /* icono chico en verde, reconocible; el botón usa --wa */
+  fill: currentColor;
 }
-.btn-solid { background: var(--text); color: var(--bg); }
-.dark .btn-solid { background: var(--ink-text); color: var(--ink); }
-.dark .btn-solid::before { background: var(--accent); }
-.dark .btn-solid:hover { color: #fff; }
-.plan.featured .btn-solid { background: var(--ink); color: #fff; }
-.plan.featured .btn-solid::before { background: var(--accent); }
 
 /* ---------- Quién está detrás ---------- */
 
@@ -1086,27 +1036,9 @@ button { font: inherit; color: inherit; }
   border-color: var(--accent);
 }
 
-/* ---------- Precios: alta + mensual ---------- */
+/* ---------- Combos: bloque de precio a medida ---------- */
 
 .plan-price-block { margin: 0; }
-.plan-price-block .plan-price { margin: 0; }
-.plan-alta {
-  display: block;
-  margin-top: 4px;
-  color: var(--ink-muted);
-  font-size: 14px;
-  font-weight: 500;
-}
-.plan.featured .plan-alta { color: var(--muted); }
-.plan-mes {
-  display: block;
-  margin-top: 10px;
-  font-family: var(--f-head);
-  font-weight: 700;
-  font-size: clamp(22px, 2vw, 28px);
-  letter-spacing: -.03em;
-  font-variant-numeric: tabular-nums;
-}
 .plan-trial {
   display: inline-block;
   margin-top: 12px;
@@ -1148,4 +1080,9 @@ button { font: inherit; color: inherit; }
 /* Anclas: que el header fijo no tape el título de la sección */
 #demos, #servicios, #precios, #faq, #contacto, #proceso-title {
   scroll-margin-top: 96px;
+}
+
+/* El botón flotante del asistente no tapa los botones del hero */
+@media (min-width: 769px) and (max-width: 1480px) {
+  .hero-actions { padding-right: 76px; }
 }
