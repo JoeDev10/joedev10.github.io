@@ -138,16 +138,6 @@ export function initFaq() {
   });
 }
 
-/* ---------- Botón fijo de WhatsApp (celular) ---------- */
-export function initWhatsAppFijo() {
-  const stickyWa = document.getElementById("stickyWa");
-  const heroActions = document.getElementById("heroActions");
-  if (!stickyWa || !heroActions) return;
-  new IntersectionObserver(entries => {
-    entries.forEach(e => stickyWa.classList.toggle("visible", !e.isIntersecting && e.boundingClientRect.top < 0));
-  }).observe(heroActions);
-}
-
 /* ---------- Meta Pixel: cuenta los clics a WhatsApp como Lead ---------- */
 export function initPixelWhatsApp() {
   document.querySelectorAll('a[href*="wa.me"]').forEach(link => {

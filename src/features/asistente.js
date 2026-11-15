@@ -106,6 +106,9 @@ export function initAsistente() {
       .catch(marcarBotCaido);
   }
 
+  // Cerrado no se puede tabular adentro.
+  chatWin.inert = true;
+
   let history = [], isOpen = false, isStreaming = false;
 
   /* ---------- Aviso flotante ----------
@@ -140,6 +143,7 @@ export function initAsistente() {
     isOpen = true;
     chatWin.classList.remove("hidden");
     chatWin.setAttribute("aria-hidden", "false");
+    chatWin.inert = false;
     toggle.setAttribute("aria-expanded", "true");
     toggle.setAttribute("aria-label", "Cerrar el asistente");
     if (tooltip) { tooltip.style.display = "none"; tooltipCerrado = true; }
@@ -150,6 +154,7 @@ export function initAsistente() {
     isOpen = false;
     chatWin.classList.add("hidden");
     chatWin.setAttribute("aria-hidden", "true");
+    chatWin.inert = true;
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Abrir el asistente");
   }

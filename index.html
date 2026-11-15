@@ -8,10 +8,12 @@
   <meta name="keywords" content="automatizaciones con IA, agente de WhatsApp, turnos automáticos, asistente con IA, páginas web para profesionales, zona sur, Buenos Aires, MJR Digital" />
   <meta name="author" content="Joel Rodriguez" />
   <link rel="canonical" href="https://joedev10.github.io/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@700;800&display=swap" />
+  <!-- Solo los pesos que se usan: Inter 400/500/600, Montserrat 700/800 y
+       JetBrains Mono 400/500. display=swap para que el texto se vea ya. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@700;800&display=swap" />
   <meta name="theme-color" content="#0A193A" />
   <meta name="google-site-verification" content="h86icTbwb3S9qbp7W2l2WvmPVMAV3jF7Z7BXBaU97Ys" />
@@ -121,12 +123,12 @@
   <div class="bg-spot" aria-hidden="true"></div>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <nav class="rail" aria-label="Secciones">
-    <a href="#servicios"><span>Servicios</span><i></i></a>
-    <a href="#noche"><span>Demo</span><i></i></a>
-    <a href="#demos"><span>Webs</span><i></i></a>
-    <a href="#precios"><span>Combos</span><i></i></a>
-    <a href="#faq"><span>Preguntas</span><i></i></a>
+  <nav class="rail" aria-hidden="true">
+    <a href="#servicios" tabindex="-1"><span>Servicios</span><i></i></a>
+    <a href="#noche" tabindex="-1"><span>Demo</span><i></i></a>
+    <a href="#demos" tabindex="-1"><span>Webs</span><i></i></a>
+    <a href="#precios" tabindex="-1"><span>Combos</span><i></i></a>
+    <a href="#faq" tabindex="-1"><span>Preguntas</span><i></i></a>
   </nav>
 
   <header class="site-header" id="siteHeader">
@@ -141,7 +143,7 @@
         <a href="#precios">Combos</a>
         <a href="#faq">Preguntas</a>
       </nav>
-      <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-sm header-cta" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+      <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-sm header-cta" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </header>
@@ -172,7 +174,7 @@
         </h1>
         <p class="hero-sub load" style="--d:550ms">Un agente con IA que <b>responde, agenda y recuerda</b> por vos. Para contadores, abogados y consultorios.</p>
         <div class="hero-actions load" id="heroActions" style="--d:700ms">
-          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
           <a href="#noche" class="btn btn-line" data-magnet>Ver cómo funciona <span class="arr">→</span></a>
         </div>
         <div class="stats load" style="--d:850ms">
@@ -276,7 +278,7 @@
               <small>Mercado Pago · seña</small>
               <strong>Pago recibido</strong>
               <div class="v-bar"><i></i></div>
-              <div class="v-ok"><svg class="ico"><use href="#i-check"/></svg>Aprobado · te llega el aviso</div>
+              <div class="v-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Aprobado · te llega el aviso</div>
             </div>
           </div>
           <div class="tile-foot"><h3>Pedidos <br>y cobros</h3><span class="tag">automatización</span></div>
@@ -319,7 +321,7 @@
             <button type="button" class="chip" data-pregunta="¿Atienden por obra social?">¿Atienden por obra social?</button>
             <button type="button" class="chip" data-pregunta="¿Cómo es la prueba de 15 días?">¿Cómo es la prueba?</button>
           </div>
-          <button type="button" class="btn" id="abrir-asistente" data-magnet><svg class="ico"><use href="#i-chat"/></svg>Probar el asistente</button>
+          <button type="button" class="btn" id="abrir-asistente" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>Probar el asistente</button>
         </div>
       </div>
     </section>
@@ -343,7 +345,7 @@
               <source type="image/webp" srcset="/img/tinta-fundida.webp"/>
               <img src="/img/tinta-fundida.jpg" alt="Demo de página para un taller de impresión 3D: Tinta Fundida, con catálogo de piezas y pedidos por WhatsApp" loading="lazy" decoding="async" width="1440" height="855"/>
             </picture>
-            <span class="work-go">Ver demo <svg class="ico"><use href="#i-arrow"/></svg></span>
+            <span class="work-go">Ver demo <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </div>
           <div class="work-info"><h3>Tinta Fundida</h3><span>demo · impresión 3D</span></div>
         </a>
@@ -355,14 +357,14 @@
               <source type="image/webp" srcset="/img/lubit.webp"/>
               <img src="/img/lubit.jpg" alt="Demo de página para venta y reparación de celulares: Lubit, con catálogo, turnos y servicio técnico" loading="lazy" decoding="async" width="1100" height="653"/>
             </picture>
-            <span class="work-go">Ver demo <svg class="ico"><use href="#i-arrow"/></svg></span>
+            <span class="work-go">Ver demo <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </div>
           <div class="work-info"><h3>Lubit</h3><span>demo · celulares y turnos</span></div>
         </a>
 
         <a class="work-next" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer" data-reveal>
           <h3>¿Tu consultorio?</h3>
-          <span class="go">Probalo 15 días gratis <svg class="ico"><use href="#i-arrow"/></svg></span>
+          <span class="go">Probalo 15 días gratis <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
       </div>
       </div>
@@ -424,9 +426,9 @@
         <h2 id="precios-title" data-split>Tres combos. <span class="hl">Simple.</span></h2>
       </div>
       <div class="badges" data-stagger>
-        <span><svg class="ico"><use href="#i-check"/></svg>15 días gratis del agente</span>
-        <span><svg class="ico"><use href="#i-check"/></svg>Sin seña para probar</span>
-        <span><svg class="ico"><use href="#i-check"/></svg>Hosting incluido</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>15 días gratis del agente</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sin seña para probar</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hosting incluido</span>
       </div>
 
       <div class="plans" data-stagger>
@@ -435,10 +437,10 @@
           <h3>Arranque</h3>
           <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
           <ul>
-            <li><svg class="ico"><use href="#i-check"/></svg>Agente Básico: consultas 24 h</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Página tipo link-in-bio</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Hasta 2 cambios chicos por mes</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Dominio propio, si lo querés</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente Básico: consultas 24 h</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Página tipo link-in-bio</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hasta 2 cambios chicos por mes</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio propio, si lo querés</li>
           </ul>
           <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
         </article>
@@ -449,10 +451,10 @@
           <h3>Básico</h3>
           <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
           <ul>
-            <li><svg class="ico"><use href="#i-check"/></svg>Agente Básico 24 h, con tu onda</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Landing: servicios, fotos, horarios y mapa</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Dominio .com.ar 1 año, hosting y SSL</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Search Console, 1 ronda de cambios y capacitación</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente Básico 24 h, con tu onda</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Landing: servicios, fotos, horarios y mapa</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio .com.ar 1 año, hosting y SSL</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Search Console, 1 ronda de cambios y capacitación</li>
           </ul>
           <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
         </article>
@@ -462,10 +464,10 @@
           <h3>Completo</h3>
           <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
           <ul>
-            <li><svg class="ico"><use href="#i-check"/></svg>Agente con Mercado Pago o turnos con seña</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Web con panel para editar servicios o precios</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Link de pedidos o turnos integrado</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Dominio, hosting, SSL, 2 rondas de cambios</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente con Mercado Pago o turnos con seña</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Web con panel para editar servicios o precios</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Link de pedidos o turnos integrado</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio, hosting, SSL, 2 rondas de cambios</li>
           </ul>
           <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
         </article>
@@ -515,7 +517,7 @@
             <a class="big-link" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">Probalo<span class="arr" aria-hidden="true">→</span></a>
           </h2>
           <p class="closing-sub">Escribime por WhatsApp y dejamos el agente andando en tu número.</p>
-          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-lg" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-lg" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
         </div>
 
         <footer class="footer">
@@ -531,7 +533,7 @@
   </main>
 
   <div class="sticky-wa" id="stickyWa">
-    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer"><svg class="ico"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Probalo 15 días gratis: escribirle a Joel por WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
   </div>
 
 <div id="chat-tooltip">¿Querés ver cómo responde un agente? <button type="button" class="tooltip-close" id="tooltip-close" aria-label="Cerrar aviso">✕</button></div>
@@ -542,7 +544,7 @@
 
 <div id="chat-window" class="hidden" role="dialog" aria-label="Asistente MJR Digital" aria-hidden="true">
   <div class="chat-header">
-    <div class="avatar" aria-hidden="true"><img src="/img/isologo-negativo.png" alt="" width="672" height="265"/></div>
+    <div class="avatar" aria-hidden="true"><img src="/img/isologo-negativo.png" alt="" width="672" height="265" loading="lazy" decoding="async"/></div>
     <div class="info">
       <div class="name">Asistente MJR Digital</div>
       <div class="status">en línea · probame como un paciente</div>

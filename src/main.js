@@ -18,7 +18,6 @@ import {
   initScroll,
   initMenu,
   initFaq,
-  initWhatsAppFijo,
   initPixelWhatsApp,
 } from "./features/ui.js";
 import {
@@ -44,7 +43,6 @@ async function arrancar() {
   initScroll();
   initMenu();
   initFaq();
-  initWhatsAppFijo();
   initPixelWhatsApp();
   initHeroPhone();
   initLineaNoche();

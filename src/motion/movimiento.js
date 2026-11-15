@@ -154,6 +154,10 @@ function hayWebGL() {
 }
 
 function maquinaJusta() {
+  // En celular y tablet no se baja three: medido con Lighthouse mobile, el
+  // chunk (128 kB comprimidos) se lleva la nota de 94 a 75 por el parseo.
+  // Ahí queda el degradado quieto, que no cuesta nada.
+  if (innerWidth < 1025 || !fine) return true;
   const mem = navigator.deviceMemory;
   const nucleos = navigator.hardwareConcurrency;
   if (typeof mem === "number" && mem < 4) return true;

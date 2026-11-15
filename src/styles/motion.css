@@ -258,13 +258,14 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
 .invert::after  { bottom: calc(-1 * clamp(40px, 6vw, 90px)); clip-path: ellipse(75% 100% at 50% 0%); }
 .invert h2, .invert h3 { color: var(--ink); }
 .invert .kicker { color: var(--accent); }
-.invert .kicker b { color: rgba(10,25,58,.4); }
+.invert .kicker b { color: rgba(10,25,58,.62); }
 .invert .hl {
   background: linear-gradient(100deg, var(--accent) 0%, #2f6bff 50%, var(--accent) 100%);
   background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .invert .pasos-line { background: rgba(10,25,58,.12); }
-.invert .paso time { color: rgba(10,25,58,.45); }
+.invert .paso time { color: rgba(10,25,58,.62); }
+.invert :focus-visible { outline-color: var(--accent); }
 .invert .paso-node { background: #fff; border-color: rgba(10,25,58,.12); color: var(--accent); box-shadow: 0 16px 40px -18px rgba(10,25,58,.5); }
 .invert .paso.on .paso-node { background: var(--accent); color: #fff; border-color: var(--accent); }
 
@@ -350,8 +351,7 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
   .js [data-reveal] { opacity: 1; translate: none; }
-  /* Sin GSAP no hay quien encienda los pasos: quedan todos prendidos. */
-  .paso { opacity: 1; }
+  /* Sin GSAP no hay quien encienda la línea de los pasos. */
   .pasos-line i { transform: scaleX(1); }
   .vb, .v-pill, .v-ok { opacity: 1 !important; animation: none !important; }
   .vb.typing { display: none !important; }

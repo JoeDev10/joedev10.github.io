@@ -297,7 +297,7 @@
 .work:hover { border-color: var(--line-2); }
 .work-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
 .work-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.14); }
-.work-bar span { margin-left: 10px; font-family: var(--f-mono); font-size: 11px; color: var(--text-3); }
+.work-bar span { margin-left: 10px; font-family: var(--f-mono); font-size: 11px; color: rgba(255, 255, 255, .58); }
 .work-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #000; }
 .work-media img { width: 100%; height: 100%; object-fit: cover; object-position: 0 0; transition: transform 1.2s var(--ease-out), object-position 3s var(--ease); }
 .work:hover .work-media img { transform: scale(1.05); object-position: 0 35%; }
@@ -335,8 +335,9 @@
 .pasos { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; --p: 0; }
 .pasos-line { position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 2px; background: var(--line-2); }
 .pasos-line i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform-origin: 0 50%; transform: scaleX(var(--p)); box-shadow: 0 0 14px var(--accent-glow); }
-.paso { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; opacity: .5; transition: opacity .5s var(--ease-out); }
-.paso.on { opacity: 1; }
+/* El texto no se atenúa: con opacidad baja no llega al contraste AA.
+   Lo que marca el paso activo es el nodo y la línea. */
+.paso { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
 .paso-node { position: relative; z-index: 1; width: 72px; height: 72px; border-radius: 22px; display: grid; place-items: center; margin-bottom: 18px; background: var(--surface-2); border: 1px solid var(--line-2); color: var(--text-3); transition: all .5s var(--ease-out); }
 .paso-node .ico { width: 28px; height: 28px; }
 .paso.on .paso-node { background: var(--accent); border-color: var(--accent-2); color: #fff; box-shadow: 0 0 0 8px rgba(4,68,228,.16), 0 14px 40px var(--accent-glow); transform: translateY(-4px); }
@@ -511,8 +512,8 @@
   .pasos-line i { transform-origin: 50% 0; transform: scaleY(var(--p)); }
   .footer { justify-content: center; text-align: center; padding-bottom: 96px; }
 
-  .sticky-wa { display: block; position: fixed; left: 12px; right: 84px; bottom: 14px; z-index: 998; translate: 0 150%; transition: translate .45s var(--ease-out); }
-  .sticky-wa.visible { translate: 0 0; }
+  /* Siempre a la vista, no aparece y desaparece con el scroll. */
+  .sticky-wa { display: block; position: fixed; left: 12px; right: 84px; bottom: 14px; z-index: 998; }
   .sticky-wa .btn { width: 100%; }
   #chat-toggle { bottom: 14px; right: 14px; width: 56px; height: 56px; }
   #chat-tooltip { display: none !important; }
