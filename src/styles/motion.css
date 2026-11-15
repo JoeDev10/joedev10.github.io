@@ -164,6 +164,13 @@ body.ready .rail { opacity: 1; }
           mask-image: radial-gradient(ellipse 70% 60% at 62% 45%, #000 20%, transparent 75%);
 }
 body.ready #net { opacity: .9; }
+/* Respaldo quieto: si la máquina no da o el visitante pide menos
+   movimiento, no se baja three y queda este degradado. */
+#net.estatico {
+  background:
+    radial-gradient(ellipse 58% 52% at 62% 42%, rgba(4, 68, 228, .34), transparent 70%),
+    radial-gradient(ellipse 42% 42% at 38% 68%, rgba(91, 140, 255, .14), transparent 72%);
+}
 .stage { will-change: transform; }
 
 /* el h1 ya sube por palabra; le sumamos un desenfoque que se va */
@@ -286,7 +293,7 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
 
 /* respeta a quien pide menos movimiento */
 @media (prefers-reduced-motion: reduce) {
-  #boot, #cur, #cur-ring, #net { display: none !important; }
+  #boot, #cur, #cur-ring { display: none !important; }
   body.booting { overflow: auto; }
   .js .sp-word > .sp-i { opacity: 1; }
   .js .work-media::after { display: none; }

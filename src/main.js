@@ -38,6 +38,8 @@ async function arrancar() {
   initIntro();
   initRiel();
   initCinta();
+  // Decide solo si baja el 3D o deja el degradado quieto.
+  initRedHero();
   initPuntero();
   initScroll();
   initMenu();
@@ -52,7 +54,6 @@ async function arrancar() {
 
   // Movimiento que no depende del scroll
   initCursor();
-  initRedHero();
 
   // Scroll suave y todo lo que dispara ScrollTrigger
   const scroll = await import("./motion/scroll.js");

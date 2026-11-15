@@ -140,75 +140,64 @@ export function initRiel() {
   secciones.forEach(s => spy.observe(s));
 }
 
-/* ---------- 4. LIENZO: red de puntos del hero ---------- */
+/* ---------- 4. RED DEL HERO ----------
+   El 3D se baja recién cuando el hero está en pantalla, y solo si la
+   máquina lo banca. Si no, queda un degradado quieto y no se descarga
+   nada de three. */
+function hayWebGL() {
+  try {
+    const c = document.createElement("canvas");
+    return !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl")));
+  } catch {
+    return false;
+  }
+}
+
+function maquinaJusta() {
+  const mem = navigator.deviceMemory;
+  const nucleos = navigator.hardwareConcurrency;
+  if (typeof mem === "number" && mem < 4) return true;
+  if (typeof nucleos === "number" && nucleos <= 4) return true;
+  return false;
+}
+
 export function initRedHero() {
   const c = document.getElementById("net");
-  if (!c || reduce) return;
-  const ctx = c.getContext("2d", { alpha: true });
-  if (!ctx) return;
+  if (!c) return;
 
-  const dpr = Math.min(devicePixelRatio || 1, 2);
-  let W = 0, H = 0, pts = [], on = true, timer = 0;
-  const pm = { x: -9999, y: -9999 };
-
-  function medir() {
-    const r = c.getBoundingClientRect();
-    W = r.width; H = r.height;
-    c.width = Math.round(W * dpr);
-    c.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round(Math.min(90, Math.max(34, (W * H) / 16000)));
-    pts = [];
-    for (let i = 0; i < n; i++) {
-      pts.push({
-        x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
-        r: Math.random() * 1.6 + 0.6,
-      });
-    }
+  if (reduce || maquinaJusta() || !hayWebGL()) {
+    c.classList.add("estatico");
+    return;
   }
 
-  addEventListener("pointermove", (e) => {
-    const r = c.getBoundingClientRect();
-    pm.x = e.clientX - r.left; pm.y = e.clientY - r.top;
-  }, { passive: true });
+  // Mientras tanto, el degradado. Se saca cuando el 3D ya está andando.
+  c.classList.add("estatico");
 
-  function pintar() {
-    if (!on) { raf(pintar); return; }
-    ctx.clearRect(0, 0, W, H);
+  let red = null;
+  const bajar = () => {
+    import("../three/hero-net.js")
+      .then(({ crearRedHero }) => {
+        red = crearRedHero(c);
+        c.classList.remove("estatico");
+        addEventListener("pagehide", () => red && red.dispose(), { once: true });
+      })
+      .catch(() => { /* se queda el degradado */ });
+  };
 
-    for (let i = 0; i < pts.length; i++) {
-      const a = pts[i];
-      a.x += a.vx; a.y += a.vy;
-      if (a.x < 0 || a.x > W) a.vx *= -1;
-      if (a.y < 0 || a.y > H) a.vy *= -1;
-      // se apartan del mouse
-      const dx = a.x - pm.x, dy = a.y - pm.y, d = Math.hypot(dx, dy);
-      if (d < 130 && d > 0.1) { a.x += (dx / d) * 0.9; a.y += (dy / d) * 0.9; }
-    }
+  // three pesa: se baja recién cuando la página terminó de cargar y el
+  // navegador está libre, para no pelearle al primer pintado.
+  const cuandoHaya = () => {
+    if ("requestIdleCallback" in window) requestIdleCallback(bajar, { timeout: 2500 });
+    else setTimeout(bajar, 1200);
+  };
 
-    for (let i = 0; i < pts.length; i++) {
-      const a = pts[i];
-      for (let j = i + 1; j < pts.length; j++) {
-        const b = pts[j];
-        const dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy;
-        if (d < 20000) {
-          const op = (1 - d / 20000) * 0.3;
-          ctx.strokeStyle = "rgba(91,140,255," + op.toFixed(3) + ")";
-          ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        }
-      }
-      ctx.fillStyle = "rgba(145,180,255,.55)";
-      ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.2832); ctx.fill();
-    }
-    raf(pintar);
-  }
-
-  medir();
-  addEventListener("resize", () => { clearTimeout(timer); timer = setTimeout(medir, 180); });
-  new IntersectionObserver(es => { on = es[0].isIntersecting; }, { threshold: 0 }).observe(c);
-  raf(pintar);
+  const obs = new IntersectionObserver((es) => {
+    if (!es[0].isIntersecting || red) return;
+    obs.disconnect();
+    if (document.readyState === "complete") cuandoHaya();
+    else addEventListener("load", cuandoHaya, { once: true });
+  }, { rootMargin: "120px" });
+  obs.observe(c);
 }
 
 /* ---------- 5. CINTA GRANDE: se mueve con el scroll ---------- */
