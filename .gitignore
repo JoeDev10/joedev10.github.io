@@ -14,3 +14,6 @@ __pycache__/
 
 # Salida del build de Vite
 dist/
+
+# Documento interno de un cliente: no va a un repo publico
+vanshelato/
