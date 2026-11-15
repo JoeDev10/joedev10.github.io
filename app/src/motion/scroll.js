@@ -223,7 +223,12 @@ export function initComoTrabajo() {
       pin,
       pinSpacing: true,
       scrub: .5,
-      anticipatePin: 1,
+      // Sin anticipatePin: adelantaba el pegado y, como acá cambia el fondo
+      // de oscuro a claro, el título quedaba flotando sobre la sección
+      // anterior. La prioridad va por debajo de la de los demos, que están
+      // más arriba: con dos pines hay que medirlos en el orden de la página
+      // o el de abajo arranca corrido.
+      refreshPriority: 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => encender(self.progress),
     });
@@ -264,6 +269,9 @@ export function initDemosHorizontal() {
   const mm = gsap.matchMedia();
   mm.add("(min-width: 1025px)", () => {
     const sobra = () => Math.max(0, row.scrollWidth - innerWidth);
+    // En pantallas anchas las demos entran enteras y no hay nada que correr.
+    // Pegar la sección igual solo sumaría un tirón antes de la que sigue.
+    if (!sobra()) return;
     const tween = gsap.to(row, {
       x: () => -sobra(),
       ease: "none",
@@ -274,6 +282,8 @@ export function initDemosHorizontal() {
         pin: sticky,
         scrub: .4,
         anticipatePin: 1,
+        // Primer pin de la página: se mide antes que el de "cómo trabajo".
+        refreshPriority: 2,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           if (hint) hint.style.setProperty("--hp", self.progress.toFixed(3));

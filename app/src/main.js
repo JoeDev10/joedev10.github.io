@@ -57,9 +57,11 @@ async function arrancar() {
   const scroll = await import("./motion/scroll.js");
   scroll.initScrollSuave();
   // Primero las secciones que se pegan y el partido de títulos, así los
-  // revelados miden sobre la página ya armada.
-  scroll.initComoTrabajo();
+  // revelados miden sobre la página ya armada. Los pines se crean en el
+  // orden en que aparecen en la página: si no, el de abajo se mide con
+  // las posiciones viejas y arranca corrido.
   scroll.initDemosHorizontal();
+  scroll.initComoTrabajo();
   scroll.initTitulos();
   scroll.initRevelados();
   scroll.initParallax();

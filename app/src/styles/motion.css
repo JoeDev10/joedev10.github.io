@@ -320,6 +320,12 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
   min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
   padding-block: clamp(70px, 9vw, 110px);
+  /* El bloque pegado lleva su propio fondo: mientras ScrollTrigger lo
+     fija, el fondo de la sección no lo acompaña, y sin esto el título
+     se vería un instante sobre la sección oscura de arriba. El color va
+     explícito porque el padre pasa a ser el pin-spacer, que es
+     transparente: con inherit no se pinta nada. */
+  background: #f3f6fd;
 }
 .como .sec-head { margin-bottom: clamp(38px, 5vw, 64px); }
 @media (max-width: 1024px) {
