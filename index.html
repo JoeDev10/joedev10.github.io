@@ -64,6 +64,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png" />
   <link rel="apple-touch-icon" href="img/apple-touch.png" />
   <link rel="stylesheet" href="estilos.css" />
+  <link rel="stylesheet" href="zarpado.css" />
 
   <!-- Meta Pixel: desactivado hasta tener el ID real del Pixel.
        Para activarlo, pegar acá el código oficial de Meta con ese ID.
@@ -79,8 +80,23 @@
   </script>
   <!-- End Microsoft Clarity -->
 </head>
-<body class="no-js">
+<body class="no-js booting">
 <script>document.body.classList.replace("no-js", "js");</script>
+
+  <!-- Intro -->
+  <div id="boot" aria-hidden="true">
+    <div class="boot-in">
+      <img class="boot-logo" src="img/logo-negativo.png" alt="" width="1312" height="565" />
+      <div class="boot-bar"><i></i></div>
+      <div class="boot-meta"><span>Cargando</span><span class="boot-num">000</span></div>
+    </div>
+    <p class="boot-word">Automatizaciones con IA · Zona sur, Buenos Aires</p>
+    <div class="boot-sheet"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Cursor -->
+  <div id="cur" aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"><b></b></div>
 
   <!-- Íconos (se reutilizan con <use>) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -106,6 +122,14 @@
   <div class="bg-grid" aria-hidden="true"></div>
   <div class="bg-spot" aria-hidden="true"></div>
   <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <nav class="rail" aria-label="Secciones">
+    <a href="#servicios"><span>Servicios</span><i></i></a>
+    <a href="#noche"><span>Demo</span><i></i></a>
+    <a href="#demos"><span>Webs</span><i></i></a>
+    <a href="#precios"><span>Combos</span><i></i></a>
+    <a href="#faq"><span>Preguntas</span><i></i></a>
+  </nav>
 
   <header class="site-header" id="siteHeader">
     <div class="wrap header-row">
@@ -137,6 +161,7 @@
 
     <!-- HERO -->
     <section class="hero wrap" aria-labelledby="hero-title">
+      <canvas id="net" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <div class="chip-meta load" style="--d:0ms"><i class="dot"></i>Automatizaciones con IA · Zona sur, Buenos Aires</div>
         <h1 id="hero-title">
@@ -160,7 +185,7 @@
       </div>
 
       <!-- El agente atendiendo en vivo (se puede tocar un horario) -->
-      <div class="stage" id="stage">
+      <div class="stage" id="stage" data-par="0.05">
         <div class="stage-glow" aria-hidden="true"></div>
         <div class="orbit o1" aria-hidden="true"></div>
         <div class="orbit o2" aria-hidden="true"></div>
@@ -191,15 +216,10 @@
       </div>
     </section>
 
-    <!-- Cinta de capacidades -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track" id="marqueeTrack">
-        <span><svg class="ico"><use href="#i-chat"/></svg>Agente de WhatsApp con IA</span>
-        <span><svg class="ico"><use href="#i-cal"/></svg>Turnos que se agendan solos</span>
-        <span><svg class="ico"><use href="#i-bolt"/></svg>Respuestas 24/7</span>
-        <span><svg class="ico"><use href="#i-bell"/></svg>Recordatorios y seguimiento</span>
-        <span><svg class="ico"><use href="#i-web"/></svg>Páginas web</span>
-        <span><svg class="ico"><use href="#i-card"/></svg>Pedidos y cobros</span>
+    <!-- Cinta grande de capacidades -->
+    <div class="band" id="band" aria-hidden="true">
+      <div class="band-track" id="bandTrack">
+        <span>Agente de WhatsApp <i></i> <em>24 horas</em> <i></i> Turnos solos <i></i> <em>Recordatorios</em> <i></i> Páginas web <i></i> <em>Pedidos y cobros</em> <i></i></span>
       </div>
     </div>
 
@@ -207,7 +227,7 @@
     <section class="sec wrap" id="servicios" aria-labelledby="servicios-title">
       <div class="sec-head" data-reveal>
         <p class="kicker"><b>01</b> Servicios</p>
-        <h2 id="servicios-title">Atiende el agente. <span class="hl">Vos laburás.</span></h2>
+        <h2 id="servicios-title" data-split>Atiende el agente. <span class="hl">Vos laburás.</span></h2>
       </div>
 
       <div class="bento" data-stagger>
@@ -280,7 +300,7 @@
         <div class="night-top">
           <div>
             <p class="kicker"><b>02</b> Demo en vivo</p>
-            <h2 id="noche-title">Un turno <span class="hl">mientras dormís.</span></h2>
+            <h2 id="noche-title" data-split>Un turno <span class="hl">mientras dormís.</span></h2>
           </div>
           <div class="sky" aria-hidden="true"><svg class="ico moon"><use href="#i-moon"/></svg><svg class="ico sun"><use href="#i-sun"/></svg></div>
         </div>
@@ -307,14 +327,18 @@
     </section>
 
     <!-- DEMOS WEB -->
-    <section class="sec wrap portfolio" id="demos" aria-labelledby="demos-title">
-      <div class="sec-head" data-reveal>
-        <p class="kicker"><b>03</b> Demos web</p>
-        <h2 id="demos-title">Así queda <span class="hl">una página.</span></h2>
+    <section class="portfolio hscroll" id="demos" aria-labelledby="demos-title">
+     <div class="hscroll-sticky">
+      <div class="hscroll-head">
+        <div class="sec-head" data-reveal style="margin-bottom:0">
+          <p class="kicker"><b>03</b> Demos web</p>
+          <h2 id="demos-title" data-split>Así queda <span class="hl">una página.</span></h2>
+        </div>
       </div>
 
-      <div class="works" data-stagger>
-        <a class="work" href="https://joedev10.github.io/tinta-fundida/" target="_blank" rel="noopener noreferrer" data-tilt>
+      <div class="hscroll-view">
+      <div class="works hscroll-row">
+        <a class="work" href="https://joedev10.github.io/tinta-fundida/" target="_blank" rel="noopener noreferrer" data-tilt data-cursor="Ver demo">
           <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>tinta-fundida</span></div>
           <div class="work-media">
             <picture>
@@ -326,7 +350,7 @@
           <div class="work-info"><h3>Tinta Fundida</h3><span>demo · impresión 3D</span></div>
         </a>
 
-        <a class="work" href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer" data-tilt>
+        <a class="work" href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer" data-tilt data-cursor="Ver demo">
           <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>lubit</span></div>
           <div class="work-media">
             <picture>
@@ -338,29 +362,37 @@
           <div class="work-info"><h3>Lubit</h3><span>demo · celulares y turnos</span></div>
         </a>
 
-        <a class="work-next" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">
+        <a class="work-next" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer" data-reveal>
           <h3>¿Tu consultorio?</h3>
           <span class="go">Probalo 15 días gratis <svg class="ico"><use href="#i-arrow"/></svg></span>
         </a>
       </div>
+      </div>
 
+      <div class="hscroll-hint" aria-hidden="true"><span>Seguí bajando</span><b></b><span>Entrá y navegalas</span></div>
+     </div>
+    </section>
+
+    <div class="wrap">
       <div class="note" data-reveal>
         <span>Son demos de muestra, no clientes. Entrá y navegalas.</span>
         <span class="about"><span class="av" aria-hidden="true">J</span>Soy Joel, de Hudson. Te contesto yo.</span>
       </div>
-    </section>
+    </div>
 
     <!-- PROCESO -->
-    <section class="sec wrap" aria-labelledby="proceso-title" style="padding-top:0">
-      <div class="sec-head center" data-reveal>
-        <p class="kicker"><b>04</b> Proceso</p>
-        <h2 id="proceso-title">Tres pasos. <span class="hl">Cero vueltas.</span></h2>
-      </div>
-      <div class="pasos" id="pasos">
-        <div class="pasos-line" aria-hidden="true"><i></i></div>
-        <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-chat"/></svg></span><time>hoy</time><h3>Me contás cómo atendés</h3></div>
-        <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-gift"/></svg></span><time>15 días</time><h3>Lo probás gratis</h3></div>
-        <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-rocket"/></svg></span><time>después</time><h3>Si te sirve, seguimos</h3></div>
+    <section class="invert" aria-labelledby="proceso-title">
+      <div class="wrap">
+        <div class="sec-head center" data-reveal>
+          <p class="kicker"><b>04</b> Proceso</p>
+          <h2 id="proceso-title" data-split>Tres pasos. <span class="hl">Cero vueltas.</span></h2>
+        </div>
+        <div class="pasos" id="pasos">
+          <div class="pasos-line" aria-hidden="true"><i></i></div>
+          <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-chat"/></svg></span><time>hoy</time><h3>Me contás cómo atendés</h3></div>
+          <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-gift"/></svg></span><time>15 días</time><h3>Lo probás gratis</h3></div>
+          <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-rocket"/></svg></span><time>después</time><h3>Si te sirve, seguimos</h3></div>
+        </div>
       </div>
     </section>
 
@@ -368,7 +400,7 @@
     <section class="sec wrap" id="precios" aria-labelledby="precios-title" style="padding-top:0">
       <div class="sec-head center" data-reveal>
         <p class="kicker"><b>05</b> Combos</p>
-        <h2 id="precios-title">Tres combos. <span class="hl">Simple.</span></h2>
+        <h2 id="precios-title" data-split>Tres combos. <span class="hl">Simple.</span></h2>
       </div>
       <div class="badges" data-stagger>
         <span><svg class="ico"><use href="#i-check"/></svg>15 días gratis del agente</span>
@@ -425,7 +457,7 @@
       <div class="faq-wrap">
         <div class="sec-head" data-reveal>
           <p class="kicker"><b>06</b> Preguntas</p>
-          <h2 id="faq-title">Lo que <span class="hl">siempre</span> me preguntan.</h2>
+          <h2 id="faq-title" data-split>Lo que <span class="hl">siempre</span> me preguntan.</h2>
         </div>
         <ul class="faq" data-stagger>
           <li class="faq-item">
@@ -454,6 +486,7 @@
 
     <!-- CIERRE -->
     <section class="closing cta-final" id="contacto" aria-labelledby="cierre-title">
+      <span class="mark" aria-hidden="true">MJR DIGITAL</span>
       <div class="wrap">
         <div data-reveal>
           <p class="closing-kicker">¿Listo para probarlo 15 días gratis?</p>
@@ -854,6 +887,7 @@
   // Cinta: se duplica para que el loop no tenga cortes
   (function () {
     const track = document.getElementById("marqueeTrack");
+    if (!track) return;
     Array.from(track.children).forEach(n => track.appendChild(n.cloneNode(true)));
   })();
 
@@ -1052,6 +1086,10 @@
     });
   });
 </script>
+
+<!-- Scroll suave (si el CDN no responde, el sitio sigue andando con el scroll normal) -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="zarpado.js" defer></script>
 
 </body>
 </html>
