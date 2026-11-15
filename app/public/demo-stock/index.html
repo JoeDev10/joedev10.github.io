@@ -1,0 +1,351 @@
+<!doctype html>
+<!-- Demo con datos ficticios del sistema de stock para heladerías. Nada se guarda ni se manda a ningún servidor. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Stock Demo">
+<meta name="description" content="Demo con datos ficticios de un sistema de stock para heladerías: stock por sabor, pedidos, pozos, historial, ventas del mes y tareas del equipo.">
+<title>Stock · Heladería Demo</title>
+<link rel="icon" href="icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<div class="demo-cinta" role="note">Demo con datos ficticios · <i>los cambios no se guardan</i></div>
+
+<div class="sin-red" id="sin-red" role="status" aria-live="polite" hidden>
+  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.6a10 10 0 0 1 5.2-2.5M16.8 10.9a10 10 0 0 1 2.2 1.7M8.5 16.4a5 5 0 0 1 7 0"/><path d="M12 20h.01"/><path d="M3 3l18 18"/></svg>
+  <span id="sin-red-texto">Sin internet</span>
+</div>
+
+<!-- PIN -->
+<section id="v-pin" class="vista pin" hidden>
+  <div class="pin-caja">
+    <div class="logo-texto pin-logo" role="img" aria-label="Heladería Demo"><b>HELADERÍA <span>DEMO</span></b><small>sistema de stock</small></div>
+    <h1 id="pin-titulo">Stock de helados</h1>
+    <!-- En la página principal (sin local en la dirección): de qué local es la tablet -->
+    <form class="pin-local" id="f-local" hidden>
+      <label for="local-codigo">¿De qué local es esta tablet?</label>
+      <input type="text" id="local-codigo" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="40" placeholder="Ej.: centro" enterkeyhint="go">
+      <button type="submit" class="btn btn-rosa">Seguir</button>
+      <p class="pin-msg" id="local-msg" aria-live="polite"></p>
+    </form>
+    <p class="pin-demo">PIN demo: <b>1234</b></p>
+    <p id="pin-msg" class="pin-msg" aria-live="polite">Ingresá el PIN</p>
+    <div class="pin-puntos" id="pin-puntos" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="teclado" id="teclado">
+      <button type="button" data-d="1">1</button><button type="button" data-d="2">2</button><button type="button" data-d="3">3</button>
+      <button type="button" data-d="4">4</button><button type="button" data-d="5">5</button><button type="button" data-d="6">6</button>
+      <button type="button" data-d="7">7</button><button type="button" data-d="8">8</button><button type="button" data-d="9">9</button>
+      <span></span><button type="button" data-d="0">0</button>
+      <button type="button" data-d="borrar" aria-label="Borrar" class="tecla-borrar"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 5H9l-6 7 6 7h12z"/><path d="M17 9l-6 6M11 9l6 6"/></svg></button>
+    </div>
+    <p class="pin-frase">Stock claro, pedidos a tiempo.</p>
+  </div>
+</section>
+
+<!-- STOCK -->
+<section id="v-stock" class="vista" hidden>
+  <header class="barra">
+    <div class="barra-titulo marca">
+      <div class="logo-texto logo" role="img" aria-label="Heladería Demo"><b>HELADERÍA <span>DEMO</span></b><small>stock</small></div>
+      <div class="marca-texto">
+        <h1 id="marca-local">Stock</h1>
+        <p id="stock-sub">&nbsp;</p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-borde" id="b-deshacer" data-ayuda="Anula el último cambio: un toque, un pedido o un conteo entero">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Deshacer
+    </button>
+    <button type="button" class="btn btn-verde" id="b-armar" data-ayuda="Armar el pedido para mandarlo por WhatsApp (sugiere lo que falta para llegar al ideal)">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5h10M9 12h10M9 19h10"/><path d="M4 5h.01M4 12h.01M4 19h.01"/></svg>Pedir
+    </button>
+    <button type="button" class="btn btn-azul" id="b-pedido" data-ayuda="Sumar los baldes que llegaron en el pedido">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Llegó pedido
+      <span class="insignia" id="pedido-en-camino" hidden>en camino</span>
+    </button>
+    <button type="button" class="btn btn-borde" id="b-pozos" data-ayuda="El mapa de los pozos: abrir un balde, ver dónde está cada sabor y contar un pozo">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/></svg>Pozos
+    </button>
+    <button type="button" class="btn btn-borde" id="b-historial" data-ayuda="Ver todos los cambios del día, con hora">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Historial
+    </button>
+    <button type="button" class="btn btn-borde btn-icono" id="b-menu" data-ayuda="Agregar, ordenar o sacar sabores · Bloquear la tablet" aria-label="Sabores y ajustes">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </header>
+  <nav class="chips" id="stock-chips" aria-label="Grupos"></nav>
+  <div class="chips buscador" id="stock-buscador" hidden>
+    <label class="buscar-campo">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="stock-buscar" placeholder="Buscar sabor… (ej.: pist, dulce, frut)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar sabor por el nombre">
+    </label>
+    <button type="button" class="btn btn-borde" data-cerrar-busqueda="stock" data-ayuda="Dejar de buscar y ver todos los sabores">Cerrar</button>
+  </div>
+  <main class="contenido" id="stock-grilla"></main>
+  <button type="button" class="voz-boton" id="b-voz" hidden aria-label="Hablar: decir qué abriste" data-ayuda="Hablar: decí qué abriste (por ejemplo: «dos de chocolate y un dulce de leche»). Antes de descontar te muestra lo que entendió">
+    <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+  </button>
+</section>
+
+<!-- PEDIDO / CONTEO -->
+<section id="v-carga" class="vista carga" hidden>
+  <header class="barra barra-color">
+    <div class="barra-titulo">
+      <h1 id="carga-titulo">Llegó pedido</h1>
+      <p id="carga-sub"></p>
+      <button type="button" class="link-blanco" id="b-carga-vacio" data-ayuda="Sacar lo precargado y cargar el pedido a mano" hidden>Empezar vacío</button>
+    </div>
+    <button type="button" class="btn btn-fantasma" id="b-carga-cancelar" data-ayuda="Salir sin guardar nada">Cancelar</button>
+    <button type="button" class="btn btn-blanco" id="b-carga-guardar" data-ayuda="Guardar todo lo que cargaste">Guardar</button>
+  </header>
+  <nav class="chips" id="carga-chips" aria-label="Grupos"></nav>
+  <div class="chips buscador" id="carga-buscador" hidden>
+    <label class="buscar-campo">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="carga-buscar" placeholder="Buscar sabor… (ej.: pist, dulce, frut)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar sabor por el nombre">
+    </label>
+    <button type="button" class="btn btn-borde" data-cerrar-busqueda="carga" data-ayuda="Dejar de buscar y ver todos los sabores">Cerrar</button>
+  </div>
+  <main class="contenido" id="carga-grilla"></main>
+</section>
+
+<!-- HISTORIAL -->
+<section id="v-historial" class="vista" hidden>
+  <header class="barra">
+    <button type="button" class="btn btn-borde" id="b-hist-volver" data-ayuda="Volver a la pantalla de stock">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Stock
+    </button>
+    <div class="barra-titulo"><h1 id="hist-titulo">Historial</h1></div>
+    <button type="button" class="btn btn-borde btn-icono" id="b-dia-ant" data-ayuda="Ver el día anterior" aria-label="Día anterior">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="dia" id="hist-dia">Hoy</div>
+    <button type="button" class="btn btn-borde btn-icono" id="b-dia-sig" data-ayuda="Ver el día siguiente" aria-label="Día siguiente">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <span class="elegir-dia">
+      <button type="button" class="btn btn-borde" id="b-elegir-fecha" data-ayuda="Abrir el calendario para ver cualquier día">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Elegir fecha
+      </button>
+      <input type="date" id="hist-fecha" tabindex="-1" aria-label="Fecha del historial">
+    </span>
+  </header>
+  <div class="hist">
+    <aside class="hist-lado" id="hist-resumen"></aside>
+    <section class="hist-lista" aria-label="Movimientos del día">
+      <div class="hist-fila hist-cabeza"><span>Hora</span><span>Qué pasó</span><span id="hist-col-nombre">Sabor</span><span class="der">Cambio</span><span class="der">Quedó</span></div>
+      <div id="hist-filas"></div>
+    </section>
+  </div>
+</section>
+
+<!-- VENTAS DEL MES -->
+<section id="v-ventas" class="vista ventas" hidden>
+  <header class="barra">
+    <button type="button" class="btn btn-borde" id="b-ven-volver" data-ayuda="Volver a la pantalla de stock">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Stock
+    </button>
+    <div class="barra-titulo"><h1>Ventas</h1><p>Lo que había, lo que llegó y lo que salió del stock</p></div>
+    <button type="button" class="btn btn-borde btn-icono" id="b-mes-ant" data-ayuda="Ver el mes anterior" aria-label="Mes anterior">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="dia" id="ven-mes">Mes</div>
+    <button type="button" class="btn btn-borde btn-icono" id="b-mes-sig" data-ayuda="Ver el mes siguiente" aria-label="Mes siguiente">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <a class="btn btn-verde" id="b-ven-wa" target="_blank" rel="noopener" hidden data-ayuda="Abre WhatsApp con el resumen del mes para mandárselo a quien quieras">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg>Mandar por WhatsApp
+    </a>
+  </header>
+  <main class="contenido" id="ven-cuerpo"></main>
+</section>
+
+<!-- AJUSTES: sabores -->
+<!-- POZOS -->
+<section id="v-pozos" class="vista pozos" hidden>
+  <header class="barra">
+    <button type="button" class="btn btn-borde" id="b-pz-volver" data-ayuda="Volver a la pantalla de stock">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Stock
+    </button>
+    <div class="barra-titulo"><h1>Pozos</h1><p id="pz-sub">Tocá un pozo para abrir un balde o para contarlo</p></div>
+    <label class="pz-lupa">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="pz-buscar" placeholder="¿Dónde está…? (ej.: sambayón)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar en qué pozo está un sabor">
+    </label>
+  </header>
+  <main class="contenido" id="pz-cuerpo"></main>
+</section>
+
+<dialog id="d-voz" class="hoja hoja-voz" aria-labelledby="voz-titulo">
+  <div id="voz-hoja"></div>
+</dialog>
+
+<dialog id="d-pozo" class="hoja hoja-pozo" aria-labelledby="pz-titulo">
+  <div id="pz-hoja"></div>
+</dialog>
+
+<!-- TAREAS DEL EQUIPO -->
+<section id="v-tareas" class="vista tareas" hidden>
+  <header class="barra">
+    <button type="button" class="btn btn-borde" id="b-tar-volver" data-ayuda="Volver a la pantalla de stock">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Stock
+    </button>
+    <div class="barra-titulo"><h1>Tareas del equipo</h1><p id="tar-sub"></p></div>
+    <button type="button" class="btn btn-borde btn-icono" id="b-sem-ant" data-ayuda="Ver la semana anterior" aria-label="Semana anterior">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="dia" id="tar-semana">Semana</div>
+    <button type="button" class="btn btn-borde btn-icono" id="b-sem-sig" data-ayuda="Ver la semana siguiente" aria-label="Semana siguiente">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <button type="button" class="btn btn-borde" id="b-tar-lista" data-ayuda="Agregar, cambiar o sacar tareas de la lista">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg>Tareas
+    </button>
+    <button type="button" class="btn btn-borde" id="b-tar-equipo" data-ayuda="Agregar o sacar gente, y cambiar los francos y el turno de cada uno">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>Equipo
+    </button>
+    <button type="button" class="btn btn-verde" id="b-tar-armar" data-ayuda="Repartir las tareas de la semana al azar, parejo entre los que trabajan cada día">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>Armar semana
+    </button>
+  </header>
+  <nav class="chips" id="tar-dias" aria-label="Días de la semana"></nav>
+  <main class="contenido" id="tar-cuerpo"></main>
+</section>
+
+<dialog id="d-equipo" class="hoja" aria-labelledby="eq-titulo">
+  <div class="hoja-cabeza">
+    <h2 id="eq-titulo">Equipo</h2>
+    <button type="button" class="btn btn-oscuro" id="b-eq-listo" data-ayuda="Guardar los cambios">Listo</button>
+  </div>
+  <p class="nota">Tocá los días de <strong>franco</strong> de cada uno (en rosa). El turno sirve para que las tareas de apertura vayan a la mañana y las de cierre a la tarde. Después tocá <strong>Armar semana</strong> para repartir de nuevo.</p>
+  <div id="eq-lista" class="eq-lista"></div>
+  <form class="alta eq-alta" id="f-eq-alta">
+    <label>Alguien nuevo en el equipo<input type="text" id="eq-nueva" maxlength="40" autocomplete="off" placeholder="Nombre"></label>
+    <button type="submit" class="btn btn-oscuro" id="b-eq-agregar">Agregar</button>
+  </form>
+</dialog>
+
+<dialog id="d-lista" class="hoja" aria-labelledby="lt-titulo">
+  <div class="hoja-cabeza">
+    <h2 id="lt-titulo">Lista de tareas</h2>
+    <button type="button" class="btn btn-verde" id="b-lt-nueva" data-ayuda="Agregar una tarea nueva a la lista">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Agregar tarea
+    </button>
+    <button type="button" class="btn btn-oscuro" id="b-lt-listo" data-ayuda="Cerrar la lista">Listo</button>
+  </div>
+  <div id="lt-cuerpo" class="lt-cuerpo"></div>
+</dialog>
+
+<dialog id="d-ajustes" class="hoja" aria-labelledby="aj-titulo">
+  <div class="hoja-cabeza">
+    <h2 id="aj-titulo">Sabores</h2>
+    <button type="button" class="btn btn-borde" id="b-sonido" aria-pressed="true">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Sonido: sí</span>
+    </button>
+    <button type="button" class="btn btn-borde" id="b-cambiar-local" hidden data-ayuda="Ir a otro local donde ya entraste con su PIN">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h14l-4-4M20 16H6l4 4"/></svg>Otro local
+    </button>
+    <button type="button" class="btn btn-borde" id="b-conteo" data-ayuda="Corregir con lo que hay de verdad en el pozo y el freezer">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>Conteo general
+    </button>
+    <button type="button" class="btn btn-borde" id="b-tareas" data-ayuda="Ver y marcar las tareas de cada uno (la planilla semanal)">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M4 6h3M4 12h3M4 18h16"/></svg>Tareas del equipo
+    </button>
+    <button type="button" class="btn btn-borde" id="b-ventas" data-ayuda="Cuánto se vendió en el mes: kilos de helado, tortas y panificados">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Ventas del mes
+    </button>
+    <button type="button" class="btn btn-borde" id="b-bloquear" data-ayuda="Cerrar la sesión: para volver a entrar hay que poner el PIN">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Bloquear
+    </button>
+    <button type="button" class="btn btn-oscuro" id="b-aj-listo" data-ayuda="Volver a la pantalla de stock">Listo</button>
+  </div>
+  <form class="alta" id="f-alta">
+    <label id="alta-etiqueta">Sabor nuevo<input type="text" id="alta-nombre" maxlength="60" autocomplete="off" placeholder="Ej.: Dulce de leche c/ brownie"></label>
+    <label>Grupo<select id="alta-grupo"></select></label>
+    <label id="alta-detalle-campo" hidden>Cómo viene<input type="text" id="alta-detalle" maxlength="40" autocomplete="off" placeholder="Ej.: caja de 6"></label>
+    <button type="submit" class="btn btn-oscuro" data-ayuda="Agregarlo a la lista, en el grupo elegido">Agregar</button>
+  </form>
+  <div id="aj-lista" class="aj-lista"></div>
+  <p class="nota" id="aj-nota">Sacar un sabor lo esconde de la pantalla pero guarda su historial. Se puede volver a agregar con el mismo nombre.</p>
+</dialog>
+
+<!-- Confirmación -->
+<dialog id="d-locales" class="confirmar" aria-labelledby="loc-titulo">
+  <p id="loc-titulo">¿A qué local vas?</p>
+  <div class="loc-lista" id="loc-lista"></div>
+  <div class="conf-botones">
+    <button type="button" class="btn btn-borde" id="loc-no">Cancelar</button>
+  </div>
+</dialog>
+
+<dialog id="d-confirmar" class="confirmar">
+  <p id="conf-texto"></p>
+  <div class="conf-botones">
+    <button type="button" class="btn btn-borde" value="no" id="conf-no">Cancelar</button>
+    <button type="button" class="btn btn-oscuro" value="si" id="conf-si">Sí</button>
+  </div>
+</dialog>
+
+<!-- Pedido armado: el mensaje y a quién se manda -->
+<!-- La comanda: solo se ve al imprimir (estilos.css, @media print). -->
+<div id="comanda" class="comanda" aria-hidden="true"></div>
+
+<dialog id="d-pedido" class="hoja pedido" aria-labelledby="ped-titulo">
+  <header class="hoja-cabeza">
+    <h2 id="ped-titulo">Pedido</h2>
+    <button type="button" class="btn btn-borde" id="b-ped-volver" data-ayuda="Volver a cambiar las cantidades">Volver</button>
+  </header>
+  <pre class="ped-texto" id="ped-texto"></pre>
+  <label class="ped-numero">WhatsApp de quien hace el pedido
+    <input type="tel" id="ped-numero" inputmode="tel" autocomplete="off" maxlength="40" placeholder="Ej.: 11 2345-6789">
+  </label>
+  <p class="nota" id="ped-nota"></p>
+  <label class="ped-auto" data-ayuda="Al volver de WhatsApp se abre solo el cuadro de imprimir con la comanda">
+    <input type="checkbox" id="ped-auto-imprimir"> Imprimir la comanda al mandarlo
+  </label>
+  <div class="ped-botones">
+    <button type="button" class="btn btn-borde" id="b-ped-imprimir" data-ayuda="Imprimir la comanda en la impresora de tickets (o guardarla como PDF)">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></svg>Imprimir
+    </button>
+    <button type="button" class="btn btn-borde" id="b-ped-copiar" data-ayuda="Copiar el mensaje para pegarlo donde quieras">Copiar texto</button>
+    <button type="button" class="btn btn-verde" id="b-ped-whatsapp" data-ayuda="Abre WhatsApp con el mensaje escrito: falta tocar Enviar">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg>Mandar por WhatsApp
+    </button>
+  </div>
+</dialog>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite" hidden>
+  <span id="aviso-texto"></span>
+  <button type="button" id="aviso-deshacer" data-ayuda="Anular lo que acabás de hacer">Deshacer</button>
+  <span class="aviso-barra" id="aviso-barra" aria-hidden="true"></span>
+</div>
+
+<!-- Teclado para escribir una cantidad (pedido / conteo) -->
+<dialog id="d-numero" class="numero" aria-labelledby="num-sabor">
+  <p class="num-sabor" id="num-sabor"></p>
+  <p class="num-pregunta" id="num-pregunta"></p>
+  <div class="num-valor" id="num-valor" aria-live="polite">0</div>
+  <div class="teclado teclado-claro" id="num-teclado">
+    <button type="button" data-n="1">1</button><button type="button" data-n="2">2</button><button type="button" data-n="3">3</button>
+    <button type="button" data-n="4">4</button><button type="button" data-n="5">5</button><button type="button" data-n="6">6</button>
+    <button type="button" data-n="7">7</button><button type="button" data-n="8">8</button><button type="button" data-n="9">9</button>
+    <button type="button" data-n="borrar" aria-label="Borrar" class="tecla-borrar"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 5H9l-6 7 6 7h12z"/><path d="M17 9l-6 6M11 9l6 6"/></svg></button>
+    <button type="button" data-n="0">0</button>
+    <button type="button" data-n="listo" class="tecla-listo">Listo</button>
+  </div>
+</dialog>
+
+<div class="cargando" id="cargando" hidden><span></span></div>
+
+<div class="ayuda" id="ayuda" role="tooltip" hidden></div>
+</body>
+</html>

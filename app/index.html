@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MJR Digital | Automatizaciones con IA para profesionales</title>
+  <meta name="description" content="Tu WhatsApp contesta solo mientras atendés. Automatizaciones con IA para contadores, abogados y consultorios de zona sur: agente de WhatsApp, turnos, recordatorios y seguimiento. Y si no tenés web, te la armamos." />
+  <meta name="keywords" content="automatizaciones con IA, agente de WhatsApp, turnos automáticos, asistente con IA, páginas web para profesionales, zona sur, Buenos Aires, MJR Digital" />
+  <meta name="author" content="Joel Rodriguez" />
+  <link rel="canonical" href="https://joedev10.github.io/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Solo los pesos que se usan: Inter 400/500/600, Montserrat 700/800 y
+       JetBrains Mono 400/500. display=swap para que el texto se vea ya. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@700;800&display=swap" />
+  <meta name="theme-color" content="#0A193A" />
+  <meta name="google-site-verification" content="h86icTbwb3S9qbp7W2l2WvmPVMAV3jF7Z7BXBaU97Ys" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://joedev10.github.io/" />
+  <meta property="og:title" content="MJR Digital | Automatizaciones con IA para profesionales" />
+  <meta property="og:description" content="Tu WhatsApp contesta solo mientras atendés. Agente de WhatsApp, turnos, recordatorios y seguimiento. Y si no tenés web, te la armamos." />
+  <meta property="og:image" content="https://joedev10.github.io/img/og-mjr-digital.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo de MJR Digital" />
+  <meta property="og:site_name" content="MJR Digital" />
+  <meta property="og:locale" content="es_AR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MJR Digital | Automatizaciones con IA para profesionales" />
+  <meta name="twitter:description" content="Tu WhatsApp contesta solo mientras atendés. Y si no tenés web, te la armamos." />
+  <meta name="twitter:image" content="https://joedev10.github.io/img/og-mjr-digital.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MJR Digital",
+    "description": "Automatizaciones con IA para profesionales en zona sur, Buenos Aires: agente de WhatsApp, turnos, recordatorios y páginas web integradas.",
+    "url": "https://joedev10.github.io/",
+    "areaServed": "Argentina",
+    "serviceType": ["Automatización con IA", "Agente de WhatsApp", "Diseño Web"],
+    "founder": {
+      "@type": "Person",
+      "name": "Joel Rodriguez",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hudson",
+        "addressRegion": "Buenos Aires",
+        "addressCountry": "AR"
+      }
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+54-9-11-4409-1981",
+      "availableLanguage": "Spanish"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png" />
+  <link rel="apple-touch-icon" href="/img/apple-touch.png" />
+
+  <!-- Meta Pixel: desactivado hasta tener el ID real del Pixel.
+       Para activarlo, pegar acá el código oficial de Meta con ese ID.
+       Los clics a WhatsApp ya mandan el evento Lead si fbq existe. -->
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wwpl6m7nf5");
+  </script>
+  <!-- End Microsoft Clarity -->
+</head>
+<body class="no-js booting">
+<script>document.body.classList.replace("no-js", "js");</script>
+
+  <!-- Intro -->
+  <div id="boot" aria-hidden="true">
+    <div class="boot-in">
+      <img class="boot-logo" src="/img/logo-negativo.png" alt="" width="1312" height="565" />
+      <div class="boot-bar"><i></i></div>
+      <div class="boot-meta"><span>Cargando</span><span class="boot-num">000</span></div>
+    </div>
+    <p class="boot-word">Automatizaciones con IA · Zona sur, Buenos Aires</p>
+    <div class="boot-sheet"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Cursor -->
+  <div id="cur" aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"><b></b></div>
+
+  <!-- Íconos (se reutilizan con <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.44-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.44 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.8c2.17 0 4.2.85 5.73 2.38a8.07 8.07 0 0 1 2.38 5.73c0 4.48-3.64 8.12-8.11 8.12-1.42 0-2.82-.37-4.05-1.08l-.29-.17-3.12.82.83-3.04-.19-.31a8.1 8.1 0 0 1-1.24-4.34c0-4.47 3.64-8.11 8.11-8.11zm-2.7 4.36c-.17 0-.44.06-.67.31-.23.26-.89.87-.89 2.13 0 1.26.91 2.48 1.04 2.65.13.17 1.76 2.82 4.36 3.84 2.16.85 2.6.68 3.07.64.47-.04 1.52-.62 1.73-1.22.22-.6.22-1.11.15-1.22-.07-.11-.26-.17-.54-.3-.28-.13-1.66-.82-1.92-.91-.26-.1-.44-.13-.63.13-.19.26-.73.91-.89 1.1-.16.17-.33.2-.61.07-.28-.13-1.18-.43-2.25-1.39-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.56.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.49-.07-.13-.62-1.52-.86-2.08-.22-.53-.45-.46-.63-.47z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.6a8.4 8.4 0 0 1-9 8.4 9.1 9.1 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.6 8.5 8.5 0 0 1 12.5 3.2 8.5 8.5 0 0 1 21 11.6z"/><path d="M8.5 11.5h.01M12.5 11.5h.01M16.5 11.5h.01" stroke-width="2.6"/></g></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="m9.2 14.8 2 2 3.6-3.7"/></g></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"/><path d="M10 20a2.2 2.2 0 0 0 4 0"/></g></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6.5 14.5h4"/></g></symbol>
+    <symbol id="i-web" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.8 18.2h2.4"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></g></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></g></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5" stroke-linecap="round"/></g></symbol>
+  </svg>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-spot" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <nav class="rail" aria-hidden="true">
+    <a href="#servicios" tabindex="-1"><span>Servicios</span><i></i></a>
+    <a href="#noche" tabindex="-1"><span>Demo</span><i></i></a>
+    <a href="#demos" tabindex="-1"><span>Webs</span><i></i></a>
+    <a href="#precios" tabindex="-1"><span>Combos</span><i></i></a>
+    <a href="#faq" tabindex="-1"><span>Preguntas</span><i></i></a>
+  </nav>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-row">
+      <a href="#top" class="brand" aria-label="MJR Digital, volver arriba">
+        <img src="/img/logo-negativo.png" alt="MJR Digital" width="1312" height="565" />
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#noche">Demo en vivo</a>
+        <a href="#demos">Demos web</a>
+        <a href="#precios">Combos</a>
+        <a href="#faq">Preguntas</a>
+      </nav>
+      <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-sm header-cta" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+    <a href="#servicios" class="m-link">Servicios</a>
+    <a href="#noche" class="m-link">Demo en vivo</a>
+    <a href="#demos" class="m-link">Demos web</a>
+    <a href="#precios" class="m-link">Combos</a>
+    <a href="#faq" class="m-link">Preguntas</a>
+    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis <span class="arr">→</span></a>
+  </div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <canvas id="net" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        <div class="chip-meta load" style="--d:0ms"><i class="dot"></i>Automatizaciones con IA · Zona sur, Buenos Aires</div>
+        <h1 id="hero-title">
+          <span class="w"><span style="--i:0">Tu</span></span>
+          <span class="w"><span style="--i:1">WhatsApp</span></span>
+          <span class="w"><span style="--i:2">contesta</span></span>
+          <span class="w"><span style="--i:3" class="hl">solo</span></span>
+          <span class="w"><span style="--i:4">mientras</span></span>
+          <span class="w"><span style="--i:5">atendés.</span></span>
+        </h1>
+        <p class="hero-sub load" style="--d:550ms">Un agente con IA que <b>responde, agenda y recuerda</b> por vos. Para contadores, abogados y consultorios.</p>
+        <div class="hero-actions load" id="heroActions" style="--d:700ms">
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+          <a href="#noche" class="btn btn-line" data-magnet>Ver cómo funciona <span class="arr">→</span></a>
+        </div>
+        <div class="stats load" style="--d:850ms">
+          <div class="stat"><strong data-count="15" data-suffix=" días">15 días</strong><span>de prueba gratis</span></div>
+          <div class="stat"><strong>24/7</strong><span>tu WhatsApp atendido</span></div>
+          <div class="stat"><strong>Zona sur</strong><span>te contesto yo</span></div>
+        </div>
+      </div>
+
+      <!-- El agente atendiendo en vivo (se puede tocar un horario) -->
+      <div class="stage" id="stage" data-par="0.05">
+        <div class="stage-glow" aria-hidden="true"></div>
+        <div class="orbit o1" aria-hidden="true"></div>
+        <div class="orbit o2" aria-hidden="true"></div>
+
+        <div class="phone" id="heroPhone">
+          <div class="ph-screen">
+            <div class="ph-island" aria-hidden="true"></div>
+            <div class="ph-status" aria-hidden="true"><span id="heroClock">23:40</span><span>●●●</span></div>
+            <div class="ph-head"><span class="ph-av"><img src="/img/isologo-negativo.png" alt="" width="672" height="265"/></span><div><b>Tu consultorio</b><small>agente IA · en línea</small></div></div>
+            <div class="ph-chat" id="heroChat" aria-live="off"></div>
+            <div class="ph-input" aria-hidden="true">Escribí un mensaje…</div>
+          </div>
+          <span class="tap" id="heroTap" aria-hidden="true"></span>
+        </div>
+
+        <div class="notif n1" data-n="1" aria-hidden="true">
+          <span class="n-ico ok"><svg class="ico"><use href="#i-cal"/></svg></span>
+          <div><b>Turno agendado</b><small id="notifTurno">Jueves 11:30</small></div>
+        </div>
+        <div class="notif n2" data-n="2" aria-hidden="true">
+          <span class="n-ico"><svg class="ico"><use href="#i-bell"/></svg></span>
+          <div><b>Recordatorio listo</b><small>sale el miércoles</small></div>
+        </div>
+        <div class="notif n3" data-n="3" aria-hidden="true">
+          <span class="n-ico mp"><svg class="ico"><use href="#i-card"/></svg></span>
+          <div><b>Te llegó el aviso</b><small>nuevo turno tomado</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cinta grande de capacidades -->
+    <div class="band" id="band" aria-hidden="true">
+      <div class="band-track" id="bandTrack">
+        <span>Agente de WhatsApp <i></i> <em>24 horas</em> <i></i> Turnos solos <i></i> <em>Recordatorios</em> <i></i> Páginas web <i></i> <em>Pedidos y cobros</em> <i></i></span>
+      </div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <section class="sec wrap" id="servicios" aria-labelledby="servicios-title">
+      <div class="sec-head" data-reveal>
+        <p class="kicker"><b>01</b> Servicios</p>
+        <h2 id="servicios-title" data-split>Atiende el agente. <span class="hl">Vos laburás.</span></h2>
+      </div>
+
+      <div class="bento" data-stagger>
+        <article class="tile tile-wide spot">
+          <div class="viz" aria-hidden="true">
+            <div class="v-chat">
+              <div class="vb u u1">Hola, ¿cuánto sale una consulta? 🙂</div>
+              <div class="v-slot">
+                <div class="vb b typing"><i></i><i></i><i></i></div>
+                <div class="vb b r1"><small>agente · al instante</small>Te paso los valores y los horarios libres de esta semana.</div>
+              </div>
+              <div class="vb u u2">¿Y el viernes a la tarde?</div>
+              <div class="vb b r2"><small>agente · agendado</small>Viernes 17:00 ✓ Te espero.</div>
+            </div>
+          </div>
+          <div class="tile-foot"><h3>Agente de WhatsApp <br>con IA, 24 horas</h3><span class="tag star">la bandera</span></div>
+        </article>
+
+        <article class="tile spot">
+          <div class="viz" aria-hidden="true">
+            <div class="v-cal">
+              <div class="v-cal-grid">
+                <span></span><span class="busy"></span><span></span><span></span><span class="busy"></span><span></span><span></span>
+                <span class="busy"></span><span></span><span></span><span class="busy"></span><span></span><span class="pick"></span><span></span>
+                <span></span><span></span><span class="busy"></span><span></span><span></span><span class="busy"></span><span></span>
+                <span></span><span class="busy"></span><span></span><span></span><span></span><span></span><span class="busy"></span>
+              </div>
+              <div class="v-pill">Jue 11:30 · confirmado ✓</div>
+            </div>
+          </div>
+          <div class="tile-foot"><h3>Turnos <br>automáticos</h3><span class="tag">automatización</span></div>
+        </article>
+
+        <article class="tile spot">
+          <div class="viz" aria-hidden="true">
+            <div class="v-rem">
+              <span class="bell"><svg class="ico"><use href="#i-bell"/></svg></span>
+              <div class="vb b"><small>recordatorio</small>Mañana 10:00 te esperamos. ¿Confirmás?</div>
+              <div class="vb u">¡Sí, confirmo! ✓</div>
+            </div>
+          </div>
+          <div class="tile-foot"><h3>Recordatorios <br>y seguimiento</h3><span class="tag">automatización</span></div>
+        </article>
+
+        <article class="tile spot">
+          <div class="viz" aria-hidden="true">
+            <div class="v-mp">
+              <small>Mercado Pago · seña</small>
+              <strong>Pago recibido</strong>
+              <div class="v-bar"><i></i></div>
+              <div class="v-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Aprobado · te llega el aviso</div>
+            </div>
+          </div>
+          <div class="tile-foot"><h3>Pedidos <br>y cobros</h3><span class="tag">automatización</span></div>
+        </article>
+
+        <article class="tile spot">
+          <div class="viz" aria-hidden="true">
+            <div class="v-phone"><div class="vp-hero"></div><div class="vp-l"></div><div class="vp-l s"></div><div class="vp-row"><i></i><i></i></div><div class="vp-btn"></div></div>
+          </div>
+          <div class="tile-foot"><h3>Tu página web, <br>integrada al agente</h3><span class="tag web">si no tenés</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DEMO: un turno mientras dormís -->
+    <section class="wrap" id="noche" aria-labelledby="noche-title">
+      <div class="night" id="night" data-reveal>
+        <div class="stars" aria-hidden="true"></div>
+        <div class="night-top">
+          <div>
+            <p class="kicker"><b>02</b> Demo en vivo</p>
+            <h2 id="noche-title" data-split>Un turno <span class="hl">mientras dormís.</span></h2>
+          </div>
+          <div class="sky" aria-hidden="true"><svg class="ico moon"><use href="#i-moon"/></svg><svg class="ico sun"><use href="#i-sun"/></svg></div>
+        </div>
+
+        <ol class="track">
+          <li class="track-line" aria-hidden="true"><i></i><b></b></li>
+          <li class="tstep"><span class="tnode"><svg class="ico"><use href="#i-chat"/></svg></span><time>23:40</time><b>Pide un turno</b></li>
+          <li class="tstep"><span class="tnode"><svg class="ico"><use href="#i-bolt"/></svg></span><time>23:40</time><b>La IA ofrece horarios</b></li>
+          <li class="tstep"><span class="tnode"><svg class="ico"><use href="#i-cal"/></svg></span><time>23:42</time><b>Lo agenda</b></li>
+          <li class="tstep"><span class="tnode"><svg class="ico"><use href="#i-bell"/></svg></span><time>23:42</time><b>Te avisa</b></li>
+          <li class="tstep end"><span class="tnode"><svg class="ico"><use href="#i-sun"/></svg></span><time>08:00</time><b>Turno tomado</b></li>
+        </ol>
+
+        <div class="try">
+          <div class="try-chips">
+            <span>Probá preguntarle:</span>
+            <button type="button" class="chip" data-pregunta="¿Tenés turno el jueves?">¿Tenés turno el jueves?</button>
+            <button type="button" class="chip" data-pregunta="¿Atienden por obra social?">¿Atienden por obra social?</button>
+            <button type="button" class="chip" data-pregunta="¿Cómo es la prueba de 15 días?">¿Cómo es la prueba?</button>
+          </div>
+          <button type="button" class="btn" id="abrir-asistente" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>Probar el asistente</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMOS WEB -->
+    <section class="portfolio hscroll" id="demos" aria-labelledby="demos-title">
+     <div class="hscroll-sticky">
+      <div class="hscroll-head">
+        <div class="sec-head" data-reveal style="margin-bottom:0">
+          <p class="kicker"><b>03</b> Demos web</p>
+          <h2 id="demos-title" data-split>Así queda <span class="hl">una página.</span></h2>
+        </div>
+      </div>
+
+      <div class="hscroll-view">
+      <div class="works hscroll-row">
+        <a class="work" href="https://joedev10.github.io/tinta-fundida/" target="_blank" rel="noopener noreferrer" data-tilt data-cursor="Ver demo">
+          <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>tinta-fundida</span></div>
+          <div class="work-media">
+            <picture>
+              <source type="image/webp" srcset="/img/tinta-fundida.webp"/>
+              <img src="/img/tinta-fundida.jpg" alt="Demo de página para un taller de impresión 3D: Tinta Fundida, con catálogo de piezas y pedidos por WhatsApp" loading="lazy" decoding="async" width="1440" height="855"/>
+            </picture>
+            <span class="work-go">Ver demo <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </div>
+          <div class="work-info"><h3>Tinta Fundida</h3><span>demo · impresión 3D</span></div>
+        </a>
+
+        <a class="work" href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer" data-tilt data-cursor="Ver demo">
+          <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>lubit</span></div>
+          <div class="work-media">
+            <picture>
+              <source type="image/webp" srcset="/img/lubit.webp"/>
+              <img src="/img/lubit.jpg" alt="Demo de página para venta y reparación de celulares: Lubit, con catálogo, turnos y servicio técnico" loading="lazy" decoding="async" width="1100" height="653"/>
+            </picture>
+            <span class="work-go">Ver demo <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </div>
+          <div class="work-info"><h3>Lubit</h3><span>demo · celulares y turnos</span></div>
+        </a>
+
+        <!-- Marcador: acá va el primer caso de un cliente real, cuando haya
+             captura y permiso para publicarlo. No inventar nada. -->
+        <article class="work work-pendiente">
+          <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>tu-caso</span></div>
+          <div class="work-media">
+            <div class="pendiente">
+              <span class="pendiente-tag">[CASO REAL PENDIENTE]</span>
+              <p>Acá va el primer caso de un cliente real, con captura y lo que se resolvió.</p>
+            </div>
+          </div>
+          <div class="work-info"><h3>Tu caso</h3><span>reservado</span></div>
+        </article>
+
+        <a class="work-next" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer" data-reveal>
+          <h3>¿Tu consultorio?</h3>
+          <span class="go">Probalo 15 días gratis <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+      </div>
+      </div>
+
+      <div class="hscroll-hint" aria-hidden="true"><span>Seguí bajando</span><b></b><span>Entrá y navegalas</span></div>
+     </div>
+    </section>
+
+    <div class="wrap">
+      <div class="note" data-reveal>
+        <span>Son demos de muestra, no clientes. Entrá y navegalas.</span>
+        <span class="about"><span class="av" aria-hidden="true">J</span>Soy Joel, de Hudson. Te contesto yo.</span>
+      </div>
+    </div>
+
+    <!-- CÓMO TRABAJO -->
+    <section class="invert como" id="como" aria-labelledby="como-title">
+      <div class="como-pin" id="comoPin">
+        <div class="wrap">
+          <div class="sec-head center">
+            <p class="kicker"><b>04</b> Cómo trabajo</p>
+            <h2 id="como-title" data-split>Cuatro pasos. <span class="hl">Cero vueltas.</span></h2>
+          </div>
+          <ol class="pasos" id="pasos">
+            <li class="pasos-line" aria-hidden="true"><i></i></li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span>
+              <time>paso 01</time>
+              <h3>Diagnóstico</h3>
+              <p>Me contás cómo atendés hoy: horarios, servicios y cómo agendás. No hace falta que sepas de tecnología.</p>
+            </li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg></span>
+              <time>paso 02</time>
+              <h3>Propuesta</h3>
+              <p>Te digo qué combo te sirve y arrancamos con los 15 días de prueba gratis del agente, sin seña.</p>
+            </li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></span>
+              <time>paso 03</time>
+              <h3>Implementación</h3>
+              <p>Dejo el agente andando en tu WhatsApp con tu forma de atender. Esos 15 días los usás gratis.</p>
+            </li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg></span>
+              <time>paso 04</time>
+              <h3>Soporte</h3>
+              <p>Si te sirve, seguimos con el combo que elijas. Los ajustes los vemos por WhatsApp, te contesto yo.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMBOS -->
+    <section class="sec wrap" id="precios" aria-labelledby="precios-title" style="padding-top:0">
+      <div class="sec-head center" data-reveal>
+        <p class="kicker"><b>05</b> Combos</p>
+        <h2 id="precios-title" data-split>Tres combos. <span class="hl">Simple.</span></h2>
+      </div>
+      <div class="badges" data-stagger>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>15 días gratis del agente</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sin seña para probar</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hosting incluido</span>
+      </div>
+
+      <div class="plans" data-stagger>
+        <article class="plan spot">
+          <span class="plan-ico"><svg class="ico"><use href="#i-link"/></svg></span>
+          <h3>Arranque</h3>
+          <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
+          <ul>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente Básico: consultas 24 h</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Página tipo link-in-bio</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hasta 2 cambios chicos por mes</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio propio, si lo querés</li>
+          </ul>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
+        </article>
+
+        <article class="plan featured spot">
+          <span class="plan-flag">Recomendado</span>
+          <span class="plan-ico"><svg class="ico"><use href="#i-web"/></svg></span>
+          <h3>Básico</h3>
+          <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
+          <ul>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente Básico 24 h, con tu onda</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Landing: servicios, fotos, horarios y mapa</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio .com.ar 1 año, hosting y SSL</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Search Console, 1 ronda de cambios y capacitación</li>
+          </ul>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
+        </article>
+
+        <article class="plan spot">
+          <span class="plan-ico"><svg class="ico"><use href="#i-layers"/></svg></span>
+          <h3>Completo</h3>
+          <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
+          <ul>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente con Mercado Pago o turnos con seña</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Web con panel para editar servicios o precios</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Link de pedidos o turnos integrado</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio, hosting, SSL, 2 rondas de cambios</li>
+          </ul>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
+        </article>
+      </div>
+      <p class="plans-note" data-reveal>La web se arma cuando decidís seguir.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sec wrap" id="faq" aria-labelledby="faq-title" style="padding-top:0">
+      <div class="faq-wrap">
+        <div class="sec-head" data-reveal>
+          <p class="kicker"><b>06</b> Preguntas</p>
+          <h2 id="faq-title" data-split>Lo que <span class="hl">siempre</span> me preguntan.</h2>
+        </div>
+        <ul class="faq" data-stagger>
+          <li class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">¿Qué necesito para empezar?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Contame cómo atendés hoy: horarios, servicios y cómo agendás. Con eso dejo el agente andando en tu WhatsApp. No hace falta que sepas de tecnología.</p></div></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">¿Cómo funciona la prueba de 15 días?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Te dejo el agente andando en tu número y lo usás 15 días sin pagar. Si te sirve, seguís con el combo que elijas. Si no, no debés nada. La web se arma recién cuando confirmás que seguís.</p></div></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">¿Incluye hosting y dominio?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>El hosting va incluido en los tres combos. En Arranque la página va en un subdominio; si querés dominio propio, lo vemos por WhatsApp. En Básico y Completo, el dominio .com.ar del primer año está incluido.</p></div></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">¿Puedo pedir cambios después?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Sí. En Arranque, hasta 2 cambios chicos por mes. En Básico, 1 ronda de cambios en la web. En Completo, 2 rondas. Después, los ajustes los vemos por WhatsApp.</p></div></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">¿Tengo que pagar algo para probarlo?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>No. Los 15 días del agente son gratis. La web se arma solo si, después de la prueba, decidís seguir con un combo.</p></div></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="closing cta-final" id="contacto" aria-labelledby="cierre-title">
+      <span class="mark" aria-hidden="true">MJR DIGITAL</span>
+      <div class="wrap">
+        <div data-reveal>
+          <p class="closing-kicker">¿Listo para probarlo 15 días gratis?</p>
+          <h2 id="cierre-title" style="margin:0">
+            <a class="big-link" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">Probalo<span class="arr" aria-hidden="true">→</span></a>
+          </h2>
+          <p class="closing-sub">Escribime por WhatsApp y dejamos el agente andando en tu número.</p>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-lg" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
+        </div>
+
+        <footer class="footer">
+          <span>© 2026 MJR Digital · Joel Rodriguez · Hudson, Buenos Aires</span>
+          <nav aria-label="Contacto">
+            <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="#top">Volver arriba ↑</a>
+          </nav>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="sticky-wa" id="stickyWa">
+    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Probalo 15 días gratis: escribirle a Joel por WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+  </div>
+
+<div id="chat-tooltip">¿Querés ver cómo responde un agente? <button type="button" class="tooltip-close" id="tooltip-close" aria-label="Cerrar aviso">✕</button></div>
+<button type="button" id="chat-toggle" title="Probar el asistente" aria-label="Abrir el asistente" aria-expanded="false" aria-controls="chat-window">
+  <svg class="ico i-c" aria-hidden="true"><use href="#i-chat"/></svg>
+  <svg class="ico i-x" aria-hidden="true"><use href="#i-x"/></svg>
+</button>
+
+<div id="chat-window" class="hidden" role="dialog" aria-label="Asistente MJR Digital" aria-hidden="true">
+  <div class="chat-header">
+    <div class="avatar" aria-hidden="true"><img src="/img/isologo-negativo.png" alt="" width="672" height="265" loading="lazy" decoding="async"/></div>
+    <div class="info">
+      <div class="name">Asistente MJR Digital</div>
+      <div class="status">en línea · probame como un paciente</div>
+    </div>
+  </div>
+  <div id="messages" aria-live="polite"></div>
+  <div class="chat-input">
+    <textarea id="chat-input-text" rows="1" placeholder="Escribí tu consulta…" aria-label="Escribí tu consulta" maxlength="500"></textarea>
+    <button type="button" id="send-btn" title="Enviar" aria-label="Enviar"><svg class="ico" aria-hidden="true"><use href="#i-send"/></svg></button>
+  </div>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+
+</body>
+</html>
