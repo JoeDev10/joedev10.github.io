@@ -141,27 +141,25 @@ export function initRiel() {
 }
 
 /* ---------- 4. RED DEL HERO ----------
-   El 3D se baja recién cuando el hero está en pantalla, y solo si la
-   máquina lo banca. Si no, queda un degradado quieto y no se descarga
-   nada de three. */
-function hayWebGL() {
-  try {
-    const c = document.createElement("canvas");
-    return !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl")));
-  } catch {
-    return false;
-  }
+   La red se baja recién cuando el hero está en pantalla y el navegador
+   quedó libre, y solo si la máquina lo banca. Si no, queda un degradado
+   quieto y no se descarga nada. */
+function ahorrandoDatos() {
+  const con = navigator.connection;
+  if (!con) return false;
+  if (con.saveData) return true;
+  // 2G o similar: no le gastamos datos en un adorno
+  return /(^|-)2g$/.test(con.effectiveType || "");
 }
 
 function maquinaJusta() {
-  // En celular y tablet no se baja three: medido con Lighthouse mobile, el
-  // chunk (128 kB comprimidos) se lleva la nota de 94 a 75 por el parseo.
-  // Ahí queda el degradado quieto, que no cuesta nada.
-  if (innerWidth < 1025 || !fine) return true;
+  // La red ya no usa three (536 kB): es canvas 2D, unos pocos kB, así que
+  // también se enciende en celular. Solo queda afuera la máquina que de
+  // verdad no da, y ahí se ve el degradado quieto, que no cuesta nada.
   const mem = navigator.deviceMemory;
   const nucleos = navigator.hardwareConcurrency;
-  if (typeof mem === "number" && mem < 4) return true;
-  if (typeof nucleos === "number" && nucleos <= 4) return true;
+  if (typeof mem === "number" && mem < 2) return true;
+  if (typeof nucleos === "number" && nucleos <= 2) return true;
   return false;
 }
 
@@ -169,7 +167,7 @@ export function initRedHero() {
   const c = document.getElementById("net");
   if (!c) return;
 
-  if (reduce || maquinaJusta() || !hayWebGL()) {
+  if (reduce || maquinaJusta() || ahorrandoDatos()) {
     c.classList.add("estatico");
     return;
   }
@@ -179,7 +177,7 @@ export function initRedHero() {
 
   let red = null;
   const bajar = () => {
-    import("../three/hero-net.js")
+    import("../hero/red-hero.js")
       .then(({ crearRedHero }) => {
         red = crearRedHero(c);
         c.classList.remove("estatico");
@@ -188,8 +186,8 @@ export function initRedHero() {
       .catch(() => { /* se queda el degradado */ });
   };
 
-  // three pesa: se baja recién cuando la página terminó de cargar y el
-  // navegador está libre, para no pelearle al primer pintado.
+  // Aunque ahora pese poco, se baja igual cuando la página terminó de
+  // cargar y el navegador está libre: el hero se lee antes de moverse.
   const cuandoHaya = () => {
     if ("requestIdleCallback" in window) requestIdleCallback(bajar, { timeout: 2500 });
     else setTimeout(bajar, 1200);

@@ -164,8 +164,9 @@ body.ready .rail { opacity: 1; }
           mask-image: radial-gradient(ellipse 70% 60% at 62% 45%, #000 20%, transparent 75%);
 }
 body.ready #net { opacity: .9; }
-/* Respaldo quieto: si la máquina no da o el visitante pide menos
-   movimiento, no se baja three y queda este degradado. */
+/* Respaldo quieto: si la máquina no da, el visitante pide menos
+   movimiento o está ahorrando datos, no se baja la red y queda
+   este degradado. */
 #net.estatico {
   background:
     radial-gradient(ellipse 58% 52% at 62% 42%, rgba(4, 68, 228, .34), transparent 70%),
