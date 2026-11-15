@@ -26,24 +26,27 @@ Eso lo genera `npm run publicar` a partir del código que vive en `app/`.
 ### Si tocás el sitio, el flujo es:
 
 ```bash
-npm run publicar     # construye sobre la raíz del repo
 git add -A
 git commit -m "..."
 git push
 ```
 
-Si te olvidás de `npm run publicar`, el sitio publicado no cambia: se queda
-con el build anterior.
+Nada más. El workflow `deploy.yml` se encarga de construir y de commitear el
+sitio de la raíz por vos, y además publica el mismo build por la vía de
+Actions. No hace falta acordarse de nada.
+
+Si querés ver el resultado antes de pushear, podés correr `npm run publicar`
+a mano y commitearlo; el workflow después no va a tener nada que cambiar.
 
 ### Cómo sacarse esto de encima (recomendado)
 
 En **Settings → Pages → Build and deployment → Source**, cambiar de
 *Deploy from a branch* a **GitHub Actions**. Con eso:
 
-- el workflow `deploy.yml` pasa a ser el único que publica, y sube `dist/`;
+- el workflow se simplifica: deja de commitear la raíz y solo sube `dist/`;
 - se puede borrar de la raíz `index.html`, `assets/`, `img/`, `demo-stock/`,
   `robots.txt`, `sitemap.xml`, más `_config.yml` y `scripts/publicar.mjs`;
-- se vuelve al flujo normal: `git push` y listo, sin acordarse de nada.
+- se termina el ruido de los commits automáticos y el repo queda limpio.
 
 Mientras tanto, `_config.yml` se encarga de que no se publique lo que no va:
 `app/` (las fuentes), `tools/` (los `.py` y `.bat` de prospección), `docs/`,
