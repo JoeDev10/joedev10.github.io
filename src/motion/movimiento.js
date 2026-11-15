@@ -1,11 +1,11 @@
 /* ==========================================================
    MJR Digital — capa de movimiento
-   Intro de carga, scroll suave, cursor propio, títulos que
-   entran por máscara, riel de secciones, red de puntos del
-   hero, cinta grande, demos en scroll horizontal y parallax.
+   Lo que no depende de la posición del scroll: intro de carga,
+   cursor propio, riel de secciones, la red de puntos del hero
+   y la cinta grande.
+   Lo que sí depende del scroll vive en scroll.js, con GSAP.
    Todo se apaga si el visitante pide menos movimiento.
    ========================================================== */
-import Lenis from "lenis";
 
 const body = document.body;
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -66,35 +66,7 @@ export function initIntro() {
   setTimeout(() => { if (!done) { done = true; clearInterval(t); abrir(); } }, 4500);
 }
 
-/* ---------- 2. SCROLL SUAVE (Lenis) ---------- */
-export function initScrollSuave() {
-  if (reduce) return null;
-  let lenis = null;
-  try {
-    lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 1.6,
-    });
-    (function loop(time) { lenis.raf(time); raf(loop); })(0);
-
-    // los anclajes internos pasan por Lenis
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const dest = document.querySelector(id);
-        if (!dest) return;
-        e.preventDefault();
-        lenis.scrollTo(dest, { offset: -70 });
-      });
-    });
-  } catch { lenis = null; }
-  return lenis;
-}
-
-/* ---------- 3. CURSOR ---------- */
+/* ---------- 2. CURSOR ---------- */
 export function initCursor() {
   if (!fine || reduce) return;
   const dot = document.getElementById("cur");
@@ -134,77 +106,7 @@ export function initCursor() {
   });
 }
 
-/* ---------- 4. TÍTULOS: partidos en palabras y revelados por máscara ---------- */
-function partir(el) {
-  if (el.dataset.split === "listo") return;
-  const frag = document.createDocumentFragment();
-  const nodos = Array.from(el.childNodes);
-  const piezas = [];
-
-  function enPalabras(texto, molde) {
-    texto.split(/(\s+)/).forEach(w => {
-      if (!w) return;
-      if (/^\s+$/.test(w)) { piezas.push({ esp: true }); return; }
-      piezas.push({ txt: w, molde });
-    });
-  }
-
-  nodos.forEach(n => {
-    if (n.nodeType === 3) {
-      enPalabras(n.textContent, null);
-    } else if (n.nodeType === 1) {
-      // un <span class="hl"> se parte igual, clonando el envoltorio
-      if (n.children.length === 0 && n.textContent.trim()) {
-        enPalabras(n.textContent, n);
-      } else {
-        piezas.push({ nodo: n });
-      }
-    }
-  });
-
-  piezas.forEach(p => {
-    if (p.esp) { frag.appendChild(document.createTextNode(" ")); return; }
-    const w = document.createElement("span");
-    w.className = "sp-word";
-    const inner = document.createElement("span");
-    inner.className = "sp-i";
-    if (p.nodo) {
-      inner.appendChild(p.nodo);
-    } else if (p.molde) {
-      const env = p.molde.cloneNode(false);
-      env.textContent = p.txt;
-      inner.appendChild(env);
-    } else {
-      inner.textContent = p.txt;
-    }
-    w.appendChild(inner);
-    frag.appendChild(w);
-  });
-
-  el.textContent = "";
-  el.appendChild(frag);
-  el.classList.add("sp-line");
-  el.dataset.split = "listo";
-  el.querySelectorAll(":scope > .sp-word").forEach((w, i) => {
-    w.style.setProperty("--wd", (i * 60) + "ms");
-  });
-}
-
-export function initTitulos() {
-  if (reduce) return;
-  document.querySelectorAll("[data-split]").forEach(partir);
-
-  const obs = new IntersectionObserver(es => {
-    es.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add("in");
-      obs.unobserve(e.target);
-    });
-  }, { threshold: 0.2, rootMargin: "0px 0px -8% 0px" });
-  document.querySelectorAll(".sp-line, .work").forEach(el => obs.observe(el));
-}
-
-/* ---------- 5. NAV: indicador y riel de secciones ---------- */
+/* ---------- 3. NAV: indicador y riel de secciones ---------- */
 export function initRiel() {
   const nav = document.querySelector(".nav");
   if (!nav) return;
@@ -238,7 +140,7 @@ export function initRiel() {
   secciones.forEach(s => spy.observe(s));
 }
 
-/* ---------- 6. LIENZO: red de puntos del hero ---------- */
+/* ---------- 4. LIENZO: red de puntos del hero ---------- */
 export function initRedHero() {
   const c = document.getElementById("net");
   if (!c || reduce) return;
@@ -309,7 +211,7 @@ export function initRedHero() {
   raf(pintar);
 }
 
-/* ---------- 7. CINTA GRANDE: se mueve con el scroll ---------- */
+/* ---------- 5. CINTA GRANDE: se mueve con el scroll ---------- */
 export function initCinta() {
   const track = document.getElementById("bandTrack");
   const band = document.getElementById("band");
@@ -335,67 +237,4 @@ export function initCinta() {
     if (band) band.style.setProperty("--skew", skew.toFixed(2) + "deg");
     raf(tick);
   })();
-}
-
-/* ---------- 8. DEMOS: scroll horizontal pegado ---------- */
-export function initDemosHorizontal() {
-  const wrap = document.querySelector(".hscroll");
-  if (!wrap) return;
-  const row = wrap.querySelector(".hscroll-row");
-  const hint = wrap.querySelector(".hscroll-hint b");
-  if (!row) return;
-  let activo = false, extra = 0, timer = 0;
-
-  function mover() {
-    if (!activo) return;
-    const r = wrap.getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, -r.top / (extra || 1)));
-    row.style.transform = "translate3d(" + (-p * extra) + "px,0,0)";
-    if (hint) hint.style.setProperty("--hp", p.toFixed(3));
-  }
-
-  function medir() {
-    activo = innerWidth >= 1025 && !reduce;
-    if (!activo) {
-      wrap.style.height = "";
-      row.style.transform = "";
-      return;
-    }
-    extra = Math.max(0, row.scrollWidth - innerWidth);
-    wrap.style.height = (innerHeight + extra) + "px";
-    mover();
-  }
-
-  medir();
-  addEventListener("resize", () => { clearTimeout(timer); timer = setTimeout(medir, 200); });
-  addEventListener("scroll", mover, { passive: true });
-  setTimeout(medir, 900);
-  addEventListener("load", medir);
-}
-
-/* ---------- 9. PARALLAX suave ---------- */
-export function initParallax() {
-  if (reduce) return;
-  const items = Array.from(document.querySelectorAll("[data-par]"));
-  if (!items.length) return;
-  let pendiente = false;
-
-  function pintar() {
-    pendiente = false;
-    const vh = innerHeight;
-    items.forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > vh + 200) return;
-      const centro = r.top + r.height / 2 - vh / 2;
-      const k = parseFloat(el.getAttribute("data-par")) || 0.06;
-      el.style.translate = "0 " + (-centro * k).toFixed(1) + "px";
-    });
-  }
-
-  addEventListener("scroll", () => {
-    if (pendiente) return;
-    pendiente = true; raf(pintar);
-  }, { passive: true });
-  addEventListener("resize", pintar);
-  pintar();
 }

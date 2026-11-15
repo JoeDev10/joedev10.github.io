@@ -6,12 +6,11 @@
    Todo se apaga si el visitante pide menos movimiento.
    ========================================================== */
 
-/* ===== Aparición al hacer scroll (translate, para no pisar transform) ===== */
-.js [data-reveal] {
-  opacity: 0; translate: 0 26px;
-  transition: opacity .9s var(--ease-out) var(--d, 0ms), translate .9s var(--ease-out) var(--d, 0ms);
-}
-.js [data-reveal].in { opacity: 1; translate: 0 0; }
+/* ===== Aparición al hacer scroll =====
+   El estado inicial lo pone el CSS para que no haya parpadeo antes de
+   que corra el JS. De ahí en más lo maneja GSAP (ScrollTrigger.batch),
+   que anima opacidad y desplazamiento. */
+.js [data-reveal] { opacity: 0; }
 .load { animation: fade-up 1s var(--ease-out) both; animation-delay: var(--d, 0ms); }
 @keyframes fade-up { from { opacity: 0; transform: translateY(18px); } }
 
@@ -180,11 +179,10 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
   padding-bottom: .12em; margin-bottom: -.12em;
 }
 .sp-word > .sp-i { display: inline-block; }
-.js .sp-word > .sp-i { transform: translateY(110%); opacity: 0; }
-.js .sp-line.in .sp-i {
-  transform: none; opacity: 1;
-  transition: transform .9s var(--ease-expo) var(--wd, 0ms), opacity .55s var(--ease-out) var(--wd, 0ms);
-}
+/* Estado de arranque: solo la opacidad, para que no parpadee. El
+   desplazamiento lo pone GSAP, que si no lee este transform como un
+   valor en píxeles y lo arrastra hasta el final. */
+.js .sp-word > .sp-i { opacity: 0; }
 
 /* ===== 7. CINTA grande con inclinación por velocidad ===== */
 .band {
@@ -290,7 +288,7 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
 @media (prefers-reduced-motion: reduce) {
   #boot, #cur, #cur-ring, #net { display: none !important; }
   body.booting { overflow: auto; }
-  .js .sp-word > .sp-i { transform: none; opacity: 1; }
+  .js .sp-word > .sp-i { opacity: 1; }
   .js .work-media::after { display: none; }
   .invert::before, .invert::after { clip-path: none; }
   .band { transform: none; }
@@ -298,14 +296,27 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
 
 /* ===== 12. soporte del scroll horizontal pegado ===== */
 @media (min-width: 1025px) {
+  /* El pegado lo hace ScrollTrigger (pin), no position: sticky. */
   .hscroll { position: relative; }
   .hscroll-sticky {
-    position: sticky; top: 0; height: 100vh;
+    height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
     overflow: hidden;
   }
   .hscroll-head { padding-inline: var(--gutter); margin-bottom: 42px; max-width: var(--max); margin-inline: auto; width: 100%; }
 }
+/* ===== Cómo trabajo: la sección se pega mientras pasan los 4 pasos ===== */
+.como { padding-block: 0; }
+.como-pin {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-block: clamp(70px, 9vw, 110px);
+}
+.como .sec-head { margin-bottom: clamp(38px, 5vw, 64px); }
+@media (max-width: 1024px) {
+  .como-pin { min-height: 0; }
+}
+
 @media (max-width: 1024px) {
   .hscroll-sticky { position: static; height: auto; }
   .hscroll-head { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
@@ -332,6 +343,9 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
   .js [data-reveal] { opacity: 1; translate: none; }
+  /* Sin GSAP no hay quien encienda los pasos: quedan todos prendidos. */
+  .paso { opacity: 1; }
+  .pasos-line i { transform: scaleX(1); }
   .vb, .v-pill, .v-ok { opacity: 1 !important; animation: none !important; }
   .vb.typing { display: none !important; }
 }

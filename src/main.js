@@ -2,6 +2,9 @@
    MJR Digital — punto de entrada
    Acá se cargan los estilos en orden (base → layout →
    componentes → movimiento) y se encienden las piezas.
+
+   Si el visitante pide menos movimiento, no se cargan ni
+   Lenis ni GSAP: la página queda quieta y usable.
    ========================================================== */
 import "./styles/base.css";
 import "./styles/layout.css";
@@ -12,8 +15,6 @@ import { initAsistente } from "./features/asistente.js";
 import { initHeroPhone, initLineaNoche } from "./features/hero-demo.js";
 import {
   initPuntero,
-  initRevelados,
-  initContadores,
   initScroll,
   initMenu,
   initFaq,
@@ -22,45 +23,48 @@ import {
 } from "./features/ui.js";
 import {
   initIntro,
-  initScrollSuave,
   initCursor,
-  initTitulos,
   initRiel,
   initRedHero,
   initCinta,
-  initDemosHorizontal,
-  initParallax,
 } from "./motion/movimiento.js";
 
-// El módulo se evalúa con el DOM ya armado (defer), pero por si acaso.
-function arrancar() {
+const menosMovimiento = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+async function arrancar() {
   document.body.classList.replace("no-js", "js");
 
-  // Movimiento
+  // Lo que anda siempre
   initIntro();
-  initScrollSuave();
-  initCursor();
-  initTitulos();
   initRiel();
-  initRedHero();
   initCinta();
-  initDemosHorizontal();
-  initParallax();
-
-  // Interfaz
   initPuntero();
-  initRevelados();
-  initContadores();
   initScroll();
   initMenu();
   initFaq();
   initWhatsAppFijo();
   initPixelWhatsApp();
-
-  // Demos y asistente
   initHeroPhone();
   initLineaNoche();
   initAsistente();
+
+  if (menosMovimiento) return;
+
+  // Movimiento que no depende del scroll
+  initCursor();
+  initRedHero();
+
+  // Scroll suave y todo lo que dispara ScrollTrigger
+  const scroll = await import("./motion/scroll.js");
+  scroll.initScrollSuave();
+  // Primero las secciones que se pegan y el partido de títulos, así los
+  // revelados miden sobre la página ya armada.
+  scroll.initComoTrabajo();
+  scroll.initDemosHorizontal();
+  scroll.initTitulos();
+  scroll.initRevelados();
+  scroll.initParallax();
+  scroll.initContadores();
 }
 
 if (document.readyState === "loading") {

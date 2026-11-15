@@ -68,51 +68,14 @@ export function initPuntero() {
   });
 }
 
-/* ---------- Apariciones al hacer scroll, escalonadas por grupo ---------- */
-export function initRevelados() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
-    });
-  }, { threshold: .12, rootMargin: "0px 0px -6% 0px" });
-
-  document.querySelectorAll("[data-stagger]").forEach(g => {
-    Array.from(g.children).forEach((c, i) => {
-      c.style.setProperty("--d", (i * 90) + "ms");
-      c.setAttribute("data-reveal", "");
-    });
-  });
-  document.querySelectorAll("[data-reveal]").forEach(el => obs.observe(el));
-}
-
-/* ---------- Contadores ---------- */
-export function initContadores() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target, target = Number(el.dataset.count), suffix = el.dataset.suffix || "";
-      obs.unobserve(el);
-      if (reduceMotion) { el.textContent = target + suffix; return; }
-      let inicio = null;
-      const paso = ts => {
-        if (!inicio) inicio = ts;
-        const p = Math.min((ts - inicio) / 1400, 1);
-        el.textContent = Math.round((1 - Math.pow(1 - p, 4)) * target) + suffix;
-        if (p < 1) requestAnimationFrame(paso);
-      };
-      requestAnimationFrame(paso);
-    });
-  }, { threshold: .5 });
-  document.querySelectorAll("[data-count]").forEach(el => obs.observe(el));
-}
-
-/* ---------- Scroll: barra de progreso, header y línea del proceso ---------- */
+/* ---------- Scroll: barra de progreso y header ----------
+   Va sin GSAP a propósito: es un cálculo barato y tiene que seguir
+   andando también cuando el visitante pide menos movimiento, que es
+   cuando no arranca ni Lenis ni ScrollTrigger. */
 export function initScroll() {
   const bar = document.getElementById("progress");
   const header = document.getElementById("siteHeader");
   const mobileMenu = document.getElementById("mobileMenu");
-  const pasos = document.getElementById("pasos");
-  const nodos = pasos ? pasos.querySelectorAll(".paso") : [];
   let ultimoY = scrollY, pendiente = false;
 
   function update() {
@@ -125,12 +88,6 @@ export function initScroll() {
       header.classList.toggle("hide", !menuAbierto && y > 600 && y > ultimoY);
     }
     ultimoY = y;
-    if (pasos) {
-      const r = pasos.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (innerHeight * .8 - r.top) / (r.height + innerHeight * .25)));
-      pasos.style.setProperty("--p", p.toFixed(3));
-      nodos.forEach((n, k) => n.classList.toggle("on", p >= k / (nodos.length - 1) * .92));
-    }
   }
 
   addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(update); } }, { passive: true });
