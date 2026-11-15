@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Las páginas del sitio que Google tiene que conocer. Las secciones de la
+  home (#servicios, #precios, #faq) no van: son la misma página.
+  Las demos de abajo viven en repos aparte, pero se sirven bajo este mismo
+  dominio, así que corresponde listarlas acá.
+  Al tocar una página, actualizar su lastmod.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://joedev10.github.io/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://joedev10.github.io/demo-stock/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://joedev10.github.io/tinta-fundida/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://joedev10.github.io/lubit/</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
