@@ -1,23 +1,53 @@
 # Despliegue de MJR Digital
 
 Guía corta de cómo está armado el sitio después de pasarlo a Vite, cómo
-correrlo en tu máquina y qué falta hacer una sola vez para que se publique
-solo.
+correrlo en tu máquina y cómo se publica. Lo primero es lo más importante:
+hoy el sitio se publica desde la raíz del repo, así que hay un paso extra
+cada vez que se toca algo.
 
 ---
 
-## 1. Qué hay que hacer una sola vez (esto lo tenés que hacer vos, Joel)
+## 1. Cómo se publica hoy (importante)
 
-En GitHub, en el repo `JoeDev10/joedev10.github.io`:
+GitHub Pages está configurado como **"Deploy from a branch"**: publica la
+**raíz de `master` tal cual**, sin pasar por el workflow. Por eso la raíz del
+repo **es** el sitio ya construido:
 
-**Settings → Pages → Build and deployment → Source: GitHub Actions**
+```
+index.html  assets/  img/  demo-stock/  robots.txt  sitemap.xml
+```
 
-Hasta que no toques eso, el workflow puede correr pero no publica nada.
+Eso lo genera `npm run publicar` a partir del código que vive en `app/`.
 
-Después de activarlo, cada push a `master` construye el sitio y lo sube solo.
-Mientras el trabajo esté en la rama `rediseno-vite-7wft9w` **no se publica
-nada**: el workflow solo dispara en `master` o a mano desde la pestaña
-Actions.
+> Esto se descubrió a los golpes: la primera vez que se mergeó el rediseño, el
+> builder viejo de Jekyll publicó la raíz con el código fuente adentro y el
+> sitio quedó sin estilos ni imágenes durante unos minutos.
+
+### Si tocás el sitio, el flujo es:
+
+```bash
+npm run publicar     # construye sobre la raíz del repo
+git add -A
+git commit -m "..."
+git push
+```
+
+Si te olvidás de `npm run publicar`, el sitio publicado no cambia: se queda
+con el build anterior.
+
+### Cómo sacarse esto de encima (recomendado)
+
+En **Settings → Pages → Build and deployment → Source**, cambiar de
+*Deploy from a branch* a **GitHub Actions**. Con eso:
+
+- el workflow `deploy.yml` pasa a ser el único que publica, y sube `dist/`;
+- se puede borrar de la raíz `index.html`, `assets/`, `img/`, `demo-stock/`,
+  `robots.txt`, `sitemap.xml`, más `_config.yml` y `scripts/publicar.mjs`;
+- se vuelve al flujo normal: `git push` y listo, sin acordarse de nada.
+
+Mientras tanto, `_config.yml` se encarga de que no se publique lo que no va:
+`app/` (las fuentes), `tools/` (los `.py` y `.bat` de prospección), `docs/`,
+`scripts/` y la config del proyecto.
 
 ---
 
@@ -37,45 +67,50 @@ npm run build        # genera dist/
 npm run preview      # sirve dist/ en http://localhost:4173
 ```
 
-`dist/` no se versiona: lo arma el workflow en cada despliegue.
+`dist/` no se versiona. Lo que sí se versiona es el build de la raíz, que sale
+de `npm run publicar`.
 
 ---
 
 ## 3. Estructura
 
 ```
-index.html                  la página (es la entrada de Vite)
-vite.config.js              base "/", salida en dist, target es2020
+index.html                  EL SITIO PUBLICADO (generado, se commitea)
+assets/                     idem: JS y CSS con hash
+img/  demo-stock/           idem: copiados de app/public/
+robots.txt  sitemap.xml     idem
+_config.yml                 qué NO publica GitHub Pages
 
-public/                     se copia tal cual al sitio publicado
-  img/                      imágenes, logos y favicons
-  demo-stock/               la demo de stock, sigue saliendo en /demo-stock/
-  sitemap.xml
-  robots.txt
+app/                        el código fuente
+  index.html                la entrada de Vite
+  public/                   se copia tal cual al sitio
+    img/  demo-stock/  sitemap.xml  robots.txt
+  src/
+    main.js                 enciende todo y decide qué se carga
+    styles/
+      base.css              variables de marca, reset, tipografías, fondos
+      layout.css            header, menú de celular y grilla del hero
+      components.css        botones, bento, celular, demos, combos, chat…
+      motion.css            intro, cursor, revelados, banda clara (entra último)
+    features/
+      asistente.js          el chat (respuestas locales, bot remoto apagado)
+      hero-demo.js          el agente del celular del hero y la línea de la noche
+      ui.js                 mouse, barra de progreso, header, menú, preguntas
+    motion/
+      movimiento.js         intro, cursor, riel, cinta y carga de la red del hero
+      scroll.js             Lenis + GSAP ScrollTrigger (import dinámico)
+    three/
+      hero-net.js           la red de puntos en WebGL (import dinámico)
 
-src/
-  main.js                   enciende todo y decide qué se carga
-  styles/
-    base.css                variables de marca, reset, tipografías, fondos
-    layout.css              header, menú de celular y grilla del hero
-    components.css          botones, bento, celular, demos, combos, chat…
-    motion.css              intro, cursor, revelados, banda clara (entra último)
-  features/
-    asistente.js            el chat (respuestas locales, bot remoto apagado)
-    hero-demo.js            el agente del celular del hero y la línea de la noche
-    ui.js                   mouse, barra de progreso, header, menú, preguntas
-  motion/
-    movimiento.js           intro, cursor, riel, cinta y carga de la red del hero
-    scroll.js               Lenis + GSAP ScrollTrigger (import dinámico)
-  three/
-    hero-net.js             la red de puntos en WebGL (import dinámico)
+scripts/
+  construir.mjs             npm run build    → dist/
+  publicar.mjs              npm run publicar → la raíz del repo
 
-tools/                      prospección (.py y .bat) — FUERA del build
-docs/                       notas internas — FUERA del build
+vite.config.js
+tools/                      prospección (.py y .bat) — no se publica
+docs/                       notas internas — no se publica
 .github/workflows/deploy.yml
 ```
-
-Dos cosas que antes se publicaban por error y ahora no: `tools/` y `docs/`.
 
 ---
 

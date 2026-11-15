@@ -1,0 +1,22 @@
+# GitHub Pages está publicando esta rama tal cual (Deploy from a branch),
+# así que la raíz del repo es el sitio: index.html, assets/, img/,
+# demo-stock/, robots.txt y sitemap.xml son el resultado de `npm run publicar`.
+#
+# Acá se dice qué NO se publica. Ojo: esta lista reemplaza a la que Jekyll
+# trae por defecto, así que todo lo que tenga que quedar afuera va acá.
+exclude:
+  - app/                 # el código fuente del sitio
+  - scripts/             # los scripts de build
+  - tools/               # prospección: .py y .bat, no van al sitio público
+  - docs/                # notas internas
+  - node_modules/
+  - dist/
+  - package.json
+  - package-lock.json
+  - vite.config.js
+  - .github/
+  - .claude/
+  - README.md
+
+# No hace falta nada de Jekyll: el sitio ya viene construido.
+plugins: []
