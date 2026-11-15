@@ -11,3 +11,9 @@ desktop.ini
 tools/salida/
 __pycache__/
 *.pyc
+
+# Salida del build de Vite
+dist/
+
+# Documento interno de un cliente: no va a un repo publico
+vanshelato/

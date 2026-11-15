@@ -1,0 +1,99 @@
+/* ==========================================================
+   MJR Digital — layout
+   Estructura de la página: header flotante, menú de celular y
+   la grilla del hero. Las piezas de adentro viven en
+   components.css.
+   ========================================================== */
+
+/* ===== HEADER ===== */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: background .3s, border-color .3s, transform .4s var(--ease-out);
+}
+.site-header.solid {
+  background: rgba(5, 12, 31, .74);
+  backdrop-filter: blur(18px) saturate(1.5); -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  border-color: var(--line);
+}
+.site-header.hide { transform: translateY(-100%); }
+.header-row { display: flex; align-items: center; gap: 26px; padding-block: 14px; }
+.brand img { height: 34px; width: auto; }
+.nav { display: flex; gap: 4px; margin-left: auto; }
+.nav a { font-size: 14.5px; font-weight: 500; color: var(--text-2); padding: 8px 14px; border-radius: 999px; transition: color .2s, background .2s; }
+.nav a:hover { color: var(--text); background: rgba(255,255,255,.06); }
+.menu-btn { display: none; position: relative; width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line-2); }
+.menu-btn span { position: absolute; left: 12px; right: 12px; height: 1.6px; background: var(--text); transition: transform .3s var(--ease-out); }
+.menu-btn span:first-child { top: 17px; }
+.menu-btn span:last-child { top: 23px; }
+.menu-btn.open span:first-child { transform: translateY(3px) rotate(45deg); }
+.menu-btn.open span:last-child { transform: translateY(-3px) rotate(-45deg); }
+
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(5, 12, 31, .97);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  display: flex; flex-direction: column; justify-content: center; gap: 4px;
+  padding: 0 28px;
+  opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.mobile-menu.open { opacity: 1; pointer-events: auto; }
+.m-link { font-family: var(--f-head); font-weight: 800; font-size: 32px; color: var(--text); letter-spacing: -.03em; padding: 8px 0; translate: 0 14px; opacity: 0; transition: translate .5s var(--ease-out), opacity .5s; }
+.mobile-menu.open .m-link { translate: 0 0; opacity: 1; }
+.mobile-menu.open .m-link:nth-child(2) { transition-delay: .05s; }
+.mobile-menu.open .m-link:nth-child(3) { transition-delay: .1s; }
+.mobile-menu.open .m-link:nth-child(4) { transition-delay: .15s; }
+.mobile-menu .btn { margin-top: 24px; align-self: flex-start; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100svh;
+  display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 40px;
+  padding-top: 120px; padding-bottom: 70px;
+}
+.chip-meta {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 7px 14px 7px 12px; margin-bottom: 26px;
+  border: 1px solid var(--line-2); border-radius: 999px; background: rgba(255,255,255,.03);
+  font-family: var(--f-mono); font-size: 12px; color: var(--text-2);
+}
+.hero h1 { font-size: clamp(40px, 5.6vw, 78px); margin-bottom: 26px; }
+.hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.hero h1 .w > span { display: inline-block; animation: rise 1.05s var(--ease-out) both; animation-delay: calc(var(--i) * 70ms + 100ms); }
+.hero h1 .w > .hl { animation: rise 1.05s var(--ease-out) both, shine 7s linear infinite; animation-delay: calc(var(--i) * 70ms + 100ms), 0s; }
+@keyframes rise { from { transform: translateY(110%); } }
+.hero-sub { font-size: clamp(16.5px, 1.4vw, 19px); max-width: 34ch; margin-bottom: 34px; }
+.hero-sub b { color: var(--text); font-weight: 600; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 46px; }
+.stats { display: flex; border-top: 1px solid var(--line); padding-top: 22px; max-width: 470px; }
+.stat { flex: 1; }
+.stat + .stat { padding-left: 20px; border-left: 1px solid var(--line); }
+.stat strong { display: block; font-family: var(--f-head); font-weight: 800; font-size: 26px; color: var(--text); letter-spacing: -.04em; line-height: 1.15; }
+.stat span { font-family: var(--f-mono); font-size: 11.5px; color: var(--text-3); }
+
+
+/* =========================================================
+   RESPONSIVE — header, menú y hero
+   ========================================================= */
+@media (max-width: 1080px) {
+  .nav { display: none; }
+  .header-cta { margin-left: auto; }
+  .menu-btn { display: block; }
+  .hero { grid-template-columns: 1fr; gap: 30px; padding-top: 120px; min-height: auto; text-align: center; }
+  .hero-copy { display: flex; flex-direction: column; align-items: center; }
+  .hero-sub { margin-inline: auto; }
+  .hero-actions { justify-content: center; }
+  .stats { width: 100%; margin-inline: auto; text-align: left; }
+}
+@media (max-width: 640px) {
+  .brand img { height: 28px; }
+  .header-row { gap: 10px; }
+  .header-cta { padding: 9px 14px; font-size: 12.5px; }
+  .header-cta .ico { display: none; }
+  .hero { padding-top: 104px; }
+  .hero-actions { width: 100%; flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+  .chip-meta { font-size: 10.5px; letter-spacing: 0; white-space: nowrap; flex-wrap: nowrap; padding-inline: 12px; }
+  .stat strong { font-size: 21px; }
+  .stat + .stat { padding-left: 12px; }
+}

@@ -1,0 +1,59 @@
+# Publica la web en GitHub Pages con el build de Vite.
+#
+# Solo corre cuando se empuja a master: en las ramas de trabajo
+# (rediseno-vite*) no publica nada.
+#
+# Para que funcione, Joel tiene que activar una vez:
+#   Settings → Pages → Source: GitHub Actions
+name: Desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Si entran dos pushes seguidos, se publica el último y no se cancela
+# un despliegue a medio camino.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Traer el repo
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Build de Vite
+        run: npm run build
+
+      - name: Subir el artefacto de Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

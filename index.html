@@ -8,10 +8,12 @@
   <meta name="keywords" content="automatizaciones con IA, agente de WhatsApp, turnos automáticos, asistente con IA, páginas web para profesionales, zona sur, Buenos Aires, MJR Digital" />
   <meta name="author" content="Joel Rodriguez" />
   <link rel="canonical" href="https://joedev10.github.io/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@700;800&display=swap" />
+  <!-- Solo los pesos que se usan: Inter 400/500/600, Montserrat 700/800 y
+       JetBrains Mono 400/500. display=swap para que el texto se vea ya. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@700;800&display=swap" />
   <meta name="theme-color" content="#0A193A" />
   <meta name="google-site-verification" content="h86icTbwb3S9qbp7W2l2WvmPVMAV3jF7Z7BXBaU97Ys" />
@@ -60,10 +62,9 @@
   }
   </script>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png" />
-  <link rel="apple-touch-icon" href="img/apple-touch.png" />
-  <link rel="stylesheet" href="estilos.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png" />
+  <link rel="apple-touch-icon" href="/img/apple-touch.png" />
 
   <!-- Meta Pixel: desactivado hasta tener el ID real del Pixel.
        Para activarlo, pegar acá el código oficial de Meta con ese ID.
@@ -79,8 +80,23 @@
   </script>
   <!-- End Microsoft Clarity -->
 </head>
-<body class="no-js">
+<body class="no-js booting">
 <script>document.body.classList.replace("no-js", "js");</script>
+
+  <!-- Intro -->
+  <div id="boot" aria-hidden="true">
+    <div class="boot-in">
+      <img class="boot-logo" src="/img/logo-negativo.png" alt="" width="1312" height="565" />
+      <div class="boot-bar"><i></i></div>
+      <div class="boot-meta"><span>Cargando</span><span class="boot-num">000</span></div>
+    </div>
+    <p class="boot-word">Automatizaciones con IA · Zona sur, Buenos Aires</p>
+    <div class="boot-sheet"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Cursor -->
+  <div id="cur" aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"><b></b></div>
 
   <!-- Íconos (se reutilizan con <use>) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -107,10 +123,18 @@
   <div class="bg-spot" aria-hidden="true"></div>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
+  <nav class="rail" aria-hidden="true">
+    <a href="#servicios" tabindex="-1"><span>Servicios</span><i></i></a>
+    <a href="#noche" tabindex="-1"><span>Demo</span><i></i></a>
+    <a href="#demos" tabindex="-1"><span>Webs</span><i></i></a>
+    <a href="#precios" tabindex="-1"><span>Combos</span><i></i></a>
+    <a href="#faq" tabindex="-1"><span>Preguntas</span><i></i></a>
+  </nav>
+
   <header class="site-header" id="siteHeader">
     <div class="wrap header-row">
       <a href="#top" class="brand" aria-label="MJR Digital, volver arriba">
-        <img src="img/logo-negativo.png" alt="MJR Digital" width="1312" height="565" />
+        <img src="/img/logo-negativo.png" alt="MJR Digital" width="1312" height="565" />
       </a>
       <nav class="nav" aria-label="Principal">
         <a href="#servicios">Servicios</a>
@@ -119,7 +143,7 @@
         <a href="#precios">Combos</a>
         <a href="#faq">Preguntas</a>
       </nav>
-      <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-sm header-cta" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+      <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-sm header-cta" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </header>
@@ -137,6 +161,7 @@
 
     <!-- HERO -->
     <section class="hero wrap" aria-labelledby="hero-title">
+      <canvas id="net" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <div class="chip-meta load" style="--d:0ms"><i class="dot"></i>Automatizaciones con IA · Zona sur, Buenos Aires</div>
         <h1 id="hero-title">
@@ -149,7 +174,7 @@
         </h1>
         <p class="hero-sub load" style="--d:550ms">Un agente con IA que <b>responde, agenda y recuerda</b> por vos. Para contadores, abogados y consultorios.</p>
         <div class="hero-actions load" id="heroActions" style="--d:700ms">
-          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
           <a href="#noche" class="btn btn-line" data-magnet>Ver cómo funciona <span class="arr">→</span></a>
         </div>
         <div class="stats load" style="--d:850ms">
@@ -160,7 +185,7 @@
       </div>
 
       <!-- El agente atendiendo en vivo (se puede tocar un horario) -->
-      <div class="stage" id="stage">
+      <div class="stage" id="stage" data-par="0.05">
         <div class="stage-glow" aria-hidden="true"></div>
         <div class="orbit o1" aria-hidden="true"></div>
         <div class="orbit o2" aria-hidden="true"></div>
@@ -169,7 +194,7 @@
           <div class="ph-screen">
             <div class="ph-island" aria-hidden="true"></div>
             <div class="ph-status" aria-hidden="true"><span id="heroClock">23:40</span><span>●●●</span></div>
-            <div class="ph-head"><span class="ph-av"><img src="img/isologo-negativo.png" alt="" width="672" height="265"/></span><div><b>Tu consultorio</b><small>agente IA · en línea</small></div></div>
+            <div class="ph-head"><span class="ph-av"><img src="/img/isologo-negativo.png" alt="" width="672" height="265"/></span><div><b>Tu consultorio</b><small>agente IA · en línea</small></div></div>
             <div class="ph-chat" id="heroChat" aria-live="off"></div>
             <div class="ph-input" aria-hidden="true">Escribí un mensaje…</div>
           </div>
@@ -191,15 +216,10 @@
       </div>
     </section>
 
-    <!-- Cinta de capacidades -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track" id="marqueeTrack">
-        <span><svg class="ico"><use href="#i-chat"/></svg>Agente de WhatsApp con IA</span>
-        <span><svg class="ico"><use href="#i-cal"/></svg>Turnos que se agendan solos</span>
-        <span><svg class="ico"><use href="#i-bolt"/></svg>Respuestas 24/7</span>
-        <span><svg class="ico"><use href="#i-bell"/></svg>Recordatorios y seguimiento</span>
-        <span><svg class="ico"><use href="#i-web"/></svg>Páginas web</span>
-        <span><svg class="ico"><use href="#i-card"/></svg>Pedidos y cobros</span>
+    <!-- Cinta grande de capacidades -->
+    <div class="band" id="band" aria-hidden="true">
+      <div class="band-track" id="bandTrack">
+        <span>Agente de WhatsApp <i></i> <em>24 horas</em> <i></i> Turnos solos <i></i> <em>Recordatorios</em> <i></i> Páginas web <i></i> <em>Pedidos y cobros</em> <i></i></span>
       </div>
     </div>
 
@@ -207,7 +227,7 @@
     <section class="sec wrap" id="servicios" aria-labelledby="servicios-title">
       <div class="sec-head" data-reveal>
         <p class="kicker"><b>01</b> Servicios</p>
-        <h2 id="servicios-title">Atiende el agente. <span class="hl">Vos laburás.</span></h2>
+        <h2 id="servicios-title" data-split>Atiende el agente. <span class="hl">Vos laburás.</span></h2>
       </div>
 
       <div class="bento" data-stagger>
@@ -258,7 +278,7 @@
               <small>Mercado Pago · seña</small>
               <strong>Pago recibido</strong>
               <div class="v-bar"><i></i></div>
-              <div class="v-ok"><svg class="ico"><use href="#i-check"/></svg>Aprobado · te llega el aviso</div>
+              <div class="v-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Aprobado · te llega el aviso</div>
             </div>
           </div>
           <div class="tile-foot"><h3>Pedidos <br>y cobros</h3><span class="tag">automatización</span></div>
@@ -280,7 +300,7 @@
         <div class="night-top">
           <div>
             <p class="kicker"><b>02</b> Demo en vivo</p>
-            <h2 id="noche-title">Un turno <span class="hl">mientras dormís.</span></h2>
+            <h2 id="noche-title" data-split>Un turno <span class="hl">mientras dormís.</span></h2>
           </div>
           <div class="sky" aria-hidden="true"><svg class="ico moon"><use href="#i-moon"/></svg><svg class="ico sun"><use href="#i-sun"/></svg></div>
         </div>
@@ -301,66 +321,114 @@
             <button type="button" class="chip" data-pregunta="¿Atienden por obra social?">¿Atienden por obra social?</button>
             <button type="button" class="chip" data-pregunta="¿Cómo es la prueba de 15 días?">¿Cómo es la prueba?</button>
           </div>
-          <button type="button" class="btn" id="abrir-asistente" data-magnet><svg class="ico"><use href="#i-chat"/></svg>Probar el asistente</button>
+          <button type="button" class="btn" id="abrir-asistente" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>Probar el asistente</button>
         </div>
       </div>
     </section>
 
     <!-- DEMOS WEB -->
-    <section class="sec wrap portfolio" id="demos" aria-labelledby="demos-title">
-      <div class="sec-head" data-reveal>
-        <p class="kicker"><b>03</b> Demos web</p>
-        <h2 id="demos-title">Así queda <span class="hl">una página.</span></h2>
+    <section class="portfolio hscroll" id="demos" aria-labelledby="demos-title">
+     <div class="hscroll-sticky">
+      <div class="hscroll-head">
+        <div class="sec-head" data-reveal style="margin-bottom:0">
+          <p class="kicker"><b>03</b> Demos web</p>
+          <h2 id="demos-title" data-split>Así queda <span class="hl">una página.</span></h2>
+        </div>
       </div>
 
-      <div class="works" data-stagger>
-        <a class="work" href="https://joedev10.github.io/tinta-fundida/" target="_blank" rel="noopener noreferrer" data-tilt>
+      <div class="hscroll-view">
+      <div class="works hscroll-row">
+        <a class="work" href="https://joedev10.github.io/tinta-fundida/" target="_blank" rel="noopener noreferrer" data-tilt data-cursor="Ver demo">
           <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>tinta-fundida</span></div>
           <div class="work-media">
             <picture>
-              <source type="image/webp" srcset="img/tinta-fundida.webp"/>
-              <img src="img/tinta-fundida.jpg" alt="Demo de página para un taller de impresión 3D: Tinta Fundida, con catálogo de piezas y pedidos por WhatsApp" loading="lazy" decoding="async" width="1440" height="855"/>
+              <source type="image/webp" srcset="/img/tinta-fundida.webp"/>
+              <img src="/img/tinta-fundida.jpg" alt="Demo de página para un taller de impresión 3D: Tinta Fundida, con catálogo de piezas y pedidos por WhatsApp" loading="lazy" decoding="async" width="1440" height="855"/>
             </picture>
-            <span class="work-go">Ver demo <svg class="ico"><use href="#i-arrow"/></svg></span>
+            <span class="work-go">Ver demo <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </div>
           <div class="work-info"><h3>Tinta Fundida</h3><span>demo · impresión 3D</span></div>
         </a>
 
-        <a class="work" href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer" data-tilt>
+        <a class="work" href="https://joedev10.github.io/lubit/" target="_blank" rel="noopener noreferrer" data-tilt data-cursor="Ver demo">
           <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>lubit</span></div>
           <div class="work-media">
             <picture>
-              <source type="image/webp" srcset="img/lubit.webp"/>
-              <img src="img/lubit.jpg" alt="Demo de página para venta y reparación de celulares: Lubit, con catálogo, turnos y servicio técnico" loading="lazy" decoding="async" width="1100" height="653"/>
+              <source type="image/webp" srcset="/img/lubit.webp"/>
+              <img src="/img/lubit.jpg" alt="Demo de página para venta y reparación de celulares: Lubit, con catálogo, turnos y servicio técnico" loading="lazy" decoding="async" width="1100" height="653"/>
             </picture>
-            <span class="work-go">Ver demo <svg class="ico"><use href="#i-arrow"/></svg></span>
+            <span class="work-go">Ver demo <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </div>
           <div class="work-info"><h3>Lubit</h3><span>demo · celulares y turnos</span></div>
         </a>
 
-        <a class="work-next" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">
+        <!-- Marcador: acá va el primer caso de un cliente real, cuando haya
+             captura y permiso para publicarlo. No inventar nada. -->
+        <article class="work work-pendiente">
+          <div class="work-bar" aria-hidden="true"><i></i><i></i><i></i><span>tu-caso</span></div>
+          <div class="work-media">
+            <div class="pendiente">
+              <span class="pendiente-tag">[CASO REAL PENDIENTE]</span>
+              <p>Acá va el primer caso de un cliente real, con captura y lo que se resolvió.</p>
+            </div>
+          </div>
+          <div class="work-info"><h3>Tu caso</h3><span>reservado</span></div>
+        </article>
+
+        <a class="work-next" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer" data-reveal>
           <h3>¿Tu consultorio?</h3>
-          <span class="go">Probalo 15 días gratis <svg class="ico"><use href="#i-arrow"/></svg></span>
+          <span class="go">Probalo 15 días gratis <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
       </div>
+      </div>
 
+      <div class="hscroll-hint" aria-hidden="true"><span>Seguí bajando</span><b></b><span>Entrá y navegalas</span></div>
+     </div>
+    </section>
+
+    <div class="wrap">
       <div class="note" data-reveal>
         <span>Son demos de muestra, no clientes. Entrá y navegalas.</span>
         <span class="about"><span class="av" aria-hidden="true">J</span>Soy Joel, de Hudson. Te contesto yo.</span>
       </div>
-    </section>
+    </div>
 
-    <!-- PROCESO -->
-    <section class="sec wrap" aria-labelledby="proceso-title" style="padding-top:0">
-      <div class="sec-head center" data-reveal>
-        <p class="kicker"><b>04</b> Proceso</p>
-        <h2 id="proceso-title">Tres pasos. <span class="hl">Cero vueltas.</span></h2>
-      </div>
-      <div class="pasos" id="pasos">
-        <div class="pasos-line" aria-hidden="true"><i></i></div>
-        <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-chat"/></svg></span><time>hoy</time><h3>Me contás cómo atendés</h3></div>
-        <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-gift"/></svg></span><time>15 días</time><h3>Lo probás gratis</h3></div>
-        <div class="paso"><span class="paso-node"><svg class="ico"><use href="#i-rocket"/></svg></span><time>después</time><h3>Si te sirve, seguimos</h3></div>
+    <!-- CÓMO TRABAJO -->
+    <section class="invert como" id="como" aria-labelledby="como-title">
+      <div class="como-pin" id="comoPin">
+        <div class="wrap">
+          <div class="sec-head center">
+            <p class="kicker"><b>04</b> Cómo trabajo</p>
+            <h2 id="como-title" data-split>Cuatro pasos. <span class="hl">Cero vueltas.</span></h2>
+          </div>
+          <ol class="pasos" id="pasos">
+            <li class="pasos-line" aria-hidden="true"><i></i></li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span>
+              <time>paso 01</time>
+              <h3>Diagnóstico</h3>
+              <p>Me contás cómo atendés hoy: horarios, servicios y cómo agendás. No hace falta que sepas de tecnología.</p>
+            </li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg></span>
+              <time>paso 02</time>
+              <h3>Propuesta</h3>
+              <p>Te digo qué combo te sirve y arrancamos con los 15 días de prueba gratis del agente, sin seña.</p>
+            </li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></span>
+              <time>paso 03</time>
+              <h3>Implementación</h3>
+              <p>Dejo el agente andando en tu WhatsApp con tu forma de atender. Esos 15 días los usás gratis.</p>
+            </li>
+            <li class="paso">
+              <span class="paso-node"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg></span>
+              <time>paso 04</time>
+              <h3>Soporte</h3>
+              <p>Si te sirve, seguimos con el combo que elijas. Los ajustes los vemos por WhatsApp, te contesto yo.</p>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -368,12 +436,12 @@
     <section class="sec wrap" id="precios" aria-labelledby="precios-title" style="padding-top:0">
       <div class="sec-head center" data-reveal>
         <p class="kicker"><b>05</b> Combos</p>
-        <h2 id="precios-title">Tres combos. <span class="hl">Simple.</span></h2>
+        <h2 id="precios-title" data-split>Tres combos. <span class="hl">Simple.</span></h2>
       </div>
       <div class="badges" data-stagger>
-        <span><svg class="ico"><use href="#i-check"/></svg>15 días gratis del agente</span>
-        <span><svg class="ico"><use href="#i-check"/></svg>Sin seña para probar</span>
-        <span><svg class="ico"><use href="#i-check"/></svg>Hosting incluido</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>15 días gratis del agente</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sin seña para probar</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hosting incluido</span>
       </div>
 
       <div class="plans" data-stagger>
@@ -382,10 +450,10 @@
           <h3>Arranque</h3>
           <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
           <ul>
-            <li><svg class="ico"><use href="#i-check"/></svg>Agente Básico: consultas 24 h</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Página tipo link-in-bio</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Hasta 2 cambios chicos por mes</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Dominio propio, si lo querés</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente Básico: consultas 24 h</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Página tipo link-in-bio</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hasta 2 cambios chicos por mes</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio propio, si lo querés</li>
           </ul>
           <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
         </article>
@@ -396,10 +464,10 @@
           <h3>Básico</h3>
           <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
           <ul>
-            <li><svg class="ico"><use href="#i-check"/></svg>Agente Básico 24 h, con tu onda</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Landing: servicios, fotos, horarios y mapa</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Dominio .com.ar 1 año, hosting y SSL</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Search Console, 1 ronda de cambios y capacitación</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente Básico 24 h, con tu onda</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Landing: servicios, fotos, horarios y mapa</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio .com.ar 1 año, hosting y SSL</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Search Console, 1 ronda de cambios y capacitación</li>
           </ul>
           <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
         </article>
@@ -409,10 +477,10 @@
           <h3>Completo</h3>
           <p class="plan-ask">Precio a medida · consultalo por WhatsApp</p>
           <ul>
-            <li><svg class="ico"><use href="#i-check"/></svg>Agente con Mercado Pago o turnos con seña</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Web con panel para editar servicios o precios</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Link de pedidos o turnos integrado</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Dominio, hosting, SSL, 2 rondas de cambios</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Agente con Mercado Pago o turnos con seña</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Web con panel para editar servicios o precios</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Link de pedidos o turnos integrado</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dominio, hosting, SSL, 2 rondas de cambios</li>
           </ul>
           <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-line" target="_blank" rel="noopener noreferrer">Probalo 15 días gratis</a>
         </article>
@@ -425,7 +493,7 @@
       <div class="faq-wrap">
         <div class="sec-head" data-reveal>
           <p class="kicker"><b>06</b> Preguntas</p>
-          <h2 id="faq-title">Lo que <span class="hl">siempre</span> me preguntan.</h2>
+          <h2 id="faq-title" data-split>Lo que <span class="hl">siempre</span> me preguntan.</h2>
         </div>
         <ul class="faq" data-stagger>
           <li class="faq-item">
@@ -454,6 +522,7 @@
 
     <!-- CIERRE -->
     <section class="closing cta-final" id="contacto" aria-labelledby="cierre-title">
+      <span class="mark" aria-hidden="true">MJR DIGITAL</span>
       <div class="wrap">
         <div data-reveal>
           <p class="closing-kicker">¿Listo para probarlo 15 días gratis?</p>
@@ -461,7 +530,7 @@
             <a class="big-link" href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" target="_blank" rel="noopener noreferrer">Probalo<span class="arr" aria-hidden="true">→</span></a>
           </h2>
           <p class="closing-sub">Escribime por WhatsApp y dejamos el agente andando en tu número.</p>
-          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-lg" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
+          <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn btn-lg" target="_blank" rel="noopener noreferrer" data-magnet><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
         </div>
 
         <footer class="footer">
@@ -477,7 +546,7 @@
   </main>
 
   <div class="sticky-wa" id="stickyWa">
-    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer"><svg class="ico"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
+    <a href="https://wa.me/5491144091981?text=%C2%A1Hola!%20Quiero%20probar%20el%20agente%2015%20d%C3%ADas%20gratis" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Probalo 15 días gratis: escribirle a Joel por WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Probalo 15 días gratis</a>
   </div>
 
 <div id="chat-tooltip">¿Querés ver cómo responde un agente? <button type="button" class="tooltip-close" id="tooltip-close" aria-label="Cerrar aviso">✕</button></div>
@@ -488,7 +557,7 @@
 
 <div id="chat-window" class="hidden" role="dialog" aria-label="Asistente MJR Digital" aria-hidden="true">
   <div class="chat-header">
-    <div class="avatar" aria-hidden="true"><img src="img/isologo-negativo.png" alt="" width="672" height="265"/></div>
+    <div class="avatar" aria-hidden="true"><img src="/img/isologo-negativo.png" alt="" width="672" height="265" loading="lazy" decoding="async"/></div>
     <div class="info">
       <div class="name">Asistente MJR Digital</div>
       <div class="status">en línea · probame como un paciente</div>
@@ -501,557 +570,7 @@
   </div>
 </div>
 
-<script>
-  /* ================= Asistente (chat) ================= */
-  const API_BASE = "https://chatbot-joeldev-production.up.railway.app";
-  const API_URL = API_BASE + "/chat";
-  const WA_NUM = "5491144091981";
-  // El bot remoto (Railway) todavía tiene respuestas viejas; por eso queda apagado.
-  // Queda el gancho listo; se enciende cuando el backend esté actualizado.
-  const USAR_BOT_REMOTO = false;
-  let botOnline = USAR_BOT_REMOTO;
-  function marcarBotCaido() { botOnline = false; }
-
-  const RESPUESTAS = [
-    { claves: ["obra social", "obra social?"],
-      texto: "Esto es una demo de cómo respondería el agente en el WhatsApp de un consultorio: «Trabajo con particular. Si tenés una obra social, te cuento cómo es la modalidad y te ofrezco un horario. ¿Querés que te pase los turnos libres de esta semana?» Si te gusta cómo suena, lo probás 15 días gratis en tu número." },
-    { claves: ["tenes turno", "tenés turno", "el jueves", "turno el"],
-      texto: "Esto es una demo de cómo respondería el agente en tu WhatsApp: «Sí, el jueves tengo 10:00, 11:30 y 16:00. ¿Cuál te queda mejor?» El turno queda anotado y te llega el aviso. Si querés, lo probás 15 días gratis en tu número." },
-    { claves: ["15 dias", "15 días", "prueba", "gratis", "probar"],
-      texto: "El agente lo probás 15 días gratis en tu WhatsApp, sin pagar nada. Joel lo deja andando con tu forma de atender. Si te sirve, seguís con el combo que mejor te quede: Arranque, Básico o Completo. La web se arma cuando confirmás que seguís.", wa: true },
-    { claves: ["automatiz", "chatbot", " bot", "asistente", " ia ", "inteligencia", "agente"],
-      texto: "El corazón de MJR Digital son las automatizaciones con IA para profesionales: un agente de WhatsApp que contesta, agenda turnos, manda recordatorios y te pasa lo importante. Si no tenés web, también te la armamos, integrada con el agente. Lo probás 15 días gratis." },
-    { claves: ["recordatorio", "seguimiento"],
-      texto: "Antes del turno el agente manda un recordatorio. Si la persona no confirma, hace el seguimiento. Eso va en las automatizaciones de turnos, y en el combo Completo se puede sumar la seña." },
-    { claves: ["turno", "agenda", "reserva"],
-      texto: "Con los turnos automáticos la persona elige un horario libre, queda anotada y le llega un recordatorio. En el combo Completo también se puede cobrar la seña. El agente lo probás 15 días gratis." },
-    { claves: ["mercado pago", "mercadopago", "link de pago", "cobr", "seña", "sena"],
-      texto: "En el combo Completo el agente puede mandar un link de Mercado Pago para la seña o el servicio, y te llega el aviso cuando está pago." },
-    { claves: ["mensual", "por mes", "abono", "/mes"],
-      texto: "El precio depende del combo y de tu negocio, así que Joel te lo pasa a medida por WhatsApp. El agente se prueba 15 días gratis, sin pagar nada.", wa: true },
-    { claves: ["arranque", "link in bio", "link-in-bio", "mas barato", "más barato", "barat", "economic"],
-      texto: "El combo Arranque incluye agente Básico (consultas 24 h, y te pasa lo que no puede resolver) y una página tipo link-in-bio en un subdominio, con hasta 2 cambios chicos por mes. El agente se prueba 15 días gratis. Para el precio de tu caso, escribile a Joel por WhatsApp.", wa: true },
-    { claves: ["basico", "básico", "recomendado", "landing"],
-      texto: "El combo Básico (el recomendado) incluye agente Básico 24 h, landing de 1 página (servicios, fotos, horarios, mapa y WhatsApp), dominio .com.ar el primer año, hosting, SSL, Search Console, 1 ronda de cambios y capacitación corta. Para el precio de tu caso, escribile a Joel por WhatsApp.", wa: true },
-    { claves: ["completo", "panel", "a medida"],
-      texto: "El combo Completo incluye agente que toma pedidos con Mercado Pago o turnos con seña, web con panel para editar servicios o precios, dominio .com.ar el primer año, hosting, SSL, Search Console, 2 rondas de cambios y capacitación. Para el precio de tu caso, escribile a Joel por WhatsApp.", wa: true },
-    { claves: ["precio", "cuanto", " sale", "cuesta", "costo", "valor", "plan", "tarifa", "combo"],
-      texto: "Hay tres combos (Arranque, Básico y Completo), todos con 15 días de prueba gratis del agente. El precio depende del combo y de tu negocio: escribile a Joel por WhatsApp y te lo pasa a medida. ¿A qué te dedicás? Así te digo cuál te conviene.", wa: true },
-    { claves: ["cuota", " pago ", "pagar", "transferencia", "adelanto", "50%"],
-      texto: "Los 15 días del agente son gratis, no hay seña para probarlo. La web se arma si, después de la prueba, decidís seguir con un combo. Para el precio y la forma de pago, escribile a Joel por WhatsApp.", wa: true },
-    { claves: ["cuanto tiempo", "cuantos dias", "cuando la", "tarda", "tiempo", "demora", "rapido", "plazo", "entrega", "48"],
-      texto: "Joel deja el agente andando para la prueba de 15 días apenas le contás cómo atendés. La web del combo se arma cuando confirmás que seguís." },
-    { claves: ["dominio", "hosting", ".com", " url", "subdominio"],
-      texto: "El hosting va incluido en los tres combos. En Arranque la página va en un subdominio, y si querés dominio propio lo ves con Joel por WhatsApp. En Básico y Completo, el dominio .com.ar del primer año está incluido." },
-    { claves: ["garantia", "no me gusta", "conforme", "devolu", "riesgo", "compromiso"],
-      texto: "La prueba de 15 días no tiene costo ni compromiso. Si el agente no te sirve, no seguís y no debés nada. La web se arma recién cuando confirmás que querés continuar." },
-    { claves: ["cambio", "soporte", "modific", "actualiz", "mantenimiento"],
-      texto: "En Arranque hay hasta 2 cambios chicos por mes. En Básico, 1 ronda de cambios en la web. En Completo, 2 rondas. Después, los ajustes del agente y de la web van por WhatsApp." },
-    { claves: ["ejemplo", "portfolio", "trabajos", "demo", "hiciste", "clientes"],
-      texto: "En la web hay dos demos de muestra, no son clientes: Tinta Fundida (impresión 3D) y Lubit (celulares). Sirven para ver cómo queda una página. El servicio que ofrezco hoy es el agente de WhatsApp para profesionales, y la web como complemento." },
-    { claves: ["necesito", "empezar", "requisito", "que te paso", "arrancar"],
-      texto: "Solo contarle a Joel cómo atendés: horarios, servicios y cómo agendás. Con eso deja el agente andando en tu WhatsApp para la prueba de 15 días. No hace falta que sepas de tecnología.", wa: true },
-    { claves: ["contador", "contadora", "abogad", "consultorio", "profesional", "estudio"],
-      texto: "Justo para eso está pensado: un agente que contesta consultas, agenda turnos y te pasa lo importante, mientras vos atendés. Lo probás 15 días gratis. Y si no tenés web, Joel te la arma integrada con el agente.", wa: true },
-    { claves: ["barberia", "peluqueria", "estetica", "gimnasio", "entrenador", "pilates", "nutricion"],
-      texto: "Para un local o consultorio de turnos va muy bien el agente con agenda y recordatorios. En el Completo se puede sumar la seña por Mercado Pago. Lo probás 15 días gratis en tu WhatsApp." },
-    { claves: ["restaurant", "comida", "delivery", "heladeria", "pasteleria", "gastronom", "cafe", "pizzeria"],
-      texto: "También se puede dejar un agente que tome pedidos y cobre con Mercado Pago, que es lo que incluye el combo Completo. Igual el foco de MJR Digital son profesionales que atienden por WhatsApp. Escribile a Joel y lo vemos.", wa: true },
-    { claves: ["pagina web", "página web", "sitio", "landing", "no tengo web"],
-      texto: "La web es el punto de entrada, no el titular. Si no tenés, te la armamos integrada con el agente: link-in-bio en el Arranque, landing de 1 página en el Básico, o web con panel en el Completo." },
-    { claves: ["contacto", "whatsapp", "telefono", "llamar", "hablar con joel"],
-      texto: "Podés escribirle a Joel por WhatsApp al +54 9 11 4409-1981. Te contesta él, no un call center.", wa: true },
-    { claves: ["gracias", "genial", "perfecto", "buenisimo", "joya"],
-      texto: "¡De nada! Cuando quieras, escribile a Joel por WhatsApp y lo probás 15 días gratis en tu número.", wa: true },
-    { claves: ["hola", "buenas", "buen dia", "que tal"],
-      texto: "¡Hola! Soy el asistente de MJR Digital. Te puedo contar cómo funciona el agente de WhatsApp, los combos y la prueba de 15 días. También podés escribirme como si fueras un paciente pidiendo un turno, para ver una demo. ¿Qué necesitás?" },
-  ];
-
-
-  function normalizar(t) {
-    return " " + t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[¿?¡!.,;:]/g, " ") + " ";
-  }
-  function respuestaLocal(pregunta) {
-    const t = normalizar(pregunta);
-    let mejor = null, puntos = 0;
-    for (const r of RESPUESTAS) {
-      const n = r.claves.filter(c => t.includes(c)).length;
-      if (n > puntos) { mejor = r; puntos = n; }
-    }
-    return mejor;
-  }
-  function linkWhatsApp(pregunta) {
-    const msg = pregunta
-      ? "¡Hola, MJR Digital! Te escribo desde la web. Te quería consultar: " + pregunta
-      : "¡Hola! Quiero probar el agente 15 días gratis";
-    return "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(msg);
-  }
-  if (USAR_BOT_REMOTO) {
-    fetch(API_BASE + "/health", { signal: AbortSignal.timeout(8000) })
-      .then(r => { if (!r.ok) marcarBotCaido(); })
-      .catch(marcarBotCaido);
-  }
-
-  // El aviso del asistente aparece recién cuando los botones del hero ya no
-  // están en pantalla, para no taparlos.
-  const tooltip = document.getElementById("chat-tooltip");
-  tooltip.style.display = "none";
-  let tooltipCerrado = false, tooltipListo = false, heroEnPantalla = true;
-  function mostrarTooltip() {
-    if (tooltipCerrado || !tooltipListo || heroEnPantalla || isOpen) return;
-    tooltip.style.display = "flex";
-  }
-  setTimeout(() => { tooltipListo = true; mostrarTooltip(); }, 3000);
-  const heroBotones = document.getElementById("heroActions");
-  if (heroBotones) {
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        heroEnPantalla = e.isIntersecting;
-        if (heroEnPantalla) tooltip.style.display = "none"; else mostrarTooltip();
-      });
-    }).observe(heroBotones);
-  } else { heroEnPantalla = false; }
-  document.getElementById("tooltip-close").addEventListener("click", (e) => {
-    e.stopPropagation(); tooltipCerrado = true; tooltip.style.display = "none";
-  });
-
-  const toggle   = document.getElementById("chat-toggle");
-  const chatWin  = document.getElementById("chat-window");
-  const messages = document.getElementById("messages");
-  const input    = document.getElementById("chat-input-text");
-  const sendBtn  = document.getElementById("send-btn");
-
-  let history = [], isOpen = false, isStreaming = false;
-  const SALUDO = "¡Hola! Soy el asistente de MJR Digital. Preguntame por los combos o la prueba de 15 días, o escribime como si fueras un paciente pidiendo un turno, para ver una demo.";
-
-  function abrirChat() {
-    if (isOpen) return;
-    isOpen = true;
-    chatWin.classList.remove("hidden");
-    chatWin.setAttribute("aria-hidden", "false");
-    toggle.setAttribute("aria-expanded", "true");
-    toggle.setAttribute("aria-label", "Cerrar el asistente");
-    tooltip.style.display = "none"; tooltipCerrado = true;
-    if (history.length === 0) addBubble("bot", SALUDO);
-  }
-
-  toggle.addEventListener("click", () => {
-    if (isOpen) {
-      isOpen = false;
-      chatWin.classList.add("hidden");
-      chatWin.setAttribute("aria-hidden", "true");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Abrir el asistente");
-    } else {
-      abrirChat();
-    }
-  });
-
-  document.getElementById("abrir-asistente").addEventListener("click", () => {
-    abrirChat();
-    input.focus();
-  });
-
-  function addBubble(role, text, typing = false) {
-    const el = document.createElement("div");
-    el.className = `bubble ${role}${typing ? " typing" : ""}`;
-    el.textContent = text;
-    messages.appendChild(el);
-    messages.scrollTop = messages.scrollHeight;
-    return el;
-  }
-
-  function derivarAWhatsApp(bubble, pregunta) {
-    bubble.classList.remove("typing");
-    bubble.textContent = "Esa te la responde Joel en persona. Tocá acá y le llega tu consulta ya escrita:";
-    const a = document.createElement("a");
-    a.href = linkWhatsApp(pregunta);
-    a.target = "_blank"; a.rel = "noopener noreferrer";
-    a.className = "chat-wa";
-    a.textContent = "Seguir por WhatsApp →";
-    bubble.appendChild(a);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  function escribir(bubble, texto, conWa, pregunta) {
-    bubble.classList.remove("typing");
-    bubble.textContent = "";
-    let i = 0;
-    const paso = () => {
-      i = Math.min(texto.length, i + 3);
-      bubble.textContent = texto.slice(0, i);
-      messages.scrollTop = messages.scrollHeight;
-      if (i < texto.length) return setTimeout(paso, 12);
-      if (conWa) {
-        const a = document.createElement("a");
-        a.href = linkWhatsApp(pregunta);
-        a.target = "_blank"; a.rel = "noopener noreferrer";
-        a.className = "chat-wa";
-        a.textContent = "Escribirle a Joel por WhatsApp →";
-        bubble.appendChild(a);
-        messages.scrollTop = messages.scrollHeight;
-      }
-    };
-    paso();
-  }
-
-  function responderLocal(bubble, pregunta) {
-    const r = respuestaLocal(pregunta);
-    if (!r) return derivarAWhatsApp(bubble, pregunta);
-    history.push({ role: "assistant", content: r.texto });
-    setTimeout(() => escribir(bubble, r.texto, !!r.wa, pregunta), 500);
-  }
-
-  async function send(textoForzado) {
-    const text = (textoForzado || input.value).trim();
-    if (!text || isStreaming) return;
-    input.value = ""; input.style.height = "auto";
-    addBubble("user", text);
-    if (!botOnline) {
-      history.push({ role: "user", content: text });
-      responderLocal(addBubble("bot", "Escribiendo...", true), text);
-      return;
-    }
-    history.push({ role: "user", content: text });
-    isStreaming = true; sendBtn.disabled = true;
-    const botBubble = addBubble("bot", "Escribiendo...", true);
-    let accumulated = "";
-    try {
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history }),
-        signal: AbortSignal.timeout(25000),
-      });
-      if (!res.ok) throw new Error();
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      botBubble.classList.remove("typing"); botBubble.textContent = "";
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        accumulated += decoder.decode(value, { stream: true });
-        botBubble.textContent = accumulated;
-        messages.scrollTop = messages.scrollHeight;
-      }
-      history.push({ role: "assistant", content: accumulated });
-    } catch {
-      marcarBotCaido();
-      responderLocal(botBubble, text);
-    } finally {
-      isStreaming = false; sendBtn.disabled = false; input.focus();
-    }
-  }
-
-  sendBtn.addEventListener("click", () => send());
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
-  });
-  input.addEventListener("input", () => {
-    input.style.height = "auto";
-    input.style.height = Math.min(input.scrollHeight, 100) + "px";
-  });
-
-  document.querySelectorAll(".chip[data-pregunta]").forEach(chip => {
-    chip.addEventListener("click", () => {
-      abrirChat();
-      send(chip.getAttribute("data-pregunta"));
-    });
-  });
-
-  /* ================= Movimiento e interacción ================= */
-  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = matchMedia("(pointer: fine)").matches;
-  const root = document.documentElement;
-  const stage = document.getElementById("stage");
-  const heroPhone = document.getElementById("heroPhone");
-
-  // Luz que sigue al cursor + el celular del hero que se inclina
-  if (finePointer && !reduceMotion) {
-    let raf = 0, mx = 0, my = 0;
-    addEventListener("pointermove", (e) => {
-      mx = e.clientX; my = e.clientY;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        root.style.setProperty("--mx", mx + "px");
-        root.style.setProperty("--my", my + "px");
-        const r = stage.getBoundingClientRect();
-        if (r.bottom > 0 && r.top < innerHeight) {
-          const x = (mx - (r.left + r.width / 2)) / innerWidth;
-          const y = (my - (r.top + r.height / 2)) / innerHeight;
-          heroPhone.style.setProperty("--ry", (x * 12).toFixed(2) + "deg");
-          heroPhone.style.setProperty("--rx", (-y * 8).toFixed(2) + "deg");
-        }
-      });
-    }, { passive: true });
-
-    // Tarjetas de demos que se inclinan
-    document.querySelectorAll("[data-tilt]").forEach(el => {
-      el.addEventListener("pointermove", (e) => {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--rx", (-((e.clientY - r.top) / r.height - .5) * 6).toFixed(2) + "deg");
-        el.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 8).toFixed(2) + "deg");
-      });
-      el.addEventListener("pointerleave", () => {
-        el.style.setProperty("--rx", "0deg");
-        el.style.setProperty("--ry", "0deg");
-      });
-    });
-
-    // Botones magnéticos
-    document.querySelectorAll("[data-magnet]").forEach(el => {
-      el.addEventListener("pointermove", (e) => {
-        const r = el.getBoundingClientRect();
-        el.style.translate = `${((e.clientX - r.left - r.width / 2) * .2).toFixed(1)}px ${((e.clientY - r.top - r.height / 2) * .3).toFixed(1)}px`;
-      });
-      el.addEventListener("pointerleave", () => { el.style.translate = ""; });
-    });
-  }
-
-  // Brillo que sigue al mouse dentro de cada tarjeta
-  document.querySelectorAll(".spot").forEach(el => {
-    el.addEventListener("pointermove", (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty("--x", (e.clientX - r.left) + "px");
-      el.style.setProperty("--y", (e.clientY - r.top) + "px");
-    });
-  });
-
-  // Aparición al hacer scroll (escalonada en los grupos)
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add("in"); revealObs.unobserve(e.target); }
-    });
-  }, { threshold: .12, rootMargin: "0px 0px -6% 0px" });
-  document.querySelectorAll("[data-stagger]").forEach(g => {
-    Array.from(g.children).forEach((c, i) => {
-      c.style.setProperty("--d", (i * 90) + "ms");
-      c.setAttribute("data-reveal", "");
-    });
-  });
-  document.querySelectorAll("[data-reveal]").forEach(el => revealObs.observe(el));
-
-  // Contadores
-  const countObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target, target = Number(el.dataset.count), suffix = el.dataset.suffix || "";
-      countObs.unobserve(el);
-      if (reduceMotion) { el.textContent = target + suffix; return; }
-      let inicio = null;
-      const paso = ts => {
-        if (!inicio) inicio = ts;
-        const p = Math.min((ts - inicio) / 1400, 1);
-        el.textContent = Math.round((1 - Math.pow(1 - p, 4)) * target) + suffix;
-        if (p < 1) requestAnimationFrame(paso);
-      };
-      requestAnimationFrame(paso);
-    });
-  }, { threshold: .5 });
-  document.querySelectorAll("[data-count]").forEach(el => countObs.observe(el));
-
-  // Cinta: se duplica para que el loop no tenga cortes
-  (function () {
-    const track = document.getElementById("marqueeTrack");
-    Array.from(track.children).forEach(n => track.appendChild(n.cloneNode(true)));
-  })();
-
-  // Hero: el agente atendiendo. Se puede tocar un horario; si no, elige solo.
-  (function () {
-    const chat = document.getElementById("heroChat");
-    const clock = document.getElementById("heroClock");
-    const tap = document.getElementById("heroTap");
-    const notifs = stage.querySelectorAll(".notif");
-    const notifTurno = document.getElementById("notifTurno");
-    let timers = [], visible = true, esperando = false, slotsEl = null;
-
-    const later = (ms, fn) => timers.push(setTimeout(fn, ms));
-    const msg = (cls, text, label) => {
-      const el = document.createElement("div");
-      el.className = "pm " + cls;
-      if (label) { const s = document.createElement("small"); s.textContent = label; el.appendChild(s); }
-      el.appendChild(document.createTextNode(text));
-      chat.appendChild(el);
-      return el;
-    };
-    const typing = () => {
-      const el = document.createElement("div");
-      el.className = "pm bot typing";
-      el.innerHTML = "<i></i><i></i><i></i>";
-      chat.appendChild(el);
-      return el;
-    };
-
-    function elegir(boton) {
-      if (!slotsEl || slotsEl.classList.contains("done")) return;
-      timers.forEach(clearTimeout); timers = [];
-      const hora = boton.textContent;
-      boton.classList.add("picked");
-      slotsEl.classList.add("done");
-      slotsEl.querySelectorAll("button").forEach(b => b.disabled = true);
-      notifTurno.textContent = "Jueves " + hora;
-      later(500, () => msg("user", hora + " me viene bien"));
-      later(1200, () => { clock.textContent = "23:42"; });
-      let t;
-      later(1300, () => { t = typing(); });
-      later(2300, () => { t.remove(); msg("bot", "Listo ✓ Te agendé el jueves a las " + hora + ". El día antes te mando un recordatorio.", "agente · agendado"); });
-      later(2700, () => notifs[0].classList.add("show"));
-      later(3500, () => notifs[1].classList.add("show"));
-      later(4300, () => notifs[2].classList.add("show"));
-      later(10000, () => { if (visible) play(); else esperando = true; });
-    }
-
-    function play() {
-      timers.forEach(clearTimeout); timers = [];
-      esperando = false;
-      chat.textContent = ""; slotsEl = null;
-      clock.textContent = "23:40";
-      notifs.forEach(n => n.classList.remove("show"));
-      let t;
-      later(500, () => msg("user", "Hola! ¿Tenés turno el jueves?"));
-      later(1300, () => { t = typing(); });
-      later(2400, () => {
-        t.remove();
-        const b = msg("bot", "¡Hola! El jueves tengo estos horarios:", "agente · al instante");
-        slotsEl = document.createElement("div");
-        slotsEl.className = "slots";
-        ["10:00", "11:30", "16:00"].forEach(h => {
-          const btn = document.createElement("button");
-          btn.type = "button"; btn.className = "slot"; btn.textContent = h;
-          btn.setAttribute("aria-label", "Elegir el jueves a las " + h);
-          btn.addEventListener("click", () => elegir(btn));
-          slotsEl.appendChild(btn);
-        });
-        b.appendChild(slotsEl);
-      });
-      // Si nadie toca, el "paciente" elige el de las 11:30
-      later(5600, () => {
-        const btn = slotsEl && slotsEl.children[1];
-        if (!btn) return;
-        const pr = heroPhone.getBoundingClientRect(), br = btn.getBoundingClientRect();
-        tap.style.left = (br.left - pr.left + br.width / 2) + "px";
-        tap.style.top = (br.top - pr.top + br.height / 2) + "px";
-        tap.classList.remove("go"); void tap.offsetWidth; tap.classList.add("go");
-        setTimeout(() => elegir(btn), 350);
-      });
-    }
-
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        visible = e.isIntersecting;
-        if (visible && esperando) play();
-      });
-    }, { threshold: .2 }).observe(heroPhone);
-    play();
-  })();
-
-  // Noche → mañana: la línea de tiempo avanza sola cuando está en pantalla
-  (function () {
-    const night = document.getElementById("night");
-    const steps = night.querySelectorAll(".tstep");
-    let visible = false, t0 = 0, raf = 0;
-    const DUR = 7000, PAUSA = 2600;
-    function set(p) {
-      night.style.setProperty("--p", p.toFixed(3));
-      steps.forEach((s, k) => s.classList.toggle("on", p >= k / (steps.length - 1) - .001));
-    }
-    function frame(t) {
-      if (!t0) t0 = t;
-      const e = (t - t0) % (DUR + PAUSA);
-      set(Math.min(1, e / DUR));
-      raf = visible ? requestAnimationFrame(frame) : 0;
-    }
-    if (reduceMotion) { set(1); return; }
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        visible = e.isIntersecting;
-        if (visible && !raf) { t0 = 0; raf = requestAnimationFrame(frame); }
-      });
-    }, { threshold: .3 }).observe(night);
-  })();
-
-  // Scroll: barra de progreso, header y línea del proceso
-  (function () {
-    const bar = document.getElementById("progress");
-    const header = document.getElementById("siteHeader");
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const pasos = document.getElementById("pasos");
-    const nodos = pasos.querySelectorAll(".paso");
-    let ultimoY = scrollY, pendiente = false;
-    function update() {
-      pendiente = false;
-      const y = scrollY, max = root.scrollHeight - innerHeight;
-      bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-      header.classList.toggle("solid", y > 40);
-      header.classList.toggle("hide", !mobileMenu.classList.contains("open") && y > 600 && y > ultimoY);
-      ultimoY = y;
-      const r = pasos.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (innerHeight * .8 - r.top) / (r.height + innerHeight * .25)));
-      pasos.style.setProperty("--p", p.toFixed(3));
-      nodos.forEach((n, k) => n.classList.toggle("on", p >= k / (nodos.length - 1) * .92));
-    }
-    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(update); } }, { passive: true });
-    addEventListener("resize", update);
-    update();
-
-    // Menú mobile
-    function cerrarMenu() {
-      menuBtn.classList.remove("open");
-      mobileMenu.classList.remove("open");
-      menuBtn.setAttribute("aria-expanded", "false");
-      mobileMenu.setAttribute("aria-hidden", "true");
-      mobileMenu.inert = true;
-      document.body.style.overflow = "";
-    }
-    menuBtn.addEventListener("click", () => {
-      if (mobileMenu.classList.contains("open")) return cerrarMenu();
-      menuBtn.classList.add("open");
-      mobileMenu.classList.add("open");
-      menuBtn.setAttribute("aria-expanded", "true");
-      mobileMenu.setAttribute("aria-hidden", "false");
-      mobileMenu.inert = false;
-      document.body.style.overflow = "hidden";
-      header.classList.add("solid");
-    });
-    mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", cerrarMenu));
-    document.addEventListener("keydown", e => { if (e.key === "Escape") cerrarMenu(); });
-  })();
-
-  // FAQ
-  document.querySelectorAll(".faq-item").forEach(item => {
-    const boton = item.querySelector(".faq-q");
-    boton.addEventListener("click", () => {
-      const abierto = item.classList.toggle("open");
-      boton.setAttribute("aria-expanded", String(abierto));
-    });
-  });
-
-  // Botón fijo de WhatsApp (celular): aparece cuando los botones del hero salen de pantalla
-  const stickyWa = document.getElementById("stickyWa");
-  const heroActions = document.getElementById("heroActions");
-  if (stickyWa && heroActions) {
-    new IntersectionObserver(entries => {
-      entries.forEach(e => stickyWa.classList.toggle("visible", !e.isIntersecting && e.boundingClientRect.top < 0));
-    }).observe(heroActions);
-  }
-
-  // Meta Pixel — cuenta los clics a WhatsApp como Lead (si el Pixel está activo)
-  document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-    link.addEventListener("click", () => {
-      if (typeof fbq === "function") {
-        fbq("track", "Lead", {
-          content_name: "WhatsApp Click",
-          content_category: link.closest("#precios")      ? "Pricing" :
-                            link.closest(".hero")         ? "Hero" :
-                            link.closest(".cta-final")    ? "CTA Final" :
-                            link.closest(".portfolio")    ? "Demos" : "Other"
-        });
-      }
-    });
-  });
-</script>
+<script type="module" src="/src/main.js"></script>
 
 </body>
 </html>
