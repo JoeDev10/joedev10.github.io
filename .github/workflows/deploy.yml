@@ -1,11 +1,20 @@
-# Publica la web en GitHub Pages con el build de Vite.
+# Publica la web de MJR Digital.
 #
-# Solo corre cuando se empuja a master: en las ramas de trabajo
-# (rediseno-vite*) no publica nada.
+# GitHub Pages está configurado como "Deploy from a branch" y publica la raíz
+# de master tal cual, así que la raíz tiene que tener el sitio ya construido.
+# Este workflow lo hace solo: construye, commitea el resultado si cambió y
+# además deja el artefacto publicado por la vía de Actions. De las dos formas
+# se sirve exactamente lo mismo, así que no importa cuál gane.
 #
-# Para que funcione, Joel tiene que activar una vez:
-#   Settings → Pages → Source: GitHub Actions
-name: Desplegar en GitHub Pages
+# Resultado práctico: alcanza con pushear el código fuente. No hay que
+# acordarse de correr `npm run publicar` a mano.
+#
+# CUANDO PAGES PASE A "GitHub Actions" (Settings → Pages → Source):
+#   - se puede borrar el job "construir" entero menos el build y el upload
+#   - se puede borrar de la raíz index.html, assets/, img/, demo-stock/,
+#     robots.txt, sitemap.xml, más _config.yml y scripts/publicar.mjs
+#   Está explicado en docs/DESPLIEGUE.md.
+name: Publicar el sitio
 
 on:
   push:
@@ -13,18 +22,18 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
-# Si entran dos pushes seguidos, se publica el último y no se cancela
+# Si entran dos pushes seguidos, se publica el último y no se corta
 # un despliegue a medio camino.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  construir:
     runs-on: ubuntu-latest
     steps:
       - name: Traer el repo
@@ -39,7 +48,22 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Build de Vite
+      - name: Construir el sitio sobre la raíz
+        run: npm run publicar
+
+      - name: Commitear el sitio si cambió
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A index.html assets img demo-stock robots.txt sitemap.xml
+          if git diff --cached --quiet; then
+            echo "El sitio publicado ya estaba al día."
+          else
+            git commit -m "Reconstruir el sitio publicado [auto]"
+            git push
+          fi
+
+      - name: Build para el artefacto de Pages
         run: npm run build
 
       - name: Subir el artefacto de Pages
@@ -47,8 +71,8 @@ jobs:
         with:
           path: dist
 
-  deploy:
-    needs: build
+  desplegar:
+    needs: construir
     runs-on: ubuntu-latest
     environment:
       name: github-pages
