@@ -3,9 +3,45 @@
   "configurations": [
     {
       "name": "joel-servicios-web",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "serve", "-p", "3000", "."],
-      "port": 3000
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5173",
+        "--strictPort"
+      ],
+      "port": 5173
+    },
+    {
+      "name": "joel-servicios-web-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview"
+      ],
+      "port": 4173
+    },
+    {
+      "name": "facturafacil-demo",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/Usuario/Desktop/auditoria-facturafacil",
+        "run",
+        "dev"
+      ],
+      "port": 3210
+    },
+    {
+      "name": "prospeccion-mapa",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "D:/prospeccion/servidor.py",
+        "--sin-navegador"
+      ],
+      "port": 8765
     }
   ]
 }
