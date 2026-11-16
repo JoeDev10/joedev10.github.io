@@ -234,10 +234,8 @@ body.ready .hero h1 .w > span { animation-name: rise-blur; }
     display: flex; align-items: stretch; gap: 24px; width: max-content;
     padding-inline: var(--gutter); will-change: transform;
   }
-  /* El ancho sale de cuántas tarjetas hay: con siete, a 620px el tramo
-     horizontal se hacía eterno. Si se suman o sacan trabajos, revisar. */
-  .hscroll-row > * { width: min(34vw, 460px); flex: 0 0 auto; }
-  .hscroll-row .work-next { width: min(24vw, 330px); }
+  .hscroll-row > * { width: min(46vw, 620px); flex: 0 0 auto; }
+  .hscroll-row .work-next { width: min(30vw, 400px); }
   .hscroll-hint {
     display: flex; align-items: center; gap: 12px; margin-top: 26px;
     font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3);
