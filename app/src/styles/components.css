@@ -329,6 +329,8 @@
 .work-next .go .ico { width: 18px; height: 18px; transition: transform .3s var(--ease-out); }
 .work-next:hover .go .ico { transform: translate(3px, -3px); }
 .note { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13.5px; color: var(--text-3); }
+.note a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
+.note a:hover, .note a:focus-visible { color: var(--text); }
 .about { display: inline-flex; align-items: center; gap: 12px; color: var(--text); font-size: 15px; }
 .about .av { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-family: var(--f-head); font-weight: 800; }
 

@@ -138,18 +138,39 @@ export function initFaq() {
   });
 }
 
-/* ---------- Meta Pixel: cuenta los clics a WhatsApp como Lead ---------- */
+/* ---------- Clics a WhatsApp: los contamos en los tres lados ----------
+   Clarity ya está puesto en el index, así que eso funciona desde hoy:
+   en el panel de Clarity, filtrá por el evento "wa_click" para ver
+   cuántos clics hubo, y por la etiqueta "cta" para saber de qué botón.
+   El Pixel de Meta y GA4 quedan enganchados para cuando tengas los IDs:
+   si no están, estas tres líneas no hacen nada y no rompen nada. */
 export function initPixelWhatsApp() {
   document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
     link.addEventListener("click", () => {
-      if (typeof window.fbq !== "function") return;
-      window.fbq("track", "Lead", {
-        content_name: "WhatsApp Click",
-        content_category: link.closest("#precios")   ? "Pricing" :
-                          link.closest(".hero")      ? "Hero" :
-                          link.closest(".cta-final") ? "CTA Final" :
-                          link.closest(".portfolio") ? "Demos" : "Other"
-      });
+      const donde = link.closest("#precios")      ? "precios" :
+                    link.closest(".hero")         ? "hero" :
+                    link.closest(".cta-final")    ? "cierre" :
+                    link.closest(".portfolio")    ? "demos" :
+                    link.closest(".site-header")  ? "header" :
+                    link.closest(".sticky-wa")    ? "barra" :
+                    link.closest(".mobile-menu")  ? "menu" :
+                    link.closest(".footer")       ? "footer" : "otro";
+
+      // Clarity: anda ya, sin configurar nada más.
+      if (typeof window.clarity === "function") {
+        window.clarity("event", "wa_click");
+        window.clarity("set", "cta", donde);
+      }
+
+      // Meta Pixel: se enciende solo cuando pegues el código con tu ID.
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Lead", { content_name: "WhatsApp Click", content_category: donde });
+      }
+
+      // GA4: ídem, cuando pegues el gtag con tu ID de medición.
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", { method: "whatsapp", cta: donde });
+      }
     });
   });
 }

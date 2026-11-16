@@ -70,6 +70,19 @@ body.booting .load,
 body.booting .hero h1 .w > span,
 body.booting .stage { animation-play-state: paused; }
 
+/* Si el motor de movimiento no llegó a arrancar, la red de salvataje del
+   index pone esta clase: se muestra todo quieto, pero se muestra. */
+body.sin-motor .load,
+body.sin-motor .hero h1 .w > span,
+body.sin-motor .stage,
+body.sin-motor [data-reveal],
+body.sin-motor [data-stagger] > * {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  translate: none !important;
+}
+
 /* ===== 2. CURSOR ===== */
 @media (pointer: fine) {
   body.cursor-on,

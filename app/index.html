@@ -34,15 +34,37 @@
   <meta name="twitter:description" content="Tu WhatsApp contesta solo mientras atendés. Y si no tenés web, te la armamos." />
   <meta name="twitter:image" content="https://joedev10.github.io/img/og-mjr-digital.jpg" />
 
+  <!-- El negocio. La dirección y la zona van acá arriba (no adentro de
+       founder) para que Google las lea como datos del local. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://joedev10.github.io/#negocio",
     "name": "MJR Digital",
     "description": "Automatizaciones con IA para profesionales en zona sur, Buenos Aires: agente de WhatsApp, turnos, recordatorios y páginas web integradas.",
     "url": "https://joedev10.github.io/",
-    "areaServed": "Argentina",
+    "image": "https://joedev10.github.io/img/og-mjr-digital.jpg",
+    "logo": "https://joedev10.github.io/img/logo-original.png",
+    "inLanguage": "es-AR",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hudson",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "areaServed": [
+      { "@type": "Place", "name": "Hudson, Buenos Aires" },
+      { "@type": "Place", "name": "Berazategui, Buenos Aires" },
+      { "@type": "Place", "name": "Quilmes, Buenos Aires" },
+      { "@type": "Place", "name": "Florencio Varela, Buenos Aires" },
+      { "@type": "Place", "name": "Argentina" }
+    ],
     "serviceType": ["Automatización con IA", "Agente de WhatsApp", "Diseño Web"],
+    "sameAs": [
+      "https://www.instagram.com/joelrodrigueznk",
+      "https://github.com/JoeDev10"
+    ],
     "founder": {
       "@type": "Person",
       "name": "Joel Rodriguez",
@@ -58,7 +80,59 @@
       "contactType": "customer service",
       "telephone": "+54-9-11-4409-1981",
       "availableLanguage": "Spanish"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Combos",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Arranque", "description": "Agente Básico de WhatsApp 24 h y página tipo link-in-bio, con hasta 2 cambios chicos por mes." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Básico", "description": "Agente Básico 24 h, landing de una página, dominio .com.ar el primer año, hosting, SSL y una ronda de cambios." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Completo", "description": "Agente que toma pedidos con Mercado Pago o turnos con seña, y web con panel para editar servicios y precios." } }
+      ]
     }
+  }
+  </script>
+
+  <!-- Las mismas preguntas que están abajo en la página. Si cambia una
+       respuesta, hay que cambiarla en los dos lugares. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué necesito para empezar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Contame cómo atendés hoy: horarios, servicios y cómo agendás. Con eso dejo el agente andando en tu WhatsApp. No hace falta que sepas de tecnología."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo funciona la prueba de 15 días?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Te dejo el agente andando en tu número y lo usás 15 días sin pagar. Si te sirve, seguís con el combo que elijas. Si no, no debés nada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Incluye hosting y dominio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El hosting va incluido en los tres combos. En Arranque la página va en un subdominio; si querés dominio propio, lo vemos por WhatsApp. En Básico y Completo, el dominio .com.ar del primer año está incluido."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo pedir cambios después?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. En Arranque, hasta 2 cambios chicos por mes. En Básico, 1 ronda de cambios en la web. En Completo, 2 rondas. Después, los ajustes los vemos por WhatsApp."
+        }
+      }
+    ]
   }
   </script>
 
@@ -79,9 +153,37 @@
     })(window, document, "clarity", "script", "wwpl6m7nf5");
   </script>
   <!-- End Microsoft Clarity -->
+
+  <!-- Si el visitante tiene el JS apagado, la intro no se saca sola:
+       hay que destrabar el scroll y mostrar lo que espera animarse. -->
+  <noscript>
+    <style>
+      #boot, #cur, #cur-ring { display: none !important; }
+      body.booting { overflow: auto !important; }
+      .load, .hero h1 .w > span, .stage,
+      [data-reveal], [data-stagger] > * {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        translate: none !important;
+      }
+    </style>
+  </noscript>
 </head>
 <body class="no-js booting">
-<script>document.body.classList.replace("no-js", "js");</script>
+<script>
+  document.body.classList.replace("no-js", "js");
+  /* Red de salvataje: si el módulo no arranca (red mala, error de carga),
+     a los 4 s sacamos la intro y destrabamos el scroll igual. */
+  setTimeout(function () {
+    var b = document.body;
+    if (!b.classList.contains("booting")) return;
+    b.classList.remove("booting");
+    b.classList.add("ready", "sin-motor");
+    var boot = document.getElementById("boot");
+    if (boot) boot.remove();
+  }, 4000);
+</script>
 
   <!-- Intro -->
   <div id="boot" aria-hidden="true">
@@ -375,7 +477,7 @@
 
     <div class="wrap">
       <div class="note" data-reveal>
-        <span>Son demos de muestra, no clientes. Entrá y navegalas.</span>
+        <span>Son demos de muestra, no clientes. Entrá y navegalas. ¿Querés ver un panel por dentro? <a href="/demo-stock/">Mirá la demo de stock</a>.</span>
         <span class="about"><span class="av" aria-hidden="true">J</span>Soy Joel, de Hudson. Te contesto yo.</span>
       </div>
     </div>
